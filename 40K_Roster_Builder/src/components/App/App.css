@@ -1,8 +1,41 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.AppContainer {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+  height: 100vh;
+  overflow: auto;
+  min-height: 100%;
+  position: absolute;
+  box-shadow: var(--appOverallBoxShadow);
+  border-radius: var(--appOverallBorderRadius);
+  color: var(--appOverallColor);
+  p {
+    font-size: var(--appOverallFontSize_p);
+  }
+  h3 {
+    font-size: var(--appOverallFontSize_h3);
+  }
+  h6 {
+    font-size: var(--appOverallFontSize_h6);
+  }
+
+  button {
+    outline: none;
+  }
 }

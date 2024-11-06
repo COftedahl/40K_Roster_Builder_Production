@@ -1,0 +1,11 @@
+.MainContentPageContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  box-shadow: var(--mainDisplayAreaBoxShadow);
+  border-radius: var(--mainDisplayAreaBorderRadius);
+  background-color: var(--mainDisplayAreaBackgroundColor);
+  border: var(--mainDisplayAreaBorder);
+  color: var(--mainDisplayAreaColor);
+}

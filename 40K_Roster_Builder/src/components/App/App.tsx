@@ -1,5 +1,8 @@
-import { CssBaseline } from '@mui/material'
+import { Box, CssBaseline } from '@mui/material'
+import ThemeComponent from '../Theme/Theme';
 import Header from '../Header/Header'
+import MainContentPage from '../MainContentPage/MainContentPage';
+import Footer from '../Footer/Footer';
 import './App.css'
 
 interface AppProps {
@@ -10,8 +13,13 @@ const App: React.FC<AppProps> = () => {
 
   return (
     <>
-      <CssBaseline/>
-      <Header/>
+      <Box className="AppContainer">
+        <CssBaseline/>
+        <ThemeComponent/>
+        <Header/>
+        <MainContentPage/>
+        <Footer/>
+      </Box>
     </>
   )
 }

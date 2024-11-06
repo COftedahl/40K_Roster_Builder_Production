@@ -62,18 +62,25 @@ const Sidebar: React.FC<SidebarProps> = ({open}) => {
     <>
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: open ? "75%" : "0px !important",
+          height: "100%",
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            top: "9%",
-            height: "91%",
+            top: "min(8%, 5vw)",
+            height: "calc(100% - min(8%, 5vw) - 2.5vw)",
+            position: "absolute",
             borderRadius: "8px",
             borderTopLeftRadius: "0px",
-            width: open ? drawerWidth : 0,
+            borderBottomLeftRadius: "0px",
+            width: open ? drawerWidth : "0px",
             boxSizing: 'border-box',
             backgroundImage: "radial-gradient(white 50%, lightgrey)",
-          }
+            padding: "0.5vh"
+          },
+          position: "absolute", 
+          overflow: "hidden", 
         }}
+        
         variant="permanent"
         anchor="left"
         open={open}

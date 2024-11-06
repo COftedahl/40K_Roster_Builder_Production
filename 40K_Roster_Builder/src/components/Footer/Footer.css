@@ -1,0 +1,21 @@
+.FooterBar {
+  width: 100%;
+  flex-grow: 0;
+  height: 2.5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  bottom: 0px;
+  width: 75% !important;
+
+  background-color: var(--footerBackgroundColor);
+  border-radius: var(--footerBorderRadius);
+  border: var(--footerBorder);
+  box-shadow: var(--footerBoxShadow);
+  color: var(--footerColor);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
