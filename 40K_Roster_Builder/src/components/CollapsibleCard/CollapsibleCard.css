@@ -1,0 +1,37 @@
+.CollapsibleCard {
+  .MuiAccordionSummary-root {
+    min-height: 0px;
+    min-width: 0px;
+  }
+  flex-grow: 0;
+  flex-direction: column;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 0px !important;
+  margin: 0.2vh !important;
+  width: 95%;
+  border: none;
+  outline: none;
+  border-radius: var(--standardBorderRadius) !important;
+  div, h6 {
+    flex-grow: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    line-height: 1vw;
+  }
+  h6 {
+    width: 100%;
+    display: flex;
+    height: 5.8vh;
+    padding: 0px;
+    max-height: 5.8vh;
+    div {
+      height: 100%;
+      min-height: 0px !important;
+      margin: 0px !important;
+    }
+  }
+}
+

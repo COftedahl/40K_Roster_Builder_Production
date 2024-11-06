@@ -38,8 +38,8 @@ const standardBorderRadius: string = "2.5vw";
 
 const Theme: Theme = {
   appOverallFontSize_p: "1vw",
-  appOverallFontSize_h3: "3vw", 
-  appOverallFontSize_h6: "2vw",
+  appOverallFontSize_h3: "2.5vw", 
+  appOverallFontSize_h6: "1.5vw",
   appOverallBorderRadius: standardBorderRadius,
   appOverallColor: "blacK",
   appOverallBoxShadow: standardBoxShadow,
