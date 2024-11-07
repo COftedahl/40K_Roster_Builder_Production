@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionProps, AccordionSummary } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionProps, AccordionSummary, Divider } from '@mui/material';
 import './CollapsibleCard.css';
 
 interface CollapsibleCardProps {
@@ -17,7 +17,7 @@ const CollapsibleCard: React.FC<CollapsibleCardProps > = ({summary, children, pr
       <Accordion slotProps={{heading: {component: 'h6'}}} className="CollapsibleCard" {...props} sx={{'::before': {backgroundColor: "rgba(0,0,0, 0.0)"}}}
           expanded={expanded} onChange={onChange(boxName)}>
         <AccordionSummary>{summary}</AccordionSummary>
-        <AccordionDetails>{children}</AccordionDetails>
+        <AccordionDetails><Divider className="CollapsibleCardDetailsDivider"/>{children}</AccordionDetails>
       </Accordion>
     </>
   );
