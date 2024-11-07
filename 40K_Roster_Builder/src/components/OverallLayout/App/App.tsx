@@ -1,7 +1,7 @@
 import { Box, CssBaseline } from '@mui/material'
-import ThemeComponent from '../Theme/Theme';
+import ThemeComponent from '../../UtilityComponents/Theme/Theme';
 import Header from '../Header/Header'
-import MainContentPage from '../MainContentPage/MainContentPage';
+import MainContentPage from '../../MainContentPage/MainContentPage';
 import Footer from '../Footer/Footer';
 import './App.css'
 

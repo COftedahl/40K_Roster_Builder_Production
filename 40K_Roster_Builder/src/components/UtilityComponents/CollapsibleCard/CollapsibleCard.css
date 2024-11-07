@@ -62,10 +62,10 @@
 }
 
 .CollapsibleCardDetailsDivider {
-  border: 1px dashed rgba(6, 48, 163, 0.856) !important;
+  border: 0.1vh dashed rgba(6, 48, 163, 0.856) !important;
   margin-bottom: 0.3vh !important;
 }
 
 .MuiAccordionDetails-root {
-  padding-top: 0px !important;
+  padding: 0px 1vh 1vh 1vh !important;
 }
