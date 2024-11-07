@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 
 interface Theme {
+  [key: string]: string;//allows indexing of the values in Theme
+
   appOverallFontSize_p: string;
   appOverallFontSize_h3: string; 
   appOverallFontSize_h6: string;
   appOverallBorderRadius: string;
   appOverallColor: string;
   appOverallBoxShadow: string;
+  appOverallColor_Icon: string,
 
   headerBackgroundColor: string; 
   headerBorderRadius: string; 
@@ -31,6 +34,18 @@ interface Theme {
   mainDisplayAreaBorder: string; 
   mainDisplayAreaBoxShadow: string; 
   mainDisplayAreaColor: string;
+
+  collapsibleCardBoxShadow: string;
+  collapsibleCardBorderRadius: string;
+  collapsibleCardBorder: string;
+  collapsibleCardBackgroundColor: string;
+  collapsibleCardColor: string;
+
+  unitTypeAddingAreaBoxShadow: string;
+  unitTypeAddingAreaBorderRadius: string;
+  unitTypeAddingAreaBorder: string;
+  unitTypeAddingAreaBackgroundColor: string;
+  unitTypeAddingAreaColor: string;
 }
 
 const standardBoxShadow: string = "0.0px 1.0px 3.0px 0px rgba(0, 0, 0, 0.3), 0.0px 4.0px 8.0px 3.0px rgba(0, 0, 0, 0.15)";
@@ -43,14 +58,13 @@ const Theme: Theme = {
   appOverallBorderRadius: standardBorderRadius,
   appOverallColor: "blacK",
   appOverallBoxShadow: standardBoxShadow,
-
+  appOverallColor_Icon: "#1976d2",
 
   headerBackgroundColor: "#1976d2", 
   headerBorderRadius: standardBorderRadius, 
   headerBorder: "none", 
   headerBoxShadow: standardBoxShadow, 
   headerColor: "white",
-
 
   footerBackgroundColor: "rgba(0, 0, 0, 0.1)", 
   footerBorderRadius: standardBorderRadius, 
@@ -69,6 +83,20 @@ const Theme: Theme = {
   mainDisplayAreaBorder: "none", 
   mainDisplayAreaBoxShadow: "none", 
   mainDisplayAreaColor: "black",
+
+  collapsibleCardBoxShadow: standardBoxShadow,
+  collapsibleCardBorderRadius: standardBorderRadius,
+  collapsibleCardBorder: "none",
+  collapsibleCardBackgroundColor: "none",
+  collapsibleCardColor: "black",
+
+  unitTypeAddingAreaBoxShadow: "0.5px 0.0px 2.0px 1.0px rgba(0, 0, 0, 0.10), 0.0px 1.0px 2.0px 1.0px rgba(0, 0, 0, 0.10)",
+  // unitTypeAddingAreaBoxShadow: "none",
+  unitTypeAddingAreaBorderRadius: "1vw",
+  // unitTypeAddingAreaBorder: "0.03vh solid dimgrey",
+  unitTypeAddingAreaBorder: "none",
+  unitTypeAddingAreaBackgroundColor: "none",
+  unitTypeAddingAreaColor: "black",
 }
 
 const ThemeComponent = () => {
@@ -77,36 +105,9 @@ const ThemeComponent = () => {
     document.documentElement.style.setProperty("--standardBoxShadow", standardBoxShadow);
     document.documentElement.style.setProperty("--standardBorderRadius", standardBorderRadius);
 
-    document.documentElement.style.setProperty("--appOverallFontSize_p", Theme.appOverallFontSize_p);
-    document.documentElement.style.setProperty("--appOverallFontSize_h3", Theme.appOverallFontSize_h3);
-    document.documentElement.style.setProperty("--appOverallFontSize_h6", Theme.appOverallFontSize_h6);
-    document.documentElement.style.setProperty("--appOverallBorderRadius", Theme.appOverallBorderRadius);
-    document.documentElement.style.setProperty("--appOverallBoxShadow", Theme.appOverallBoxShadow);
-    document.documentElement.style.setProperty("--appOverallColor", Theme.appOverallColor);
-
-    document.documentElement.style.setProperty("--headerBackgroundColor", Theme.headerBackgroundColor);
-    document.documentElement.style.setProperty("--headerBorderRadius", Theme.headerBorderRadius);
-    document.documentElement.style.setProperty("--headerBorder",Theme. headerBorder);
-    document.documentElement.style.setProperty("--headerBoxShadow", Theme.headerBoxShadow);
-    document.documentElement.style.setProperty("--headerColor", Theme.headerColor);
-
-    document.documentElement.style.setProperty("--footerBackgroundColor", Theme.footerBackgroundColor);
-    document.documentElement.style.setProperty("--footerBorderRadius", Theme.footerBorderRadius);
-    document.documentElement.style.setProperty("--footerBorder", Theme.footerBorder);
-    document.documentElement.style.setProperty("--footerBoxShadow", Theme.footerBoxShadow);
-    document.documentElement.style.setProperty("--footerColor", Theme.footerColor);
-    
-    document.documentElement.style.setProperty("--sidebarBackgroundColor", Theme.sidebarBackgroundColor);
-    document.documentElement.style.setProperty("--sidebarBorderRadius", Theme.sidebarBorderRadius);
-    document.documentElement.style.setProperty("--sidebarBorder", Theme.sidebarBorder);
-    document.documentElement.style.setProperty("--sidebarBoxShadow", Theme.sidebarBoxShadow);
-    document.documentElement.style.setProperty("--sidebarColor", Theme.sidebarColor);
-
-    document.documentElement.style.setProperty("--mainDisplayAreaBackgroundColor", Theme.mainDisplayAreaBackgroundColor);
-    document.documentElement.style.setProperty("--mainDisplayAreaBorderRadius", Theme.mainDisplayAreaBorderRadius);
-    document.documentElement.style.setProperty("--mainDisplayAreaBorder", Theme.mainDisplayAreaBorder);
-    document.documentElement.style.setProperty("--mainDisplayAreaBoxShadow", Theme.mainDisplayAreaBoxShadow);
-    document.documentElement.style.setProperty("--mainDisplayAreaColor", Theme.mainDisplayAreaColor);
+    for (let x in Theme) {
+      document.documentElement.style.setProperty("--" + x, Theme[x]);
+    }
   };
 
   useEffect(() => {

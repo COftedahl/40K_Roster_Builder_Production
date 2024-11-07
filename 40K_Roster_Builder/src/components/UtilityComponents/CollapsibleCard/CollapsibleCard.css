@@ -11,11 +11,11 @@
   padding: 0px !important;
   margin: 0.2vh !important;
   width: 95%;
-  border: none;
+  border: var(--collapsibleCardBorder);
   outline: none;
-  border-radius: var(--standardBorderRadius) !important;
+  border-radius: var(--collapsibleCardBorderRadius) !important;
   transition: background-color 0.5s ease !important;
-  
+  box-shadow: var(--collapsibleCardBoxShadow) !important;
 
   div, h6 {
     flex-grow: 0;

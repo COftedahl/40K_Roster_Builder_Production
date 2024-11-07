@@ -1,0 +1,9 @@
+.UnitTypeAddingAreaBox {
+  border-radius: var(--unitTypeAddingAreaBorderRadius);
+  box-shadow: var(--unitTypeAddingAreaBoxShadow);
+  border: var(--unitTypeAddingAreaBorder);
+  background-color: var(--unitTypeAddingAreaBackgroundColor);
+  color: var(--unitTypeAddingAreaColor);
+
+  margin: 1vh 0vh;
+}

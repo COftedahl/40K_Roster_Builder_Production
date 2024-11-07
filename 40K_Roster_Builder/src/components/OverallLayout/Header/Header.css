@@ -1,5 +1,5 @@
 .HeaderBar {
-  width: 100%;
+  width: 75%;
   flex-grow: 0;
   height: 5vw;
   max-height: 8%;
@@ -8,6 +8,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: fixed !important;
+  top: 0px;
+  
   
   background-color: var(--headerBackgroundColor);
   border-radius: var(--headerBorderRadius);
@@ -20,4 +23,24 @@
 
 .HeaderTitle {
   flex-grow: 1;
+  max-width: 80%;
+  align-self: center;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  max-height: 100%;
+}
+
+.MenuButton {
+  position: absolute;
+  left: 1vw;
+  top: 0.35vw;
+  outline: none !important;
+  width: 3.5vw;
+  padding: 0px !important;
+  height: 3.5vw;
+  max-height: 80%;
+  max-width: 80%;
+  svg {
+    font-size: 3vw; 
+  }
 }

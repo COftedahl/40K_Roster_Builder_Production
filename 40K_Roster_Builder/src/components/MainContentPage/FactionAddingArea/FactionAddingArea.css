@@ -1,0 +1,37 @@
+.FactionAddingAreaBox {
+  display: block;
+  position: relative;
+  box-shadow: var(--standardBoxShadow);
+  border-radius: var(--standardBorderRadius);
+  min-height: 4.5vh;
+
+  padding: 1vh 1vw;
+  margin: 1vh 0px;
+}
+
+.FactionAddingArea_AddButton {
+  position: absolute !important;
+  top: 1%;
+  right: 1.0%;
+  width: 4.0vh;
+  height: 4.0vh;
+  padding: 0px !important;
+  background-size: 60% !important;
+
+  svg {
+    font-size: 3.5vh; 
+    color: var(--appOverallColor_Icon);
+  }
+}
+
+.FactionAddingArea_TypeText {
+  text-align: left;
+  font-weight: bold !important;
+  height: 3.0vh;
+  width: 100%;
+}
+
+.FactionAddingArea_TypeDivider {
+  border: 0.1vh solid rgba(25, 50, 130, 0.2) !important;
+  margin-bottom: 0.3vh !important;
+}
