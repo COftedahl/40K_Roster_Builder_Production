@@ -10,7 +10,7 @@ interface MainContentPageProps {
 const MainContentPage: React.FC<MainContentPageProps> = () => {
   const CollapsibleBoxNames: string[] = ["FactionSelectorBox", "RosterCreatorBox"];
 
-  const [activeCollapsibleBox, setActiveCollabsibleBox] = useState<string>(CollapsibleBoxNames[0]);
+  const [activeCollapsibleBox, setActiveCollabsibleBox] = useState<string>("");
 
   const handleBoxClick = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
     setActiveCollabsibleBox(isBoxClicked ? clickedBoxName : "");

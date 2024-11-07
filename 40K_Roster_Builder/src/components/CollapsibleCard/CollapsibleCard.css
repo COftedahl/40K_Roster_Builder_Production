@@ -14,6 +14,9 @@
   border: none;
   outline: none;
   border-radius: var(--standardBorderRadius) !important;
+  transition: background-color 0.5s ease !important;
+  
+
   div, h6 {
     flex-grow: 0;
     width: 100%;
@@ -27,11 +30,33 @@
     height: 5.8vh;
     padding: 0px;
     max-height: 5.8vh;
+    background-position: center;
+    transition: background 0.8s, transform 0.8s;
+    border-radius: var(--standardBorderRadius);
+
     div {
       height: 100%;
       min-height: 0px !important;
       margin: 0px !important;
+      transform: none !important;
+      box-shadow: none !important;
     }
+  }
+  h6:hover {
+    background: lightgrey ;
+    transform: scale(1.05);
+  }
+  h6:active {
+    background-color: dimgray;
+    background-size: 1%;
+    transition: background 0s;
+  }
+  p {
+    transform: none !important;
+    background-color: rgba(0, 0, 0, 0.0) !important;
   }
 }
 
+.Mui-expanded.CollapsibleCard  {
+  background-color: rgba(0, 0, 0, 0.03);
+}
