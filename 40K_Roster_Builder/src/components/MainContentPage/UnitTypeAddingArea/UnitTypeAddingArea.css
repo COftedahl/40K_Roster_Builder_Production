@@ -4,6 +4,22 @@
   border: var(--unitTypeAddingAreaBorder);
   background-color: var(--unitTypeAddingAreaBackgroundColor);
   color: var(--unitTypeAddingAreaColor);
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
   margin: 1vh 0vh;
+
+  & :nth-child(even) {
+    background-image: var(--unitDisplayBackgroundImage_Secondary) !important;
+  }
+}
+
+.UnitTypeAddingArea_UnitTypeText {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: calc(var(--appOverallFontSize_p) + 0.2vw) !important;
+  height: 3.0vh;
+  width: 100%;
 }

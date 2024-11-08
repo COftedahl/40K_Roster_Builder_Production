@@ -1,7 +1,8 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import './FactionAddingArea.css';
-import UnitTypeAddingArea, { UnitType } from "../UnitTypeAddingArea/UnitTypeAddingArea";
+import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
+import { UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 
 export const enum FactionAddingAreaType {
   ARMY = "ARMY", 
@@ -29,7 +30,6 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({factionName, detac
         <UnitTypeAddingArea unitType={UnitType.CHARACTERS}/>
         <UnitTypeAddingArea unitType={UnitType.BATTLELINE}/>
         <UnitTypeAddingArea unitType={UnitType.OTHER}/>
-        <Typography>{factionName + ", " + detachmentName + ", " + type.toString()}</Typography>
         <IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
       </Box>
       }

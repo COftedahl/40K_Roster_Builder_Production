@@ -20,7 +20,7 @@ const QuickRosterStats: React.FC<QuickRosterStatsProps> = ({faction, detachment,
           {sizeCategory !== undefined && sizeCategory !== "" ? " | " + sizeCategory : ""}<br/>
           {pointsUsed ? pointsUsed : 0} pts used
           {allowedPoints ? " of " + allowedPoints : ""}
-          {pointsLeft ? " : " + pointsLeft + " pts left": ""}
+          {pointsLeft ? " | " + pointsLeft + " pts left": ""}
         </Typography>
       </Box>
     </>

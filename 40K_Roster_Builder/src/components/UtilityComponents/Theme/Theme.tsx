@@ -46,6 +46,8 @@ interface Theme {
   unitTypeAddingAreaBorder: string;
   unitTypeAddingAreaBackgroundColor: string;
   unitTypeAddingAreaColor: string;
+
+  unitDisplayBackgroundImage_Secondary: string;
 }
 
 const standardBoxShadow: string = "0.0px 1.0px 3.0px 0px rgba(0, 0, 0, 0.3), 0.0px 4.0px 8.0px 3.0px rgba(0, 0, 0, 0.15)";
@@ -97,6 +99,9 @@ const Theme: Theme = {
   unitTypeAddingAreaBorder: "none",
   unitTypeAddingAreaBackgroundColor: "none",
   unitTypeAddingAreaColor: "black",
+
+  // unitDisplayBackgroundColor_Secondary: "rgba(0, 0, 0, 0.1)",
+  unitDisplayBackgroundImage_Secondary: "linear-gradient(to right, rgba(0, 0, 0, 0.0) , rgba(0, 0, 0, 0.07) 10%, rgba(0, 0, 0, 0.07) 90%, rgba(0, 0, 0, 0.0) )",
 }
 
 const ThemeComponent = () => {
