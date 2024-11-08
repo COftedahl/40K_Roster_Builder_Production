@@ -67,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({open}) => {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             top: "min(8%, 5vw)",
-            height: "calc(100% - min(8%, 5vw) - 2.5vw + 0.2vh)",
+            height: "calc(100% - min(8%, 5vw) - 2.8vw + 0.2vh)",
             position: "absolute",
             borderRadius: "8px",
             borderTopLeftRadius: "0px",

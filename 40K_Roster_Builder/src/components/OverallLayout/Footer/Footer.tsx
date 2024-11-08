@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import './Footer.css';
 
 interface FooterProps {
@@ -7,10 +7,16 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = () => {
 
+  const handleClick = () => {
+    console.log("click");
+  }
+
+
   return (
     <>
       <Box className="FooterBar">
-        <Typography>Here is some random text so I can see the footer</Typography>
+        <IconButton className="FooterClearButton" onClick={handleClick}>CLEAR</IconButton>
+        <IconButton className="FooterSaveButton" onClick={handleClick}>SAVE</IconButton>
       </Box>
     </>
   );

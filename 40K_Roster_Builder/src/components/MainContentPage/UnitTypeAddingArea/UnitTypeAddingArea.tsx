@@ -1,9 +1,9 @@
-import { Box, Typography } from "@mui/material";
-import './UnitTypeAddingArea.css';
-import CollapsibleCard from "../../UtilityComponents/CollapsibleCard/CollapsibleCard";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import { Army, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UnitDisplay from "../UnitDisplay/UnitDisplay";
+import './UnitTypeAddingArea.css';
 
 
 
@@ -70,15 +70,27 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType}) => {
 
   const [unitList, setUnitList] = useState<Array<UnitSelection>>(unitListConst);
 
+  const handleClick = () => {
+    window.alert("need to implement this function too");
+  };
+
   return (
     <>
       <Box className="UnitTypeAddingAreaBox">
-        <Typography className="UnitTypeAddingArea_UnitTypeText">{unitType}</Typography>
+        <Typography className="UnitTypeAddingArea_UnitTypeText">{unitType == UnitType.CHARACTERS ? unitType + "s" : unitType}</Typography>
+        <Divider className="UnitTypeAddingArea_Divider"/>
+        {unitList !== undefined && unitList.length > 0 && <Box className="UnitDisplayBox UnitDisplayHeadersBox">
+          <Typography>Unit Name</Typography>
+          <Typography>Cost (pts)</Typography>
+          <Typography>Unit Size</Typography>
+          <Typography>Unit Type</Typography>
+        </Box>}
         {unitList?.map((unit: UnitSelection, index: number) => {
           return (
             <UnitDisplay unit={unit} key={index}></UnitDisplay>
           );
         })}
+        <IconButton className="UnitTypeAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
       </Box>
     </>
   );

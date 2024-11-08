@@ -6,6 +6,10 @@
   width: 90% !important;
   justify-self: center;
   text-wrap: nowrap;
+  
+}
+
+.UnitTypeAddingAreaBox  .UnitDisplayBox {
   & :nth-child(even) {
     background-image: none !important;
   }

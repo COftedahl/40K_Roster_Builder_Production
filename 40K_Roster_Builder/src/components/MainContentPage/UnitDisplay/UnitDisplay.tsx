@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './UnitDisplay.css';
 
 interface UnitDisplayProps {
@@ -14,7 +14,7 @@ const UnitDisplay: React.FC<UnitDisplayProps> = ({unit}) => {
         <Typography>{unit.name}</Typography>
         <Typography>{unit.costOptions[unit.selectedSizeIndex].cost}</Typography>
         <Typography>{unit.costOptions[unit.selectedSizeIndex].modelCountString}</Typography>
-        <Typography>{(unit.isUnique ? "Epic " : "") + unit.unitType}</Typography>
+        <Typography>{(unit.isUnique ? "Epic " : "") + (unit.unitType === UnitType.OTHER ? "" : unit.unitType)}</Typography>
       </Box>
     </>
   );

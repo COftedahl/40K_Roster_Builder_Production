@@ -8,7 +8,7 @@
   align-items: center;
 
   position: fixed;
-  bottom: 0px;
+  bottom: 0.3vh;
   width: 75% !important;
 
   background-color: var(--footerBackgroundColor);
@@ -18,4 +18,42 @@
   color: var(--footerColor);
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+}
+
+.FooterClearButton, .FooterSaveButton {
+  border-radius: var(--footerButtonBorderRadius) !important;
+  padding: 0px !important;
+  height: 2.5vw;
+  position: absolute !important;
+  color: var(--footerColor) !important;
+
+  border-radius: var(--footerButtonBorderRadius);
+  height: 2.5vw !important;
+  padding: 0.5vh 2.8vw !important;
+  width: 10vw;
+  font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
+  transition: background-color 0.3s !important;
+  background-color: var(--footerBackgroundColor_Button) !important;
+  box-shadow: var(--footerBoxShadow_Button);
+
+  span {
+    border-radius: var(--footerButtonBorderRadius);
+    height: 2.5vw;
+  }
+} 
+
+.FooterClearButton {
+  left: 3vw;
+}
+
+.FooterClearButton:hover {
+  background-color: var(--footerBackgroundColor_Warning) !important;
+}
+
+.FooterSaveButton {
+  right: 3vw;
+}
+
+.FooterSaveButton:hover {
+  background-color: var(--footerBackgroundColor_Proceed) !important;
 }

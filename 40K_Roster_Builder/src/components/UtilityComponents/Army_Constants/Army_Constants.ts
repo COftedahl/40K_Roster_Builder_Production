@@ -1,5 +1,5 @@
 export const enum UnitType {
-  CHARACTERS = "Characters", 
+  CHARACTERS = "Character", 
   BATTLELINE = "Battleline", 
   OTHER = "Other"
 }
@@ -21,6 +21,12 @@ export interface Unit {
 
 export interface UnitSelection extends Unit {
   selectedSizeIndex: number;
+  enhancement?: Enhancement;
+}
+
+export interface Enhancement {
+  name: string;
+  cost: number;
 }
 
 export enum Army {

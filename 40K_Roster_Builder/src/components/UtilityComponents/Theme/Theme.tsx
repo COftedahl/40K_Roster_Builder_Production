@@ -10,15 +10,21 @@ interface Theme {
   appOverallColor: string;
   appOverallBoxShadow: string;
   appOverallColor_Icon: string,
+  appOverallBorderColor_ButtonHover: string;
 
   headerBackgroundColor: string; 
+  footerBackgroundColor_Button: string;
+  footerBackgroundColor_Warning: string;
+  footerBackgroundColor_Proceed: string;
   headerBorderRadius: string; 
   headerBorder: string; 
   headerBoxShadow: string; 
+  footerBoxShadow_Button: string;
   headerColor: string;
 
   footerBackgroundColor: string; 
   footerBorderRadius: string; 
+  footerButtonBorderRadius: string;
   footerBorder: string; 
   footerBoxShadow: string; 
   footerColor: string;
@@ -61,6 +67,9 @@ const Theme: Theme = {
   appOverallColor: "blacK",
   appOverallBoxShadow: standardBoxShadow,
   appOverallColor_Icon: "#1976d2",
+  // appOverallColor_IconSecondary: "rgba(25, 118, 210, 0.7)",
+  appOverallColor_IconSecondary: "rgba(0, 0, 0, 0.6)",
+  appOverallBorderColor_ButtonHover: "#646cff",
 
   headerBackgroundColor: "#1976d2", 
   headerBorderRadius: standardBorderRadius, 
@@ -69,9 +78,14 @@ const Theme: Theme = {
   headerColor: "white",
 
   footerBackgroundColor: "rgba(0, 0, 0, 0.1)", 
+  footerBackgroundColor_Button: "rgba(255, 255, 255, 0.8)",
+  footerBackgroundColor_Warning: "rgba(250, 25, 15, 0.7)",
+  footerBackgroundColor_Proceed: "rgba(0, 118, 250, 0.7)",
   footerBorderRadius: standardBorderRadius, 
+  footerButtonBorderRadius: standardBorderRadius,
   footerBorder: "none", 
   footerBoxShadow: standardBoxShadow, 
+  footerBoxShadow_Button: standardBoxShadow,
   footerColor: "black",
   
   sidebarBackgroundColor: "radial-gradient(white 50%, lightgrey)", 
