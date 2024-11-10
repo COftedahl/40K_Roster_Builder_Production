@@ -24,11 +24,13 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
 
   const handleFactionChange = (e: React.SyntheticEvent, value: string | null) => {
     setFaction(value);
+    handleArmyChange(e, null);
     //also need to clear army selector
   };
   
   const handleArmyChange = (e: React.SyntheticEvent, value: string | null) => {
     setArmy(value);
+    handleDetachmentChange(e, null);
     //also need to clear army selector
   };
 
@@ -46,6 +48,7 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
           className={"FactionSelector_FactionDropdown" + ((faction === undefined || faction === "" || faction === null) ? "" : "_filled")}
           renderInput={(params) => <TextField {...params} label="Faction"/>} 
           onChange={handleFactionChange}
+          value={faction || null}
         ></Autocomplete>
         <Autocomplete 
           options={factionOptions} 
@@ -54,6 +57,7 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
           disabled={(faction === undefined || faction === "" || faction === null) ? true : false}
           renderInput={(params) => <TextField {...params} label="Army"/>}
           onChange={handleArmyChange}
+          value={army || null}
         ></Autocomplete>
           <Autocomplete 
             options={factionOptions} 
@@ -63,6 +67,7 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
             onClick={focus} 
             renderInput={(params) => <TextField {...params} label="Detachment"/>}
             onChange={handleDetachmentChange}
+            value={detachment || null}
           ></Autocomplete>
       </Box>
     </>
