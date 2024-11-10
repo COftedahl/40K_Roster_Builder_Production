@@ -35,18 +35,22 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
           renderInput={(params) => <TextField {...params} label="Faction"/>} 
           onChange={handleFactionChange}
         ></Autocomplete>
+        <br className="FactionSelector_AutocompleteLineBreak"/>
         <Autocomplete 
           options={factionOptions} 
           openOnFocus 
           className={"FactionSelector_ArmyDropdown" + ((faction === undefined || faction === "" || faction === null) ? "_disabled" : "")}
+          disabled={(faction === undefined || faction === "" || faction === null) ? true : false}
           renderInput={(params) => <TextField {...params} label="Army"/>}
         ></Autocomplete>
-        <Autocomplete 
-          options={factionOptions} 
-          openOnFocus 
-          onClick={focus} 
-          renderInput={(params) => <TextField {...params} />}
-        ></Autocomplete>
+        <Box>
+          <Autocomplete 
+            options={factionOptions} 
+            openOnFocus 
+            onClick={focus} 
+            renderInput={(params) => <TextField {...params} />}
+          ></Autocomplete>
+        </Box>
       </Box>
     </>
   );
