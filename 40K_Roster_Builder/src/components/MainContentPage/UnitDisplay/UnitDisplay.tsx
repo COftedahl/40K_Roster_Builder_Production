@@ -19,8 +19,14 @@ const UnitDisplay: React.FC<UnitDisplayProps> = ({unit, handleUnitClick, unitInd
     {unit && unit.costOptions && unit.costOptions.length > 0 && 
       <Box className="UnitDisplayBox" onClick={handleBoxClick}>
         <Typography>{unit.name}</Typography>
-        <Typography>{unit.costOptions[unit.selectedSizeIndex].cost}</Typography>
-        <Typography>{unit.costOptions[unit.selectedSizeIndex].modelCountString}</Typography>
+        <Typography>{unit.costOptions[unit.selectedSizeIndex].cost + 
+                (unit.enhancement &&  unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0) }</Typography>
+        <Typography>{
+          (unit.unitType === UnitType.CHARACTERS 
+          ? unit.costOptions[unit.selectedSizeIndex].modelCountString + 
+            (unit.enhancement ? " with " + unit.enhancement.name : "")
+          : unit.costOptions[unit.selectedSizeIndex].modelCountString)}
+        </Typography>
         <Typography>{(unit.isUnique ? "Epic " : "") + (unit.unitType === UnitType.OTHER ? "" : unit.unitType)}</Typography>
       </Box>}
     </>

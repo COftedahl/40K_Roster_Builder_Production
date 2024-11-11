@@ -1,6 +1,6 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import { UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Enhancement, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import { SetStateAction, useState } from "react";
 import UnitDisplay from "../UnitDisplay/UnitDisplay";
 import EditUnitPopupScreen from "../EditUnitPopupScreen/EditUnitPopupScreen";
@@ -12,9 +12,10 @@ interface UnitTypeAddingAreaProps {
   unitType: UnitType;
   unitList: UnitSelection[];
   setUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  enhancementList: Enhancement[];
 }
 
-const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList}) => {
+const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList, enhancementList}) => {
   // const clickCard = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
   //   console.log("clicked element");
   // };
@@ -74,7 +75,18 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitLi
         })}
         <IconButton className="UnitTypeAddingArea_AddButton" onClick={handleAddButtonClick}><AddIcon/></IconButton>
       </Box>
-      {selectedUnit !== undefined ? <EditUnitPopupScreen open={isPopupOpen} unit={selectedUnit.unit} unitIndex={selectedUnit.unitIndex} closeBackdropFunction={closeBackdropFunction} saveUnitData={saveUnitData} deleteUnit={deleteUnit}></EditUnitPopupScreen> : ""}
+      {selectedUnit !== undefined ? 
+        <EditUnitPopupScreen 
+            open={isPopupOpen} 
+            unit={selectedUnit.unit} 
+            unitIndex={selectedUnit.unitIndex} 
+            availableEnhancements={enhancementList}
+            closeBackdropFunction={closeBackdropFunction} 
+            saveUnitData={saveUnitData} 
+            deleteUnit={deleteUnit}/> 
+      : 
+        ""
+      }
     </>
   );
 }

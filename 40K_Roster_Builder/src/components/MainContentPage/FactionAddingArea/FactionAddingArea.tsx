@@ -2,7 +2,7 @@ import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import './FactionAddingArea.css';
 import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
-import { Army, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Army, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import { useEffect, useState } from "react";
 
 export const enum FactionAddingAreaType {
@@ -102,13 +102,19 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({factionName, detac
       faction: Faction.CHAOS,
       selectedSizeIndex: 0,
     }
-  ]
+  ];
+
+  const enhancementListConst: Enhancement[] = [
+    {name: "Baleful Grimoire", cost: 20, doesCostPoints: true}, 
+    {name: "Impossible Robe", cost: 25, doesCostPoints: true}
+  ];
 
   const handleClick = () => {
     window.alert("Need to implement this function");
   };
 
   const [unitList, setUnitList] = useState<UnitSelection[]>([]);
+  const [enhancementList, setEnhancementList] = useState<Enhancement[]>(enhancementListConst);
 
   const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.CHARACTERS));
   const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.BATTLELINE));
@@ -124,9 +130,9 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({factionName, detac
       <Box className="FactionAddingAreaBox">
         <Typography className="FactionAddingArea_TypeText">{type}</Typography>
         <Divider className="FactionAddingArea_TypeDivider"/>
-        <UnitTypeAddingArea unitType={UnitType.CHARACTERS} unitList={characterUnitList} setUnitList={setCharacterUnitList}/>
-        <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList}/>
-        <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList}/>
+        <UnitTypeAddingArea unitType={UnitType.CHARACTERS} unitList={characterUnitList} setUnitList={setCharacterUnitList} enhancementList={enhancementList}/>
+        <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList}/>
+        <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList}/>
         <IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
       </Box>
       }

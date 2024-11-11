@@ -1,10 +1,12 @@
 .EditUnitPopupBox {
   position: relative;
+  display: block;
+  height: fit-content !important;
   width: 50vw !important;
   background-color: rgb(220, 220, 220);
   border-radius: var(--standardBorderRadius);
   box-shadow: var(--standardBoxShadow);
-  min-height: 30vh;
+  min-height: 32vh;
 
   h6 {
     margin-bottom: 0vh;
@@ -52,6 +54,10 @@
   left: 1vw;
 }
 
+.EditUnitPopupBox_Button_Back:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
 .EditUnitPopupBox_Button_Save {
   bottom: 2vh;
   right: 1vw;
@@ -78,7 +84,7 @@
   justify-self: center;
   margin-top: 0px;
   border: 0.1vh solid rgba(25, 50, 130, 0.1) !important;
-  margin-bottom: 1vh !important;
+  margin-bottom: 2vh !important;
   /* margin: 0vh 3vh 0.4vh 1vh !important; */
   width: 95%;
   height: 0.01vh;
@@ -88,6 +94,7 @@
   width: 85% !important;
   min-height: none;
   z-index: 1205 !important;
+  margin-bottom: 2vh;
   div {
     line-height: normal !important;
   }
@@ -102,4 +109,29 @@
 
 .EditUnitPopupBox_UnitSizeSelector_Item {
   white-space: pre !important;
+}
+
+.EditUnitPopupBox_EnhancementSelector { 
+  width: 85% !important;
+  min-height: none;
+  z-index: 1205 !important;
+  margin-bottom: 2vh;
+  div {
+    line-height: normal !important;
+  }
+  svg {
+    margin-top: auto !important;
+  }
+}
+
+.EditUnitPopupBox_EnhancementSelector_InputLabel {
+  left: 7.9% !important;
+}
+
+.EditUnitPopupBox_EnhancementSelector_Item {
+  white-space: pre !important;
+}
+
+.EditUnitPopupBox_FreeEnhancementCheckbox {
+  
 }
