@@ -1,9 +1,9 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import './FactionAddingArea.css';
 import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
-import { Army, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
-import { useEffect, useState } from "react";
+import { Enhancement, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import './FactionAddingArea.css';
+import { SetStateAction } from "react";
 
 export const enum FactionAddingAreaType {
   ARMY = "ARMY", 
@@ -12,117 +12,30 @@ export const enum FactionAddingAreaType {
 
 interface FactionAddingAreaProps {
   factionName: string;
-  detachmentName?: string;
   type: FactionAddingAreaType;
+  characterUnitList: UnitSelection[];
+  battlelineUnitList: UnitSelection[];
+  otherUnitList: UnitSelection[];
+  setCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  setBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  enhancementList: Enhancement[];
 }
 
-const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({factionName, detachmentName, type}) => {
-
-  const unitListConst: UnitSelection[] = [
-    {
-      name: "Typhus",
-      unitType: UnitType.CHARACTERS,
-      costOptions: [{
-        cost: 200,
-        numModels: 1,
-        modelCountString: "1 model",
-      }],
-      isUnique: true,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 0,
-    },
-    {
-      name: "A Longer, random name",
-      unitType: UnitType.OTHER,
-      costOptions: [{
-        cost: 10,
-        numModels: 2,
-        modelCountString: "2 models",
-      }, {
-        cost: 100,
-        numModels: 10,
-        modelCountString: "10 models",
-      }, {
-        cost: 200,
-        numModels: 20,
-        modelCountString: "20 models",
-      }],
-      isUnique: false,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 1,
-    },{
-      name: "person 3",
-      unitType: UnitType.OTHER,
-      costOptions: [{
-        cost: 50,
-        numModels: 3,
-        modelCountString: "3 models",
-      }, {
-        cost: 150,
-        numModels: 5,
-        modelCountString: "5 models",
-      },],
-      isUnique: false,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 1,
-    },{
-      name: "A Longer, random name",
-      unitType: UnitType.OTHER,
-      costOptions: [{
-        cost: 10,
-        numModels: 2,
-        modelCountString: "2 models",
-      }, {
-        cost: 100,
-        numModels: 10,
-        modelCountString: "10 models",
-      }, {
-        cost: 200,
-        numModels: 20,
-        modelCountString: "20 models",
-      }],
-      isUnique: false,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 1,
-    },
-    {
-      name: "Typhus",
-      unitType: UnitType.CHARACTERS,
-      costOptions: [{
-        cost: 200,
-        numModels: 1,
-        modelCountString: "1 model",
-      }],
-      isUnique: true,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 0,
-    }
-  ];
-
-  const enhancementListConst: Enhancement[] = [
-    {name: "Baleful Grimoire", cost: 20, doesCostPoints: true}, 
-    {name: "Impossible Robe", cost: 25, doesCostPoints: true}
-  ];
-
+const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
+  factionName, 
+  type, 
+  characterUnitList, 
+  battlelineUnitList, 
+  otherUnitList, 
+  setCharacterUnitList, 
+  setBattlelineUnitList, 
+  setOtherUnitList, 
+  enhancementList}) => {
+  
   const handleClick = () => {
     window.alert("Need to implement this function");
   };
-
-  const [unitList, setUnitList] = useState<UnitSelection[]>([]);
-  const [enhancementList, setEnhancementList] = useState<Enhancement[]>(enhancementListConst);
-
-  const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.CHARACTERS));
-  const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.BATTLELINE));
-  const [otherUnitList, setOtherUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.OTHER));
-
-  useEffect(() => {
-    setUnitList([...characterUnitList, ...battlelineUnitList, ...otherUnitList]);
-  }, [characterUnitList, battlelineUnitList, otherUnitList]);
 
   return (
     <>

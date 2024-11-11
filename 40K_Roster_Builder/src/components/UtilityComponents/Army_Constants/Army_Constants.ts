@@ -1,3 +1,21 @@
+export interface BattleSize {
+  name: string;
+  points: number;
+  key: string;
+}
+
+export const BattleSizeOptions: BattleSize[] = [
+  {
+    name: "Combat Patrol", points: 500, key: "Combat Patrol",
+  }, 
+  {
+    name: "Incursion", points: 1000, key: "Incursion",
+  }, 
+  {
+    name: "Onslaught", points: 2000, key: "Onslaught", 
+  }
+]
+
 export const enum UnitType {
   CHARACTERS = "Character", 
   BATTLELINE = "Battleline", 
@@ -68,6 +86,11 @@ export enum Faction {
   XENOS = "Xenos",
 }
 
+export interface Detachment {
+  name: string;
+  enhancements: Enhancement[];
+}
+
 interface FactionList {
   [key: string]: FactionListEntry;
 
@@ -80,60 +103,101 @@ interface FactionList {
 interface FactionListEntry {
   key: string;
   name: string;
-  armies: Army[];
+  armies: FactionList_ArmyEntry[];
 }
+
+interface FactionList_ArmyEntry {
+  key: string;
+  army: string;
+  name: string;
+  detachments: Detachment[];
+}
+
+// interface ArmyList {
+//   [key: string]: FactionList_ArmyEntry;
+
+//   any: FactionList_ArmyEntry;
+//   // ADEPTA_SORORITAS: FactionList_ArmyEntry;
+//   // ADEPTUS_CUSTODES: FactionList_ArmyEntry;
+//   // ADEPTUS_MECHANICUS: FactionList_ArmyEntry;
+//   // ADEPTUS_TITANICUS: FactionList_ArmyEntry;
+//   // AELDARI: FactionList_ArmyEntry; 
+//   // AGENTS_OF_THE_IMPERIUM: FactionList_ArmyEntry;
+//   // ASTRA_MILITARUM: FactionList_ArmyEntry;
+//   // BLACK_TEMPLARS: FactionList_ArmyEntry;
+//   // BLOOD_ANGELS: FactionList_ArmyEntry;
+//   // CHAOS_DAEMONS: FactionList_ArmyEntry;
+//   // CHAOS_KNIGHTS: FactionList_ArmyEntry;
+//   // CHAOS_SPACE_MARINES: FactionList_ArmyEntry;
+//   // DARK_ANGELS: FactionList_ArmyEntry;
+//   // DEATHWATCH: FactionList_ArmyEntry;
+//   // DEATH_GUARD: FactionList_ArmyEntry;
+//   // DRUKHARI: FactionList_ArmyEntry;
+//   // GENESTEALER_CULTS: FactionList_ArmyEntry;
+//   // GREY_KNIGHTS: FactionList_ArmyEntry;
+//   // IMPERIAL_KNIGHTS: FactionList_ArmyEntry;
+//   // LEAGUES_OF_VOTANN: FactionList_ArmyEntry;
+//   // NECRONS: FactionList_ArmyEntry;
+//   // ORKS: FactionList_ArmyEntry;
+//   // SPACE_MARINES: FactionList_ArmyEntry; 
+//   // SPACE_WOLVES: FactionList_ArmyEntry;
+//   // TAU_EMPIRE: FactionList_ArmyEntry;
+//   // THOUSAND_SONS: FactionList_ArmyEntry;
+//   // TYRANIDS: FactionList_ArmyEntry;
+//   // WORLD_EATERS: FactionList_ArmyEntry;
+// }
 
 export const FactionList: FactionList = {
   SPACE_MARINES: {
     key: "Space Marines", 
     name: "Space Marines", 
     armies: [
-      Army.BLACK_TEMPLARS, 
-      Army.BLOOD_ANGELS,
-      Army.DARK_ANGELS,
-      Army.DEATHWATCH,
-      Army.GREY_KNIGHTS,
-      Army.SPACE_MARINES,
-      Army.SPACE_WOLVES,
+      {army: Army.BLACK_TEMPLARS, name: Army.BLACK_TEMPLARS, key: Army.BLACK_TEMPLARS, detachments: [{name: "det1", enhancements: []}]}, 
+      {army: Army.BLOOD_ANGELS, name: Army.BLOOD_ANGELS, key: Army.BLOOD_ANGELS, detachments: []}, 
+      {army: Army.DARK_ANGELS, name: Army.DARK_ANGELS, key: Army.DARK_ANGELS, detachments: []}, 
+      {army: Army.DEATHWATCH, name: Army.DEATHWATCH, key: Army.DEATHWATCH, detachments: []}, 
+      {army: Army.GREY_KNIGHTS, name: Army.GREY_KNIGHTS, key: Army.GREY_KNIGHTS, detachments: []}, 
+      {army: Army.SPACE_MARINES, name: Army.SPACE_MARINES, key: Army.SPACE_MARINES, detachments: []}, 
+      {army: Army.SPACE_WOLVES, name: Army.SPACE_WOLVES, key: Army.SPACE_WOLVES, detachments: []}, 
     ]
   }, 
   IMPERIUM: {
     key: "Imperium", 
     name: "Imperium", 
     armies: [
-      Army.ADEPTA_SORORITAS, 
-      Army.ADEPTUS_CUSTODES, 
-      Army.ADEPTUS_MECHANICUS, 
-      Army.ADEPTUS_TITANICUS, 
-      Army.AGENTS_OF_THE_IMPERIUM, 
-      Army.ASTRA_MILITARUM, 
-      Army.IMPERIAL_KNIGHTS, 
-    ],
+      {army: Army.ADEPTA_SORORITAS, name: Army.ADEPTA_SORORITAS, key: Army.ADEPTA_SORORITAS, detachments: []}, 
+      {army: Army.ADEPTUS_CUSTODES, name: Army.ADEPTUS_CUSTODES, key: Army.ADEPTUS_CUSTODES, detachments: []}, 
+      {army: Army.ADEPTUS_MECHANICUS, name: Army.ADEPTUS_MECHANICUS, key: Army.ADEPTUS_MECHANICUS, detachments: []}, 
+      {army: Army.ADEPTUS_TITANICUS, name: Army.ADEPTUS_TITANICUS, key: Army.ADEPTUS_TITANICUS, detachments: []}, 
+      {army: Army.AGENTS_OF_THE_IMPERIUM, name: Army.AGENTS_OF_THE_IMPERIUM, key: Army.AGENTS_OF_THE_IMPERIUM, detachments: []}, 
+      {army: Army.ASTRA_MILITARUM, name: Army.ASTRA_MILITARUM, key: Army.ASTRA_MILITARUM, detachments: []}, 
+      {army: Army.IMPERIAL_KNIGHTS, name: Army.IMPERIAL_KNIGHTS, key: Army.IMPERIAL_KNIGHTS, detachments: []}, 
+    ]
   }, 
   CHAOS: {
     key: "Chaos", 
     name: "Chaos", 
     armies: [
-      Army.CHAOS_DAEMONS, 
-      Army.CHAOS_KNIGHTS, 
-      Army.CHAOS_SPACE_MARINES, 
-      Army.DEATH_GUARD, 
-      Army.THOUSAND_SONS,
-      Army.WORLD_EATERS,
+      {army: Army.CHAOS_DAEMONS, name: Army.CHAOS_DAEMONS, key: Army.CHAOS_DAEMONS, detachments: []}, 
+      {army: Army.CHAOS_KNIGHTS, name: Army.CHAOS_KNIGHTS, key: Army.CHAOS_KNIGHTS, detachments: []}, 
+      {army: Army.CHAOS_SPACE_MARINES, name: Army.CHAOS_SPACE_MARINES, key: Army.CHAOS_SPACE_MARINES, detachments: []}, 
+      {army: Army.DEATH_GUARD, name: Army.DEATH_GUARD, key: Army.DEATH_GUARD, detachments: []}, 
+      {army: Army.THOUSAND_SONS, name: Army.THOUSAND_SONS, key: Army.THOUSAND_SONS, detachments: []}, 
+      {army: Army.WORLD_EATERS, name: Army.WORLD_EATERS, key: Army.WORLD_EATERS, detachments: []}, 
     ],
   }, 
   XENOS: {
     key: "Xenos",
     name: "Xenos",
     armies: [
-      Army.AELDARI, 
-      Army.DRUKHARI, 
-      Army.GENESTEALER_CULTS,
-      Army.LEAGUES_OF_VOTANN, 
-      Army.NECRONS,
-      Army.ORKS,
-      Army.TAU_EMPIRE, 
-      Army.TYRANIDS,
-    ],
+      {army: Army.AELDARI, name: Army.AELDARI, key: Army.AELDARI, detachments: []}, 
+      {army: Army.DRUKHARI, name: Army.DRUKHARI, key: Army.DRUKHARI, detachments: []}, 
+      {army: Army.GENESTEALER_CULTS, name: Army.GENESTEALER_CULTS, key: Army.GENESTEALER_CULTS, detachments: []}, 
+      {army: Army.LEAGUES_OF_VOTANN, name: Army.LEAGUES_OF_VOTANN, key: Army.LEAGUES_OF_VOTANN, detachments: []}, 
+      {army: Army.NECRONS, name: Army.NECRONS, key: Army.NECRONS, detachments: []}, 
+      {army: Army.ORKS, name: Army.ORKS, key: Army.ORKS, detachments: []}, 
+      {army: Army.TAU_EMPIRE, name: Army.TAU_EMPIRE, key: Army.TAU_EMPIRE, detachments: []}, 
+      {army: Army.TYRANIDS, name: Army.TYRANIDS, key: Army.TYRANIDS, detachments: []}, 
+    ]
   }, 
 };

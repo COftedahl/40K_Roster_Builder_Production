@@ -7,10 +7,6 @@
 
   padding: 1vh 1vw;
   margin: 1.7vh 0vh 0.3vh 0vh;
-
-  & :nth-child(3) {
-    margin-top: 0.9vh;
-  }
 }
 
 .FactionAddingArea_AddButton {
@@ -37,5 +33,5 @@
 
 .FactionAddingArea_TypeDivider {
   border: 0.1vh solid rgba(25, 50, 130, 0.2) !important;
-  margin-bottom: 0.3vh !important;
+  margin-bottom: 1.8vh !important;
 }

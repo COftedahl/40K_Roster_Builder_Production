@@ -44,17 +44,13 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitLi
   }
 
   const saveUnitData = (newData: UnitSelection, unitIndex: number) => {
-    setUnitList((oldUnitList) => {
-      oldUnitList.splice(unitIndex, 1, newData)
-      return oldUnitList;
-    });
+    unitList.splice(unitIndex, 1, newData);
+    setUnitList((oldUnitList) => [...oldUnitList]);
   };
 
   const deleteUnit = (unitIndex: number) => {
-      setUnitList((oldUnitList) => {
-        oldUnitList.splice(unitIndex, 1);
-        return oldUnitList;
-      })
+    unitList.splice(unitIndex, 1);
+    setUnitList((oldUnitList) => [...oldUnitList]);
   };
 
   return (
