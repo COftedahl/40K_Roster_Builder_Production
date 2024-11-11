@@ -27,6 +27,7 @@ export interface UnitSelection extends Unit {
 export interface Enhancement {
   name: string;
   cost: number;
+  doesCostPoints: boolean;
 }
 
 export enum Army {
@@ -68,6 +69,8 @@ export enum Faction {
 }
 
 interface FactionList {
+  [key: string]: FactionListEntry;
+
   SPACE_MARINES: FactionListEntry;
   IMPERIUM: FactionListEntry;
   CHAOS: FactionListEntry;

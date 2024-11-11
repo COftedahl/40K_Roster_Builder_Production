@@ -1,6 +1,6 @@
 import { Autocomplete, Box, TextField } from "@mui/material";
 import { useState } from "react";
-import { FactionList } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Army, FactionList } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './FactionSelector.css';
 
 interface FactionSelectorProps {
@@ -16,7 +16,7 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
     FactionList.XENOS.name,  
   ]
 
-  const [armyOptions, setArmyOptions] = useState();
+  const [armyOptions, setArmyOptions] = useState<Army[]>();
 
   const [faction, setFaction] = useState<string | null>();
   const [army, setArmy] = useState<string | null>();
@@ -24,19 +24,22 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
 
   const handleFactionChange = (e: React.SyntheticEvent, value: string | null) => {
     setFaction(value);
+    if (value) {
+      setArmyOptions(FactionList[value.toUpperCase().replace(" ", "_")].armies);
+    }
+    else {
+      setArmyOptions([]);
+    }
     handleArmyChange(e, null);
-    //also need to clear army selector
   };
   
   const handleArmyChange = (e: React.SyntheticEvent, value: string | null) => {
     setArmy(value);
     handleDetachmentChange(e, null);
-    //also need to clear army selector
   };
 
   const handleDetachmentChange = (e: React.SyntheticEvent, value: string | null) => {
     setDetachment(value);
-    //also need to clear army selector
   };
 
   return (
@@ -51,7 +54,7 @@ const FactionSelector: React.FC<FactionSelectorProps> = () => {
           value={faction || null}
         ></Autocomplete>
         <Autocomplete 
-          options={factionOptions} 
+          options={armyOptions?.map((army) => "" + army) || []} 
           openOnFocus 
           className={"FactionSelector_ArmyDropdown" + ((faction === undefined || faction === "" || faction === null) ? "_disabled" : "")}
           disabled={(faction === undefined || faction === "" || faction === null) ? true : false}

@@ -1,17 +1,20 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import { Army, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
-import { useState } from "react";
+import { UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { SetStateAction, useState } from "react";
 import UnitDisplay from "../UnitDisplay/UnitDisplay";
+import EditUnitPopupScreen from "../EditUnitPopupScreen/EditUnitPopupScreen";
 import './UnitTypeAddingArea.css';
 
 
 
 interface UnitTypeAddingAreaProps {
   unitType: UnitType;
+  unitList: UnitSelection[];
+  setUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
 }
 
-const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType}) => {
+const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList}) => {
   // const clickCard = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
   //   console.log("clicked element");
   // };
@@ -22,56 +25,35 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType}) => {
   //   </>
   // );
 
-  const unitListConst: UnitSelection[] = [
-    {
-      name: "Typhus",
-      unitType: UnitType.CHARACTERS,
-      costOptions: [{
-        cost: 200,
-        numModels: 1,
-        modelCountString: "1 model",
-      }],
-      isUnique: true,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 0,
-    },
-    {
-      name: "A Longer, random name",
-      unitType: UnitType.OTHER,
-      costOptions: [{
-        cost: 100,
-        numModels: 10,
-        modelCountString: "10 models",
-      }, {
-        cost: 200,
-        numModels: 20,
-        modelCountString: "20 models",
-      }],
-      isUnique: false,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 1,
-    },
-    {
-      name: "Typhus",
-      unitType: UnitType.CHARACTERS,
-      costOptions: [{
-        cost: 200,
-        numModels: 1,
-        modelCountString: "1 model",
-      }],
-      isUnique: true,
-      army: Army.DEATH_GUARD,
-      faction: Faction.CHAOS,
-      selectedSizeIndex: 0,
-    }
-  ]
+  
+  const [selectedUnit, setSelectedUnit] = useState<{unit: UnitSelection, unitIndex: number}>();
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
 
-  const [unitList, setUnitList] = useState<Array<UnitSelection>>(unitListConst);
-
-  const handleClick = () => {
+  const handleAddButtonClick = () => {
     window.alert("need to implement this function too");
+  };
+
+  const handleUnitClick = (unit: UnitSelection, unitIndex: number) => {
+    setIsPopupOpen(true);
+    setSelectedUnit({unit: unit, unitIndex: unitIndex});
+  };
+
+  const closeBackdropFunction = () => {
+    setIsPopupOpen(false);
+  }
+
+  const saveUnitData = (newData: UnitSelection, unitIndex: number) => {
+    setUnitList((oldUnitList) => {
+      oldUnitList.splice(unitIndex, 1, newData)
+      return oldUnitList;
+    });
+  };
+
+  const deleteUnit = (unitIndex: number) => {
+      setUnitList((oldUnitList) => {
+        oldUnitList.splice(unitIndex, 1);
+        return oldUnitList;
+      })
   };
 
   return (
@@ -87,11 +69,12 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType}) => {
         </Box>}
         {unitList?.map((unit: UnitSelection, index: number) => {
           return (
-            <UnitDisplay unit={unit} key={index}></UnitDisplay>
+            <UnitDisplay unit={unit} key={index} unitIndex={index} handleUnitClick={handleUnitClick}></UnitDisplay>
           );
         })}
-        <IconButton className="UnitTypeAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
+        <IconButton className="UnitTypeAddingArea_AddButton" onClick={handleAddButtonClick}><AddIcon/></IconButton>
       </Box>
+      {selectedUnit !== undefined ? <EditUnitPopupScreen open={isPopupOpen} unit={selectedUnit.unit} unitIndex={selectedUnit.unitIndex} closeBackdropFunction={closeBackdropFunction} saveUnitData={saveUnitData} deleteUnit={deleteUnit}></EditUnitPopupScreen> : ""}
     </>
   );
 }

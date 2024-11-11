@@ -22,6 +22,10 @@
   & :nth-child(3) {
     margin-top: 0vh;
   }
+  & :last-child {
+    /* keeps the add_unit buttons from looking weird */
+    background-image: none !important;
+  }
 }
 
 .UnitTypeAddingArea_UnitTypeText {
@@ -61,6 +65,7 @@
   height: 4.0vh;
   padding: 0px !important;
   background-size: 60% !important;
+  background-color: rgba(0, 0, 0, 0.0);
 
   svg {
     font-size: 3.5vh; 
