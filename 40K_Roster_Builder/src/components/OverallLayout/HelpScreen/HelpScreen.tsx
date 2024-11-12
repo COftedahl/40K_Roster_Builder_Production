@@ -1,4 +1,4 @@
-import { Backdrop, Box, IconButton, Typography } from "@mui/material";
+import { Backdrop, Box, Divider, IconButton, Typography } from "@mui/material";
 import './HelpScreen.css';
 
 interface HelpScreenProps {
@@ -17,6 +17,7 @@ const HelpScreen: React.FC<HelpScreenProps> = ({open, closeBackdropFunction}) =>
     <Backdrop open={open} className="HelpScreen" sx={{zIndex: (theme) => theme.zIndex.drawer + 2}} onClick={closeBackdropFunction}>
       <Box className="HelpScreenBox" onClick={handleBoxClick}>
         <Typography variant="h6">App Guide</Typography>
+        <Divider className="HelpScreenBox_Divider"/>
         <Typography>This app is a roster builder for Warhammer 40K. <br/>
               Begin by selecting your faction, army, detachment, and roster size from
                the faction selector area, open on startup. After that, click on the "Roster Builder" heading below the Faction Selector area. 

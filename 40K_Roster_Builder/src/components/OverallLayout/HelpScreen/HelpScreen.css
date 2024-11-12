@@ -6,7 +6,7 @@
   background-color: rgb(220, 220, 220);
   border-radius: var(--standardBorderRadius);
   box-shadow: var(--standardBoxShadow);
-  min-height: 55vh;
+  min-height: 29vw;
 
   h6 {
     margin-bottom: 0vh;
@@ -44,9 +44,19 @@
 }
 
 .HelpScreenBox_Button_Back {
-  bottom: -0.7vh;
+  bottom: -1.7vw;
 }
 
 .HelpScreenBox_Button_Back:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.HelpScreenBox_Divider {
+  justify-self: center;
+  margin-top: 0px;
+  border: 0.1vh solid rgba(25, 50, 130, 0.1) !important;
+  margin-bottom: 0.2vh !important;
+  /* margin: 0vh 3vh 0.4vh 1vh !important; */
+  width: 95%;
+  height: 0.01vh;
 }

@@ -4,162 +4,57 @@
   margin: 0.4vh auto;
   transition: height 2.0s ease-in-out !important;
 
-  @media screen and (width <= 520px){
-    div {
-      width: 100% !important;
-      margin: 1vh auto;
-    }
-
-    .FactionSelector_ArmyDropdown {
-      opacity: 1;
-      visibility: visible;
-      height: 100% !important;
-      min-height: 4vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      
-      div, .MuiInputBase-input {
-        label {
-          line-height: 2vh;
-          transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;
-        }
-        transition: height 0.5s linear, width 0.5s linear, min-height 0.5s linear, line-height 0.5s linear, padding 0.5s linear !important;
-        min-height: 2vh !important;
-      }
-      fieldset {
-        min-height: 4vh;
-        transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      }
-    }
-
-    .FactionSelector_ArmyDropdown_disabled {
-      margin: 0px !important;
-      visibility: hidden;
-      opacity: 0;
-      padding: 0px !important;
-      width: 0vh !important;
-      height: 0vh !important;
-      min-height: 0vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      *, .MuiInputBase-input {
-        label {
-          line-height: 0px;
-          height: 0px;
-          transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;
-        }
-        min-height: 0vh !important;
-        height: 0px !important;
-        line-height: 0px;
-        padding: 0px !important;
-        transition: height 0.5s linear, min-height 0.5s linear, line-height 0.5s linear, padding 0.5s linear !important;
-      }
-      fieldset {
-        min-height: 0vh;
-        transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      }
-    }
-
-    .FactionSelector_DetachmentDropdown {
-      opacity: 1;
-      visibility: visible;
-      height: 100% !important;
-      min-height: 4vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      
-      div, .MuiInputBase-input {
-        label {
-          line-height: 2vh;
-          transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;
-        }
-        transition: height 0.5s linear, width 0.5s linear, min-height 0.5s linear, line-height 0.5s linear, padding 0.5s linear !important;
-        min-height: 2vh !important;
-      }
-      fieldset {
-        min-height: 4vh;
-        transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      }
-    }
-
-    .FactionSelector_DetachmentDropdown_disabled {
-      margin: 0px !important;
-      visibility: hidden;
-      opacity: 0;
-      padding: 0px !important;
-      width: 0vh !important;
-      height: 0vh !important;
-      min-height: 0vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      *, .MuiInputBase-input {
-        label {
-          line-height: 0px;
-          height: 0px;
-          transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;
-        }
-        min-height: 0vh !important;
-        height: 0px !important;
-        line-height: 0px;
-        padding: 0px !important;
-        transition: height 0.5s linear, min-height 0.5s linear, line-height 0.5s linear, padding 0.5s linear !important;
-      }
-      fieldset {
-        min-height: 0vh;
-        transition: opacity 0.5s linear, visibility 0.5s linear, height 0.5s linear, width 0.5s linear, min-height 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear, line-height 0.5s linear;
-      }
-    }
-  }
-  @media screen and (width > 520px) {
-    div {
-      min-width: 30%;
-      width: max-content !important;
-      div {
-        width: 100% !important;
-      }
-      margin: 1vh 1%;
-    }
-
-    .FactionSelector_ArmyDropdown {
-      opacity: 1;
-      visibility: visible;
-      height: 100% !important;
-      width: 30% !important;
-      min-width: 30% !important;
-      max-width: 30%;
-      transition: opacity 0.5s linear, visibility 0.5s linear, width 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear !important;
-    }
-
-    .FactionSelector_ArmyDropdown_disabled {
-      margin: 0px !important;
-      min-width: 0px !important;
-      visibility: hidden;
-      opacity: 0;
-      width: 0vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, width 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear !important;
-    }
-    
-    .FactionSelector_DetachmentDropdown {
-      opacity: 1;
-      visibility: visible;
-      height: 100% !important;
-      width: 30% !important;
-      min-width: 30% !important;
-      max-width: 30%;
-      transition: opacity 0.5s linear, visibility 0.5s linear, width 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear !important;
-    }
-
-    .FactionSelector_DetachmentDropdown_disabled {
-      margin: 0px !important;
-      min-width: 0px !important;
-      visibility: hidden;
-      opacity: 0;
-      width: 0vh !important;
-      transition: opacity 0.5s linear, visibility 0.5s linear, width 0.5s linear, min-width 0.5s linear, margin 0.5s linear, padding 0.5s linear !important;
-    }
-  }
-  div {
+  .FactionSelector_Dropdown {
     display: inline-block;
+    margin: 1vh 0.5vh;
+    padding: auto;
+    height: 5vh;
+    transition: height 0.5s linear, width 0.5s linear, visibility 0.5s linear, opacity 0.5s linear, margin 0.5s linear;
+    label {
+      transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;
+    }
     div {
-      margin: auto;
       display: flex;
-      justify-content: right;
     }
   }
+  
+  .FactionSelector_Dropdown_disabled {
+    visibility: hidden;
+    opacity: 0;
+    width: 0px !important; 
+    overflow: hidden;
+    transition: height 0.5s linear, width 0.5s linear, visibility 0.5s linear, opacity 0.5s linear, margin 0.5s linear;
+  }
+
+  @media screen and (width <= 520px){
+    .FactionSelector_Dropdown {
+      width: 100% !important;
+    }
+    .FactionSelector_Dropdown {
+      * {
+        max-height: 8vh;
+        transition: height 0.5s linear, width 0.5s linear, visibility 0.5s linear, opacity 0.5s linear, margin 0.5s linear, max-height 0.5s linear;
+      }
+    }
+    .FactionSelector_Dropdown_disabled {
+      height: 0px !important;
+      * {
+        max-height: 0vh;
+        transition: height 0.5s linear, width 0.5s linear, visibility 0.5s linear, opacity 0.5s linear, margin 0.5s linear, max-height 0.5s linear;
+      }
+    }
+  }
+
+  @media screen and (width > 520px){
+    .FactionSelector_Dropdown {
+      width: 30% !important;
+    }
+    .FactionSelector_Dropdown_disabled {
+      margin: 1vh 0vh;
+    }
+  }
+}
+
+.FactionSelector_Dropdown_Item {
+  height: 4vh;
 }
