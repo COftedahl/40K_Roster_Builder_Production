@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { Army, BattleSize, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Army, BattleSize, Detachment, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import FactionAddingArea, {FactionAddingAreaType} from "../FactionAddingArea/FactionAddingArea";
 import QuickRosterStats from "../QuickRosterStats/QuickRosterStats";
 
 interface RosterBuildingAreaProps {
   factionName: string;
-  detachmentName?: string;
+  detachment?: Detachment | null;
   selectedRosterSize?: BattleSize | null;
 }
 
-const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, detachmentName, selectedRosterSize}) => {
+const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, detachment, selectedRosterSize}) => {
 
   const unitListConst: UnitSelection[] = [
     {
@@ -103,7 +103,7 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
   ];
 
   const [unitList, setUnitList] = useState<UnitSelection[]>([]);
-  const [enhancementList, setEnhancementList] = useState<Enhancement[]>(enhancementListConst);
+  const [enhancementList, setEnhancementList] = useState<Enhancement[]>(detachment ? detachment.enhancements : []);
   const [pointsUsed, setPointsUsed] = useState<number>(0);
 
   const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.CHARACTERS));
@@ -113,6 +113,10 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
   useEffect(() => {
     setUnitList([...characterUnitList, ...battlelineUnitList, ...otherUnitList]);
   }, [characterUnitList, battlelineUnitList, otherUnitList]);
+
+  useEffect(() => {
+    setEnhancementList(detachment ? detachment.enhancements : []);
+  }, [detachment]);
 
   useEffect(() => {
     setPointsUsed(() => {
@@ -137,7 +141,7 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
 
   return (
     <>
-      <QuickRosterStats faction={factionName} detachment={detachmentName} pointsUsed={pointsUsed} allowedPoints={selectedRosterSize ? selectedRosterSize.points : undefined} pointsLeft={selectedRosterSize ? selectedRosterSize.points - pointsUsed : undefined} sizeCategory={selectedRosterSize ? selectedRosterSize.name : undefined}/>
+      <QuickRosterStats faction={factionName} detachment={detachment ? detachment.name : undefined} pointsUsed={pointsUsed} allowedPoints={selectedRosterSize ? selectedRosterSize.points : undefined} pointsLeft={selectedRosterSize ? selectedRosterSize.points - pointsUsed : undefined} sizeCategory={selectedRosterSize ? selectedRosterSize.name : undefined}/>
       <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ARMY}></FactionAddingArea>
       <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ALLIES}></FactionAddingArea>
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}

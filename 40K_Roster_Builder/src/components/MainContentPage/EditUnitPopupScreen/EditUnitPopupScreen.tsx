@@ -3,7 +3,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { UnitSelection, UnitType, CostOption, Enhancement } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import React, { ReactNode, useEffect, useState } from "react";
 import './EditUnitPopupScreen.css';
-import { DoneSharp } from "@mui/icons-material";
 
 export interface EditUnitPopupScreenProps {
   open: boolean;
