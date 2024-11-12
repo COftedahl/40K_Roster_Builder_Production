@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { Army, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Army, BattleSize, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import FactionAddingArea, {FactionAddingAreaType} from "../FactionAddingArea/FactionAddingArea";
 import QuickRosterStats from "../QuickRosterStats/QuickRosterStats";
 
 interface RosterBuildingAreaProps {
   factionName: string;
   detachmentName?: string;
-  allowedPoints?: number;
+  selectedRosterSize?: BattleSize | null;
 }
 
-const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, detachmentName, allowedPoints}) => {
+const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, detachmentName, selectedRosterSize}) => {
 
   const unitListConst: UnitSelection[] = [
     {
@@ -137,7 +137,7 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
 
   return (
     <>
-      <QuickRosterStats faction={factionName} detachment={detachmentName} pointsUsed={pointsUsed} allowedPoints={allowedPoints} pointsLeft={allowedPoints ? allowedPoints - pointsUsed : undefined} sizeCategory="Combat Patrol"/>
+      <QuickRosterStats faction={factionName} detachment={detachmentName} pointsUsed={pointsUsed} allowedPoints={selectedRosterSize ? selectedRosterSize.points : undefined} pointsLeft={selectedRosterSize ? selectedRosterSize.points - pointsUsed : undefined} sizeCategory={selectedRosterSize ? selectedRosterSize.name : undefined}/>
       <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ARMY}></FactionAddingArea>
       <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ALLIES}></FactionAddingArea>
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}

@@ -44,7 +44,7 @@ const MainContentPage: React.FC<MainContentPageProps> = () => {
           <FactionSelector {...factionSelectorProps}/>
         </CollapsibleCard>
         <CollapsibleCard summary="Roster Builder"  expanded={activeCollapsibleBox === CollapsibleBoxNames[1]} onChange={handleBoxClick} boxName={CollapsibleBoxNames[1]}>
-          <RosterBuildingArea factionName={army ? army : "None"} detachmentName={detachment ? detachment.name : undefined} allowedPoints={battleSize ? battleSize.points : undefined}/>
+          <RosterBuildingArea factionName={army ? army : "None"} detachmentName={detachment ? detachment.name : undefined} selectedRosterSize={battleSize}/>
         </CollapsibleCard>
       </Box>
     </Box>

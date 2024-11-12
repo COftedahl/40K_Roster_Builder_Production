@@ -44,3 +44,18 @@
     font-size: 3vw; 
   }
 }
+
+.HelpButton {
+  position: absolute;
+  right: 1vw;
+  top: 0.35vw;
+  outline: none !important;
+  width: 3.5vw;
+  padding: 0px !important;
+  height: 3.5vw;
+  max-height: 80%;
+  max-width: 80%;
+  svg {
+    font-size: 3vw; 
+  }
+}
