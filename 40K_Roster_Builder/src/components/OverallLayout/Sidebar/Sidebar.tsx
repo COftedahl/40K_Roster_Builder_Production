@@ -1,6 +1,8 @@
-import { CSSObject, styled, Theme, Typography } from "@mui/material";
+import { CSSObject, List, ListItem, styled, Theme, Typography } from "@mui/material";
 import MuiDrawer from '@mui/material/Drawer';
 import React from "react";
+import './Sidebar.css';
+import { Link, NavLink } from "react-router-dom";
 
 const drawerWidth: string = "28%";
 
@@ -55,37 +57,39 @@ interface SidebarProps {
   open: boolean;
 }
 
+interface Link {
+  text: string;
+  path: string;
+}
+
 const Sidebar: React.FC<SidebarProps> = ({open}) => {
   
+  const links: Link[] = [
+    {text: "Homepage", path: "/"}, 
+    {text: "ErrorLink", path: "/h"}
+  ];
 
   return (
     <>
-      <Drawer
+      <Drawer className="Sidebar"
         sx={{
           width: open ? "75%" : "0px !important",
-          height: "100%",
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            top: "min(8%, 5vw)",
-            height: "calc(100% - min(8%, 5vw) - 2.8vw + 0.2vh)",
-            position: "absolute",
-            borderRadius: "8px",
-            borderTopLeftRadius: "0px",
-            borderBottomLeftRadius: "0px",
-            width: open ? drawerWidth : "0px",
-            boxSizing: 'border-box',
-            backgroundImage: "radial-gradient(white 50%, lightgrey)",
-            padding: "0.5vh"
-          },
-          position: "absolute", 
-          overflow: "hidden", 
+          '& .MuiDrawer-paper': {width: open ? drawerWidth : "0px"}
         }}
         
         variant="permanent"
         anchor="left"
         open={open}
       >
-        <Typography>Here is some very long text that should wrap several lines and go on and on and on and we'll see if it transitions properly. </Typography>
+        <List>
+          {links.map((link: Link, index: number) => {
+            return (
+              <Link to={link.path} key={index}><ListItem>{link.text}</ListItem></Link>
+              // <></>
+            );
+          })}
+        </List>
+        {/* <Typography>Here is some very long text that should wrap several lines and go on and on and on and we'll see if it transitions properly. </Typography> */}
       </Drawer>
     </>
   );

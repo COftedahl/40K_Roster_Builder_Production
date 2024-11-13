@@ -88,7 +88,8 @@ const Theme: Theme = {
   footerBoxShadow_Button: standardBoxShadow,
   footerColor: "black",
   
-  sidebarBackgroundColor: "radial-gradient(white 50%, lightgrey)", 
+  // sidebarBackgroundColor: "radial-gradient(circle, white 50%, lightgrey)",
+  sidebarBackgroundColor: "radial-gradient(circle, rgba(255, 255, 255, 1.0), rgba(230, 230, 230, 1.0)" ,
   sidebarBorderRadius: standardBorderRadius, 
   sidebarBorder: "none", 
   sidebarBoxShadow: standardBoxShadow, 

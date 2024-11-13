@@ -6,7 +6,11 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import "./Header.css";
 import HelpScreen from "../HelpScreen/HelpScreen";
 
-const Header = () => {
+interface HeaderProps {
+  onHomepage: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({onHomepage}) => {
   const [open, setOpen] = useState(false);
   const [displayHelp, setDisplayHelp] = useState(false);
 
@@ -31,7 +35,7 @@ const Header = () => {
         <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center"}}>
           <Typography className="HeaderTitle" variant="h3" noWrap>Warhammer 40,000 Roster Builder</Typography>  
         </Box>
-        <IconButton className="HelpButton" onClick={handleHelpClick}><HelpOutlineIcon/></IconButton>
+        <IconButton className={"HelpButton HeaderButton" + (onHomepage ? "" : " HeaderButton_hidden")} onClick={handleHelpClick}><HelpOutlineIcon/></IconButton>
       </Box>
       <Sidebar open={open}/>
       <HelpScreen open={displayHelp} closeBackdropFunction={closeBackdropFunction}/>
