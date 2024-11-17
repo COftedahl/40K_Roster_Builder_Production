@@ -14,3 +14,7 @@
     background-image: none !important;
   }
 }
+
+.UnitDisplayTypography {
+  text-wrap: wrap;
+}

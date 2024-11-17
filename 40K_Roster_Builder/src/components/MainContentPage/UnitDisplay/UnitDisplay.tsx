@@ -21,7 +21,7 @@ const UnitDisplay: React.FC<UnitDisplayProps> = ({unit, handleUnitClick, unitInd
         <Typography>{unit.name}</Typography>
         <Typography>{unit.costOptions[unit.selectedSizeIndex].cost + 
                 (unit.enhancement &&  unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0) }</Typography>
-        <Typography>{
+        <Typography className="UnitDisplayTypography">{
           (unit.unitType === UnitType.CHARACTERS 
           ? unit.costOptions[unit.selectedSizeIndex].modelCountString + 
             (unit.enhancement ? " with " + unit.enhancement.name : "")

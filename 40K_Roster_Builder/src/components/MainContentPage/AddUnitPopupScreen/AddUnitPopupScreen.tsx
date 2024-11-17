@@ -1,9 +1,10 @@
 import { Backdrop, Box, Divider, FormControl, IconButton, InputLabel, MenuItem, NativeSelect, Select, SelectChangeEvent, Typography } from "@mui/material";
-import { CostOption, Unit, UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { CostOption, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import { ReactNode, useEffect, useState } from "react";
 import './AddUnitPopupScreen.css';
 
 interface AddUnitPopupScreenProps {
+  unitType: UnitType | undefined;
   availableUnits: Unit[];
   addUnit: (unitSelection: UnitSelection) => void;
   open: boolean;
@@ -11,7 +12,7 @@ interface AddUnitPopupScreenProps {
   army: string;
 }
 
-const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, addUnit, open, closeBackdropFunction, army}) => {
+const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, addUnit, open, closeBackdropFunction, army, unitType}) => {
   
   const [selectedUnit, setSelectedUnit] = useState<Unit>();
   const [selectedUnitSizeIndex, setSelectedUnitSizeIndex] = useState<number | undefined>();
@@ -47,6 +48,7 @@ const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, 
   const handleAddUnitClicked = () => {
     if (selectedUnit) {
       addUnit({...selectedUnit, selectedSizeIndex: selectedUnitSizeIndex || 0});
+      closeBackdropFunction();
     }
   };
 
@@ -71,6 +73,7 @@ const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, 
           {availableUnits ?
           <>
             <Typography variant="h6" className="AddUnitPopupBox_ArmyName">{army}</Typography>
+            {unitType ? <Typography className="AddUnitPopupBox_UnitTypeTypography"></Typography> : ""}
             <Divider className="AddUnitPopupBox_Divider"/>
             <FormControl>
               <InputLabel htmlFor="AddUnitPopupBox_UnitSelector" className="AddUnitPopupBox_UnitSelector_InputLabel">Unit

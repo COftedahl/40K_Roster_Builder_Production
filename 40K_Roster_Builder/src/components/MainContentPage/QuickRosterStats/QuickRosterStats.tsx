@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
 export interface QuickRosterStatsProps {
-  faction: string;
+  army: string;
   detachment?: string;
   sizeCategory?: string;
   pointsUsed: number;
@@ -9,13 +9,13 @@ export interface QuickRosterStatsProps {
   pointsLeft?: number;
 }
 
-const QuickRosterStats: React.FC<QuickRosterStatsProps> = ({faction, detachment, sizeCategory, pointsUsed, allowedPoints, pointsLeft}) => {
+const QuickRosterStats: React.FC<QuickRosterStatsProps> = ({army, detachment, sizeCategory, pointsUsed, allowedPoints, pointsLeft}) => {
 
   return (
     <>
       <Box className="QuickRosterStatsBox">
         <Typography>
-          {faction}
+          {army}
           {detachment !== undefined && detachment !== "" ? ": " + detachment : ""}
           {sizeCategory !== undefined && sizeCategory !== "" ? " | " + sizeCategory : ""}<br/>
           {pointsUsed ? pointsUsed : 0} pts used

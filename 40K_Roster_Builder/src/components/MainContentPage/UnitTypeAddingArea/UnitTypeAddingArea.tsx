@@ -13,9 +13,10 @@ interface UnitTypeAddingAreaProps {
   unitList: UnitSelection[];
   setUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   enhancementList: Enhancement[];
+  handleUnitTypeAddingAreaAddButtonClick: (unitType: UnitType) => void;
 }
 
-const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList, enhancementList}) => {
+const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList, enhancementList, handleUnitTypeAddingAreaAddButtonClick}) => {
   // const clickCard = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
   //   console.log("clicked element");
   // };
@@ -31,7 +32,7 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitLi
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
 
   const handleAddButtonClick = () => {
-    window.alert("need to implement this function too");
+    handleUnitTypeAddingAreaAddButtonClick(unitType);
   };
 
   const handleUnitClick = (unit: UnitSelection, unitIndex: number) => {

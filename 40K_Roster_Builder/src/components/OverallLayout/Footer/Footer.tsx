@@ -3,19 +3,25 @@ import './Footer.css';
 
 interface FooterProps {
     onHomepage: boolean;
+    clearButtonFunction: () => void;
+    saveButtonFunction: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({onHomepage}) => {
+const Footer: React.FC<FooterProps> = ({onHomepage, clearButtonFunction, saveButtonFunction}) => {
 
-  const handleClick = () => {
-    console.log("click");
+  const handleClearClicked = () => {
+    clearButtonFunction();
+  }
+
+  const handleSaveClicked = () => {
+    saveButtonFunction();
   }
 
   return (
     <>
       <Box className="FooterBar">
-        <IconButton className={"FooterClearButton FooterButton" + (onHomepage ? "" : " FooterButton_hidden")} onClick={handleClick}>CLEAR</IconButton>
-        <IconButton className={"FooterSaveButton FooterButton" + (onHomepage ? "" : " FooterButton_hidden")} onClick={handleClick}>SAVE</IconButton>
+        <IconButton className={"FooterClearButton FooterButton" + (onHomepage ? "" : " FooterButton_hidden")} onClick={handleClearClicked}>CLEAR</IconButton>
+        <IconButton className={"FooterSaveButton FooterButton" + (onHomepage ? "" : " FooterButton_hidden")} onClick={handleSaveClicked}>SAVE</IconButton>
       </Box>
     </>
   );
