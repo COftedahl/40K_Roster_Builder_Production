@@ -1,9 +1,10 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
-import { Enhancement, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Enhancement, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './FactionAddingArea.css';
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
+import AddUnitPopupScreen from "../AddUnitPopupScreen/AddUnitPopupScreen";
 
 export const enum FactionAddingAreaType {
   ARMY = "ARMY", 
@@ -20,6 +21,7 @@ interface FactionAddingAreaProps {
   setBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   enhancementList: Enhancement[];
+  availableUnits: Unit[];
 }
 
 const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
@@ -31,10 +33,32 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   setCharacterUnitList, 
   setBattlelineUnitList, 
   setOtherUnitList, 
-  enhancementList}) => {
+  enhancementList, 
+  availableUnits}) => {
+
+  const [addUnitPopupOpen, setAddUnitPopupOpen] = useState<boolean>(false);
   
   const handleClick = () => {
-    window.alert("Need to implement this function");
+    setAddUnitPopupOpen(true);
+  };
+
+  const addUnit = (unitSelection: UnitSelection) => {
+    if (unitSelection.unitType === UnitType.CHARACTERS) {
+      characterUnitList = [...characterUnitList, unitSelection];
+      setCharacterUnitList(characterUnitList);
+    }
+    else if (unitSelection.unitType === UnitType.BATTLELINE) {
+      battlelineUnitList = [...battlelineUnitList, unitSelection];
+      setBattlelineUnitList(battlelineUnitList);
+    }
+    else {
+      otherUnitList = [...otherUnitList, unitSelection];
+      setOtherUnitList(otherUnitList);
+    }
+  };
+
+  const handleCloseAddUnitPopup = () => {
+    setAddUnitPopupOpen(false);
   };
 
   return (
@@ -47,6 +71,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList}/>
         <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList}/>
         <IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
+        <AddUnitPopupScreen availableUnits={availableUnits} addUnit={addUnit} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={factionName}/>
       </Box>
       }
     </>

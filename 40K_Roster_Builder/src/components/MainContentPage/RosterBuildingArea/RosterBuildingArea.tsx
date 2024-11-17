@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Army, BattleSize, Detachment, Enhancement, Faction, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Army, BattleSize, Detachment, Enhancement, Faction, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import FactionAddingArea, {FactionAddingAreaType} from "../FactionAddingArea/FactionAddingArea";
 import QuickRosterStats from "../QuickRosterStats/QuickRosterStats";
+import axios from "axios";
 
 interface RosterBuildingAreaProps {
   factionName: string;
@@ -102,6 +103,11 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
     {name: "Impossible Robe", cost: 25, doesCostPoints: true}
   ];
 
+  const [availableUnits, setAvailableUnits] = useState<Unit[]>([]);
+  // const [availableCharacterUnits, setAvailableCharacterUnits] = useState<Unit[]>([]);
+  // const [availableBattlelineUnits, setAvailableBattlelineUnits] = useState<Unit[]>([]);
+  // const [availableOtherUnits, setAvailableOtherUnits] = useState<Unit[]>([]);
+
   const [unitList, setUnitList] = useState<UnitSelection[]>([]);
   const [enhancementList, setEnhancementList] = useState<Enhancement[]>(detachment ? detachment.enhancements : []);
   const [pointsUsed, setPointsUsed] = useState<number>(0);
@@ -117,6 +123,10 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
   useEffect(() => {
     setEnhancementList(detachment ? detachment.enhancements : []);
   }, [detachment]);
+
+  useEffect(() => {
+    retrieveAvailableUnits();
+  }, [factionName]);
 
   useEffect(() => {
     setPointsUsed(() => {
@@ -139,11 +149,42 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({factionName, det
     enhancementList: enhancementList
   }
 
+  const retrieveAvailableUnits = async () => {
+    try {
+      if (factionName && factionName.length > 0 && factionName.toLowerCase() !== "none") {
+        const response = await axios.post("http://localhost:5000/units/factionunits", {
+          armyName: factionName,
+        });
+  
+        if (!response.data || response.data.length === 0) {
+          console.warn("No units found for army " + factionName);
+          return [];
+        }
+        else if (response.status !== 200) {
+          console.error("Fetch Units request for army " + factionName + " produced an error: " + response.data);
+        }
+        setAvailableUnits(response.data);
+      }
+      else {
+        setAvailableUnits([]);
+      }
+    }
+    catch (e) {
+      console.error(e);
+    }
+  };
+
+  // useEffect(() => {
+  //   setAvailableCharacterUnits(availableUnits.filter((unit: Unit) => unit.unitType === UnitType.CHARACTERS));
+  //   setAvailableBattlelineUnits(availableUnits.filter((unit: Unit) => unit.unitType === UnitType.BATTLELINE));
+  //   setAvailableOtherUnits(availableUnits.filter((unit: Unit) => unit.unitType === UnitType.OTHER));
+  // }, [availableUnits]);
+
   return (
     <>
       <QuickRosterStats faction={factionName} detachment={detachment ? detachment.name : undefined} pointsUsed={pointsUsed} allowedPoints={selectedRosterSize ? selectedRosterSize.points : undefined} pointsLeft={selectedRosterSize ? selectedRosterSize.points - pointsUsed : undefined} sizeCategory={selectedRosterSize ? selectedRosterSize.name : undefined}/>
-      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ARMY}></FactionAddingArea>
-      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ALLIES}></FactionAddingArea>
+      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ARMY} availableUnits={availableUnits}></FactionAddingArea>
+      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ALLIES} availableUnits={availableUnits}></FactionAddingArea>
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}
