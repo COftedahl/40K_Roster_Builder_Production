@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CollapsibleCard from '../../UtilityComponents/CollapsibleCard/CollapsibleCard';
 import FactionSelector from '../../MainContentPage/FactionSelector/FactionSelector';
 import RosterBuildingArea from '../../MainContentPage/RosterBuildingArea/RosterBuildingArea';
-import { BattleSize, Detachment, Enhancement, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
+import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
 import PathNotFoundScreen from '../PathNotFoundScreen/PathNotFoundScreen';
 import './App.css'
 import axios from 'axios';
@@ -31,11 +31,13 @@ const App: React.FC<AppProps> = () => {
   
 
   const [availableUnits, setAvailableUnits] = useState<Unit[]>([]);
+  const [availableAllyUnits, setAvailableAllyUnits] = useState<Unit[]>([]);
   // const [availableCharacterUnits, setAvailableCharacterUnits] = useState<Unit[]>([]);
   // const [availableBattlelineUnits, setAvailableBattlelineUnits] = useState<Unit[]>([]);
   // const [availableOtherUnits, setAvailableOtherUnits] = useState<Unit[]>([]);
 
   const [unitList, setUnitList] = useState<UnitSelection[]>([]);
+  const [allyUnitList, setAllyUnitList] = useState<UnitSelection[]>([]);
   const [enhancementList, setEnhancementList] = useState<Enhancement[]>(detachment ? detachment.enhancements : []);
   const [pointsUsed, setPointsUsed] = useState<number>(0);
 
@@ -45,6 +47,9 @@ const App: React.FC<AppProps> = () => {
   const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>([]);
   const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>([]);
   const [otherUnitList, setOtherUnitList] = useState<UnitSelection[]>([]);
+  const [allyCharacterUnitList, setAllyCharacterUnitList] = useState<UnitSelection[]>([]);
+  const [allyBattlelineUnitList, setAllyBattlelineUnitList] = useState<UnitSelection[]>([]);
+  const [allyOtherUnitList, setAllyOtherUnitList] = useState<UnitSelection[]>([]);
 
   const factionSelectorProps = {
     faction: faction,
@@ -62,11 +67,16 @@ const App: React.FC<AppProps> = () => {
   }, [characterUnitList, battlelineUnitList, otherUnitList]);
 
   useEffect(() => {
+    setAllyUnitList([...allyCharacterUnitList, ...allyBattlelineUnitList, ...allyOtherUnitList]);
+  }, [allyCharacterUnitList, allyBattlelineUnitList, allyOtherUnitList]);
+
+  useEffect(() => {
     setEnhancementList(detachment ? detachment.enhancements : []);
   }, [detachment]);
 
   useEffect(() => {
     retrieveAvailableUnits();
+    retrieveAvailableAllyUnits();
   }, [army]);
 
   useEffect(() => {
@@ -75,9 +85,12 @@ const App: React.FC<AppProps> = () => {
       unitList.map((unit: UnitSelection) => {
         cost += (unit.costOptions[unit.selectedSizeIndex]?.cost) + (unit.enhancement && unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0);
       });
+      allyUnitList.map((unit: UnitSelection) => {
+        cost += (unit.costOptions[unit.selectedSizeIndex]?.cost) + (unit.enhancement && unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0);
+      });
       return cost;
     });
-  }, [unitList]);
+  }, [unitList, allyUnitList]);
 
   const handleBoxClick = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
     setActiveCollabsibleBox(isBoxClicked ? clickedBoxName : "");
@@ -108,10 +121,61 @@ const App: React.FC<AppProps> = () => {
     }
   };  
 
+  const retrieveAvailableAllyUnits = async () => {
+    try {
+      let armyNameString: String = "";
+      switch (faction) {
+        case (Faction.IMPERIUM): 
+        case (Faction.SPACE_MARINES): 
+          armyNameString = Faction.IMPERIUM + " Allies";
+          break;
+        case (Faction.CHAOS):
+          armyNameString = Faction.CHAOS + " Allies";
+          break;
+        case (Faction.XENOS):
+          switch (army) {
+            case (Army.AELDARI): 
+            case (Army.DRUKHARI): 
+            case (Army.GENESTEALER_CULTS): 
+              armyNameString = army + " Allies";
+              break;
+            default: 
+              armyNameString = "";
+              break;
+          }
+          break;
+      }
+
+      if (army && army.length > 0 && army.toLowerCase() !== "none") {
+        const response = await axios.post("http://localhost:5000/units/allyunits", {
+          armyName: armyNameString,
+        });
+  
+        if (!response.data || response.data.length === 0) {
+          console.warn("No units found for army " + army + ", sent string \"armyName\":" + armyNameString);
+          return [];
+        }
+        else if (response.status !== 200) {
+          console.error("Fetch Units request for army " + army + " produced an error: " + response.data);
+        }
+        setAvailableAllyUnits(response.data);
+      }
+      else {
+        setAvailableUnits([]);
+      }
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
   const handleClearButtonClicked = () => {
     setCharacterUnitList([]);
     setBattlelineUnitList([]);
     setOtherUnitList([]);
+    setAllyCharacterUnitList([]);
+    setAllyBattlelineUnitList([]);
+    setAllyOtherUnitList([]);
     setDetachment(() => null);
     setArmy(() => null);
     setFaction(() => null);
@@ -159,6 +223,7 @@ const App: React.FC<AppProps> = () => {
               selectedRosterSize={battleSize} 
               pointsUsed={pointsUsed} 
               availableUnits={availableUnits}
+              availableAllyUnits={availableAllyUnits}
               unitList={unitList}
               enhancementList={enhancementList}
               characterUnitList={characterUnitList}
@@ -166,7 +231,13 @@ const App: React.FC<AppProps> = () => {
               otherUnitList={otherUnitList}
               setCharacterUnitList={setCharacterUnitList}
               setBattlelineUnitList={setBattlelineUnitList}
-              setOtherUnitList={setOtherUnitList}/>
+              setOtherUnitList={setOtherUnitList}
+              allyCharacterUnitList={allyCharacterUnitList}
+              allyBattlelineUnitList={allyBattlelineUnitList}
+              allyOtherUnitList={allyOtherUnitList}
+              setAllyCharacterUnitList={setAllyCharacterUnitList}
+              setAllyBattlelineUnitList={setAllyBattlelineUnitList}
+              setAllyOtherUnitList={setAllyOtherUnitList}/>
           </CollapsibleCard>
         </>,
         }

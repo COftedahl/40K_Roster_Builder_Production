@@ -9,6 +9,7 @@ interface RosterBuildingAreaProps {
   selectedRosterSize?: BattleSize | null;
   pointsUsed: number;
   availableUnits: Unit[];
+  availableAllyUnits: Unit[];
   unitList: UnitSelection[];
   enhancementList: Enhancement[];
   characterUnitList: UnitSelection[];
@@ -17,6 +18,12 @@ interface RosterBuildingAreaProps {
   setCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  allyCharacterUnitList: UnitSelection[];
+  allyBattlelineUnitList: UnitSelection[];
+  allyOtherUnitList: UnitSelection[];
+  setAllyCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  setAllyBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  setAllyOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
 }
 
 const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
@@ -25,6 +32,7 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     selectedRosterSize, 
     pointsUsed, 
     availableUnits,
+    availableAllyUnits,
     unitList, 
     enhancementList, 
     characterUnitList, 
@@ -32,7 +40,13 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     otherUnitList, 
     setCharacterUnitList, 
     setBattlelineUnitList, 
-    setOtherUnitList}) => {
+    setOtherUnitList, 
+    allyCharacterUnitList, 
+    allyBattlelineUnitList, 
+    allyOtherUnitList, 
+    setAllyCharacterUnitList, 
+    setAllyBattlelineUnitList, 
+    setAllyOtherUnitList}) => {
 
 
   const factionAddingAreaProps = {
@@ -43,7 +57,22 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     setCharacterUnitList: setCharacterUnitList, 
     setBattlelineUnitList: setBattlelineUnitList, 
     setOtherUnitList: setOtherUnitList, 
-    enhancementList: enhancementList
+    enhancementList: enhancementList,
+    type: FactionAddingAreaType.ARMY, 
+    availableUnits: availableUnits
+  }
+
+  const allyFactionAddingAreaProps = {
+    army: army,
+    characterUnitList: allyCharacterUnitList, 
+    battlelineUnitList: allyBattlelineUnitList, 
+    otherUnitList: allyOtherUnitList, 
+    setCharacterUnitList: setAllyCharacterUnitList, 
+    setBattlelineUnitList: setAllyBattlelineUnitList, 
+    setOtherUnitList: setAllyOtherUnitList, 
+    enhancementList: [],
+    type: FactionAddingAreaType.ALLIES, 
+    availableUnits: availableAllyUnits
   }
 
   // useEffect(() => {
@@ -55,8 +84,8 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
   return (
     <>
       <QuickRosterStats army={army} detachment={detachment ? detachment.name : undefined} pointsUsed={pointsUsed} allowedPoints={selectedRosterSize ? selectedRosterSize.points : undefined} pointsLeft={selectedRosterSize ? selectedRosterSize.points - pointsUsed : undefined} sizeCategory={selectedRosterSize ? selectedRosterSize.name : undefined}/>
-      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ARMY} availableUnits={availableUnits}></FactionAddingArea>
-      <FactionAddingArea {...factionAddingAreaProps} type={FactionAddingAreaType.ALLIES} availableUnits={availableUnits}></FactionAddingArea>
+      <FactionAddingArea {...factionAddingAreaProps}/>
+      <FactionAddingArea {...allyFactionAddingAreaProps}/>
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}
       {/* <FactionAddingArea factionName={factionName} detachmentName={detachmentName} type={FactionAddingAreaType.ALLIES}></FactionAddingArea> */}

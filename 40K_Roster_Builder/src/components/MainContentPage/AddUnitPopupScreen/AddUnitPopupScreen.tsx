@@ -73,20 +73,20 @@ const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, 
           {availableUnits ?
           <>
             <Typography variant="h6" className="AddUnitPopupBox_ArmyName">{army}</Typography>
-            {unitType ? <Typography className="AddUnitPopupBox_UnitTypeTypography"></Typography> : ""}
+            {unitType ? <Typography className="AddUnitPopupBox_UnitTypeTypography">{unitType}</Typography> : ""}
             <Divider className="AddUnitPopupBox_Divider"/>
             <FormControl>
               <InputLabel htmlFor="AddUnitPopupBox_UnitSelector" className="AddUnitPopupBox_UnitSelector_InputLabel">Unit
               </InputLabel>
               {isUserOnMobileDevice ? 
                 <NativeSelect className="AddUnitPopupBox_UnitSelector">
-                  {availableUnits.map((availableUnit: Unit, index: number) => {
+                  {availableUnits !== undefined && availableUnits.length > 0 && availableUnits.map((availableUnit: Unit, index: number) => {
                     return (<option className="AddUnitPopupBox_UnitSelector_Item" value={availableUnit.name} key={index}>{(availableUnit.name)}</option>);
                   })}
                 </NativeSelect>
               : 
                 <Select id="AddUnitPopupBox_UnitSelector" className="AddUnitPopupBox_UnitSelector" value={selectedUnit ? selectedUnit.name : ""} label="Unit" onChange={handleUnitSelectorChange}>
-                  {availableUnits.map((availableUnit: Unit, index: number) => {
+                  {availableUnits !== undefined && availableUnits.length > 0 && availableUnits.map((availableUnit: Unit, index: number) => {
                     return (<MenuItem className="AddUnitPopupBox_UnitSelector_Item" value={availableUnit.name} key={index}>{(availableUnit.name)}</MenuItem>);
                   })}
                 </Select>

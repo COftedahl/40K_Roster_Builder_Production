@@ -91,9 +91,16 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   };
 
   useEffect(() => {
-    setAvailableCharacterUnits(availableUnits.filter((unit: Unit) => (unit.unitType && unit.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase())));
-    setAvailableBattlelineUnits(availableUnits.filter((unit: Unit) => (unit.unitType && unit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase())));
-    setAvailableOtherUnits(availableUnits.filter((unit: Unit) => (unit.unitType === undefined) || (unit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase())));
+    if (availableUnits && availableUnits.length > 0) {
+      setAvailableCharacterUnits(availableUnits.filter((unit: Unit) => (unit.unitType && unit.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase())));
+      setAvailableBattlelineUnits(availableUnits.filter((unit: Unit) => (unit.unitType && unit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase())));
+      setAvailableOtherUnits(availableUnits.filter((unit: Unit) => (unit.unitType === undefined) || (unit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase())));
+    }
+    else {
+      setAvailableCharacterUnits([]);
+      setAvailableBattlelineUnits([]);
+      setAvailableOtherUnits([]);
+    }
   }, [availableUnits]);
 
   return (
@@ -106,7 +113,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick}/>
         <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick}/>
         <IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
-        <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={army}/>
+        <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={type === FactionAddingAreaType.ALLIES ? army + " Allies" : army}/>
       </Box>
       }
     </>
