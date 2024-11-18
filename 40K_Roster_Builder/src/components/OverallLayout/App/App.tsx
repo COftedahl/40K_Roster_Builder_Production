@@ -185,19 +185,25 @@ const App: React.FC<AppProps> = () => {
   };
 
   const saveRoster = async (rosterOwner: string, rosterName: string) => {
-    const response = await axios.post(server_url + "/rosters/saveroster", {
-      owner: "a name", 
-      name: "Roster name", 
+
+    const  bodyArgs = {
+      owner: rosterOwner, 
+      name: rosterName, 
       points: pointsUsed, 
+      faction: faction, 
+      detachment: (detachment ? detachment.name : "none"),
+      army: army, 
       armyUnits: unitList, 
       allyUnits: allyUnitList
-    });
+    }
+
+    const response = await axios.post(server_url + "/rosters/saveroster", bodyArgs);
 
     if (response.status !== 200) {
       console.error("Saving roster encountered error: ", response.data);
     }
     else {
-      console.log("Roster " +  "rosterName" + " saved");
+      console.log("Roster " +  rosterName + " saved");
     }
   }
   
