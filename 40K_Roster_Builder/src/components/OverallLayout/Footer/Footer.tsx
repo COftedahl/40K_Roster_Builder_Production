@@ -1,20 +1,23 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import './Footer.css';
+import { useNavigate } from "react-router-dom";
 
 interface FooterProps {
     onHomepage: boolean;
     clearButtonFunction: () => void;
-    saveButtonFunction: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({onHomepage, clearButtonFunction, saveButtonFunction}) => {
+const Footer: React.FC<FooterProps> = ({onHomepage, clearButtonFunction}) => {
+
+  const navigate = useNavigate();
 
   const handleClearClicked = () => {
     clearButtonFunction();
   }
 
   const handleSaveClicked = () => {
-    saveButtonFunction();
+    //display save roster popup - save after getting roster details, then offer to download roster
+    navigate("/saveroster");
   }
 
   return (

@@ -18,6 +18,9 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
       case 404: 
         return "Path Not Found";
         break;
+      case 403: 
+        return "Access Denied";
+        break;
       default: return "Page Error";
       break;
     }
@@ -27,6 +30,9 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
     switch(errorCode) {
       case 404: 
         return "This page does not exist (or is not accessible yet). ";
+        break;
+      case 403: 
+        return "You do not have permission to access this page or resource. ";
         break;
       default: 
         return "";

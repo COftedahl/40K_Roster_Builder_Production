@@ -1,8 +1,8 @@
-import { CSSObject, List, ListItem, styled, Theme, Typography } from "@mui/material";
+import { CSSObject, List, ListItem, styled, Theme } from "@mui/material";
 import MuiDrawer from '@mui/material/Drawer';
 import React from "react";
 import './Sidebar.css';
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const drawerWidth: string = "28%";
 
@@ -66,6 +66,7 @@ const Sidebar: React.FC<SidebarProps> = ({open}) => {
   
   const links: Link[] = [
     {text: "Homepage", path: "/"}, 
+    {text: "Save Roster", path: "/saveroster"},
     {text: "ErrorLink", path: "/h"}
   ];
 

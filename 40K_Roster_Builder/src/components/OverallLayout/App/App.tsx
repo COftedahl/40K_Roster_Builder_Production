@@ -12,6 +12,8 @@ import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Unit, 
 import PathNotFoundScreen from '../PathNotFoundScreen/PathNotFoundScreen';
 import './App.css'
 import axios from 'axios';
+import { server_url } from '../../UtilityComponents/Environment Variables/Environment Variables';
+import SaveRosterScreen from '../../MainContentPage/SaveRosterScreen/SaveRosterScreen';
 
 interface AppProps {
   
@@ -99,7 +101,7 @@ const App: React.FC<AppProps> = () => {
   const retrieveAvailableUnits = async () => {
     try {
       if (army && army.length > 0 && army.toLowerCase() !== "none") {
-        const response = await axios.post("http://localhost:5000/units/factionunits", {
+        const response = await axios.post(server_url + "/units/factionunits", {
           armyName: army,
         });
   
@@ -147,16 +149,16 @@ const App: React.FC<AppProps> = () => {
       }
 
       if (army && army.length > 0 && army.toLowerCase() !== "none") {
-        const response = await axios.post("http://localhost:5000/units/allyunits", {
+        const response = await axios.post(server_url + "/units/allyunits", {
           armyName: armyNameString,
         });
   
         if (!response.data || response.data.length === 0) {
-          console.warn("No units found for army " + army + ", sent string \"armyName\":" + armyNameString);
+          console.warn("No units found for ally army " + army + ", sent string \"armyName\":" + armyNameString);
           return [];
         }
         else if (response.status !== 200) {
-          console.error("Fetch Units request for army " + army + " produced an error: " + response.data);
+          console.error("Fetch Units request for ally army " + army + " produced an error: " + response.data);
         }
         setAvailableAllyUnits(response.data);
       }
@@ -182,9 +184,22 @@ const App: React.FC<AppProps> = () => {
     setBattleSize(() => null);
   };
 
-  const handleSaveButtonClicked = () => {
+  const saveRoster = async (rosterOwner: string, rosterName: string) => {
+    const response = await axios.post(server_url + "/rosters/saveroster", {
+      owner: "a name", 
+      name: "Roster name", 
+      points: pointsUsed, 
+      armyUnits: unitList, 
+      allyUnits: allyUnitList
+    });
 
-  };
+    if (response.status !== 200) {
+      console.error("Saving roster encountered error: ", response.data);
+    }
+    else {
+      console.log("Roster " +  "rosterName" + " saved");
+    }
+  }
   
   const router = createBrowserRouter([
     {
@@ -194,7 +209,7 @@ const App: React.FC<AppProps> = () => {
           <ThemeComponent/>
           <Header onHomepage={true}/>
           <MainContentPage/>
-          <Footer onHomepage={true} clearButtonFunction={handleClearButtonClicked} saveButtonFunction={handleSaveButtonClicked}/>
+          <Footer onHomepage={true} clearButtonFunction={handleClearButtonClicked}/>
       </Box>), 
       errorElement: (
         <Box className="AppContainer">
@@ -206,7 +221,7 @@ const App: React.FC<AppProps> = () => {
               <PathNotFoundScreen/>
             </Box>
           </Box>
-          <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked} saveButtonFunction={handleSaveButtonClicked}/>
+          <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
       </Box>
       ), 
       children: [
@@ -242,6 +257,33 @@ const App: React.FC<AppProps> = () => {
         </>,
         }
       ]
+    }, 
+    {
+      path: "saveroster", 
+      element: (<Box className="AppContainer">
+        <CssBaseline/>
+        <ThemeComponent/>
+        <Header onHomepage={false}/>
+        <Box className="MainContentPageOuterContainer">
+            <Box className="MainContentPageContainer">
+              <SaveRosterScreen saveRosterFunction={saveRoster}/>
+            </Box>
+          </Box>
+        <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+    </Box>),
+    errorElement: (
+      <Box className="AppContainer">
+        <CssBaseline/>
+        <ThemeComponent/>
+        <Header onHomepage={false}/>
+        <Box className="MainContentPageOuterContainer">
+          <Box className="MainContentPageContainer">
+            <PathNotFoundScreen/>
+          </Box>
+        </Box>
+        <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+    </Box>
+    ),
     }
   ], 
   {
