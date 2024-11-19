@@ -54,6 +54,10 @@
   }
 }
 
+.PathNotFoundScreenBox_Button_disabled:hover {
+  background-color: var(--footerBackgroundColor_Button) !important;
+}
+
 .PathNotFoundScreenBox_Button_SendReport {
   left: 2vh;
 }

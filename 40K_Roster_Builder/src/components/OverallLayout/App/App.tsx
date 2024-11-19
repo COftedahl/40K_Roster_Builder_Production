@@ -163,7 +163,7 @@ const App: React.FC<AppProps> = () => {
         setAvailableAllyUnits(response.data);
       }
       else {
-        setAvailableUnits([]);
+        setAvailableAllyUnits([]);
       }
     }
     catch (e) {

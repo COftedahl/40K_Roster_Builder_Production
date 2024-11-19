@@ -1,12 +1,18 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import { useNavigate, useRouteError } from "react-router-dom";
 import './PathNotFoundScreen.css';
+import axios from "axios";
+import { server_url } from "../../UtilityComponents/Environment Variables/Environment Variables";
+import { useState } from "react";
 
 interface PathNotFoundScreenProps {
 
 }
 
 const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
+
+  const [sentEmail, setSentEmail] = useState<boolean>(false);
+  const [sendEmailButtonText, setSendEmailButtonText] = useState<string>("SEND ERROR REPORT")
 
   const error: any = useRouteError();
   const errorCode: number = (error && error.status ? error.status : -1);
@@ -40,8 +46,28 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
     }
   }
 
-  const handleSendReportClicked = () => {
+  const handleSendReportClicked = async () => {
+    const formatter = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'long', day: '2-digit', hourCycle: 'h24', hour: '2-digit', minute: '2-digit', second: '2-digit'});
 
+    const response = await axios.post(server_url + "/email/senderrorreport", {
+      emailContents: 
+        "Error in 40K Web Roster Builder\n" + 
+        "Occurred at " + formatter.format() + "\n" +
+        "Occured from user: " + navigator.userAgent + "\n" +
+        "Error Code: " + errorCode + "\n" + 
+        "Error Message: " + JSON.stringify(error)
+    });
+
+    if (response.status !== 200) {
+      setSentEmail(false);
+      setSendEmailButtonText("RETRY SENDING EMAIL");
+      console.error("Error when sending email: ", response.data);
+    }
+    else {
+      setSentEmail(true);
+      setSendEmailButtonText("EMAIL SENT");
+      console.log(response.data);
+    }
   }
 
   const handleReturnHomeClicked = () => {
@@ -58,7 +84,11 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
         If you think this should be looked at, click the "Send Error Report" button below. <br/>
         You can use the sidebar to navigate back as usual, or use the "Return Home" button below to return to the Home page. <br/>
         Error Code: {errorCode}</Typography>
-        <IconButton className="PathNotFoundScreenBox_Button PathNotFoundScreenBox_Button_SendReport" onClick={handleSendReportClicked}>SEND ERROR REPORT</IconButton>
+        <IconButton className={"PathNotFoundScreenBox_Button PathNotFoundScreenBox_Button_SendReport" + (sentEmail ? " PathNotFoundScreenBox_Button_disabled" : "")} 
+          disabled={sentEmail ? true : false} 
+          onClick={handleSendReportClicked}>
+            {sendEmailButtonText}
+        </IconButton>
         <IconButton className="PathNotFoundScreenBox_Button PathNotFoundScreenBox_Button_ReturnHome" onClick={handleReturnHomeClicked}>RETURN HOME</IconButton>
     </Box>
     </>

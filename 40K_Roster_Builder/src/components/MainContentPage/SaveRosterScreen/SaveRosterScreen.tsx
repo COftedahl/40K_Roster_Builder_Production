@@ -1,4 +1,4 @@
-import { Box, FormControl, IconButton, Input, InputLabel } from "@mui/material";
+import { Box, Divider, FormControl, IconButton, Input, InputLabel, Typography } from "@mui/material";
 import './SaveRosterScreen.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -33,6 +33,10 @@ const SaveRosterScreen: React.FC<SaveRosterScreenProps> = ({saveRosterFunction})
     }
   };
 
+  const handleDownloadButtonClicked: React.MouseEventHandler = (event: React.MouseEvent) => {
+    console.log("Download me");
+  };
+
   const handleRosterOwnerChange: React.ChangeEventHandler = (event: React.ChangeEvent) => {
     try {
       setRosterOwner(event.target.value);
@@ -45,6 +49,8 @@ const SaveRosterScreen: React.FC<SaveRosterScreenProps> = ({saveRosterFunction})
   return (
     <>
       <Box className="SaveRosterScreenBox">
+        <Typography variant="h6" className="SaveRosterScreenBox_Header">Roster Information</Typography>
+        <Divider className="SaveRosterScreenBox_Divider"/>
         <FormControl className="SaveRosterScreenBox_FormInput">
           <InputLabel disableAnimation>Roster Name</InputLabel>
           <Input value={rosterName} onChange={handleRosterNameChange}>
@@ -55,8 +61,15 @@ const SaveRosterScreen: React.FC<SaveRosterScreenProps> = ({saveRosterFunction})
           <Input value={rosterOwner} onChange={handleRosterOwnerChange}>
           </Input>
         </FormControl>
-        <IconButton className="SaveRosterScreenBox_Button SaveRosterScreenBox_Button_Back" onClick={handleBackButtonClicked}>BACK</IconButton>
+        <Divider className="SaveRosterScreenBox_Divider"/>
+        {/* <Typography variant="h6" className="SaveRosterScreenBox_Header">Save Roster</Typography> */}
         <IconButton className="SaveRosterScreenBox_Button SaveRosterScreenBox_Button_Save" onClick={handleSaveButtonClicked} disabled={!(rosterOwner !== undefined && rosterOwner.length > 0 && rosterName !== undefined) && rosterName.length > 0}>SAVE</IconButton>
+        <Typography className="SaveRosterScreenBox_DescriptionText">Saves roster to a database so it is available on this app later</Typography>
+        <Divider className="SaveRosterScreenBox_Divider"/>
+        <IconButton className="SaveRosterScreenBox_Button SaveRosterScreenBox_Button_Download" onClick={handleDownloadButtonClicked}>DOWNLOAD</IconButton>
+        <Typography className="SaveRosterScreenBox_DescriptionText">Downloads the roster as a pdf onto your local machine</Typography>
+        <IconButton className="SaveRosterScreenBox_Button SaveRosterScreenBox_Button_Back" onClick={handleBackButtonClicked}>BACK</IconButton>
+        
       </Box>
     </>
   );
