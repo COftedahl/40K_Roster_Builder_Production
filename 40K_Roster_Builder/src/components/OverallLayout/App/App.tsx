@@ -14,6 +14,7 @@ import './App.css'
 import axios from 'axios';
 import { server_url } from '../../UtilityComponents/Environment Variables/Environment Variables';
 import SaveRosterScreen from '../../MainContentPage/SaveRosterScreen/SaveRosterScreen';
+import saveRosterPDF from '../../UtilityComponents/Functions/PDFFunctions';
 
 interface AppProps {
   
@@ -184,7 +185,7 @@ const App: React.FC<AppProps> = () => {
     setBattleSize(() => null);
   };
 
-  const saveRoster = async (rosterOwner: string, rosterName: string) => {
+  const saveRoster = async ({rosterName, rosterOwner} : {rosterOwner: string, rosterName: string}): Promise<boolean> => {
 
     const  bodyArgs = {
       owner: rosterOwner, 
@@ -201,11 +202,27 @@ const App: React.FC<AppProps> = () => {
 
     if (response.status !== 200) {
       console.error("Saving roster encountered error: ", response.data);
+      return false;
     }
     else {
       console.log("Roster " +  rosterName + " saved");
+      return true;
     }
-  }
+  };
+
+  const saveRosterToPDF = async ({rosterName, rosterOwner} : {rosterOwner: string, rosterName: string}): Promise<boolean> => {
+    const result = await saveRosterPDF({
+      rosterName: rosterName,
+      rosterOwner: rosterOwner, 
+      faction: faction || "", 
+      army: army || "", 
+      detachment: (detachment && detachment !== null ? detachment.name : ""), 
+      rosterCost: pointsUsed, 
+      armyUnits: unitList, 
+      allyUnits: allyUnitList
+    });
+    return result;
+  };
   
   const router = createBrowserRouter([
     {
@@ -272,7 +289,7 @@ const App: React.FC<AppProps> = () => {
         <Header onHomepage={false}/>
         <Box className="MainContentPageOuterContainer">
             <Box className="MainContentPageContainer">
-              <SaveRosterScreen saveRosterFunction={saveRoster}/>
+              <SaveRosterScreen saveRosterFunction={saveRoster} downloadRosterFunction={saveRosterToPDF}/>
             </Box>
           </Box>
         <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>

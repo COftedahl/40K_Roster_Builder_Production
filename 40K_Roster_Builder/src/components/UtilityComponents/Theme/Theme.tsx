@@ -59,7 +59,7 @@ interface Theme {
 const standardBoxShadow: string = "0.0px 1.0px 3.0px 0px rgba(0, 0, 0, 0.3), 0.0px 4.0px 8.0px 3.0px rgba(0, 0, 0, 0.15)";
 const standardBorderRadius: string = "2.5vw";
 
-const Theme: Theme = {
+export const Theme: Theme = {
   appOverallFontSize_p: "1vw",
   appOverallFontSize_h3: "2.5vw", 
   appOverallFontSize_h6: "1.5vw",

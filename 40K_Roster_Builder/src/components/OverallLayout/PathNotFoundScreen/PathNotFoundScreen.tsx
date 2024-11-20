@@ -47,26 +47,35 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
   }
 
   const handleSendReportClicked = async () => {
-    const formatter = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'long', day: '2-digit', hourCycle: 'h24', hour: '2-digit', minute: '2-digit', second: '2-digit'});
+    setSentEmail(true);
+    setSendEmailButtonText("SENDING REPORT");
+    try {
+      const formatter = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'long', day: '2-digit', hourCycle: 'h24', hour: '2-digit', minute: '2-digit', second: '2-digit'});
 
-    const response = await axios.post(server_url + "/email/senderrorreport", {
-      emailContents: 
-        "Error in 40K Web Roster Builder\n" + 
-        "Occurred at " + formatter.format() + "\n" +
-        "Occured from user: " + navigator.userAgent + "\n" +
-        "Error Code: " + errorCode + "\n" + 
-        "Error Message: " + JSON.stringify(error)
-    });
-
-    if (response.status !== 200) {
-      setSentEmail(false);
-      setSendEmailButtonText("RETRY SENDING EMAIL");
-      console.error("Error when sending email: ", response.data);
+      const response = await axios.post(server_url + "/email/senderrorreport", {
+        emailContents: 
+          "Error in 40K Web Roster Builder\n" + 
+          "Occurred at " + formatter.format() + "\n" +
+          "Occured from user: " + navigator.userAgent + "\n" +
+          "Error Code: " + errorCode + "\n" + 
+          "Error Message: " + JSON.stringify(error)
+      });
+  
+      if (response.status !== 200) {
+        setSentEmail(false);
+        setSendEmailButtonText("RETRY SENDING REPORT");
+        console.error("Error when sending email: ", response.data);
+      }
+      else {
+        setSentEmail(true);
+        setSendEmailButtonText("EMAIL SENT");
+        console.log(response.data);
+      }
     }
-    else {
-      setSentEmail(true);
-      setSendEmailButtonText("EMAIL SENT");
-      console.log(response.data);
+    catch (e) {
+      setSentEmail(false);
+      setSendEmailButtonText("RETRY SENDING REPORT");
+      console.error("Error when sending email: ", e);
     }
   }
 

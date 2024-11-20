@@ -51,6 +51,7 @@
   background-color: var(--footerBackgroundColor_Button) !important;
   box-shadow: var(--footerBoxShadow_Button);
 
+
   span {
     border-radius: var(--footerButtonBorderRadius);
     height: 2.5vw;
@@ -68,6 +69,7 @@
 }
 
 .SaveRosterScreenBox_Button_Save {
+  padding: 0.5vh 0.0vw !important;
   /* bottom: 2vh; */
   /* right: 1vw; */
 }

@@ -59,17 +59,18 @@
 }
 
 .PathNotFoundScreenBox_Button_SendReport {
-  left: 2vh;
+  right: 2vh;
+  padding: 0.5vh 1.8vw !important;
 }
 
 .PathNotFoundScreenBox_Button_SendReport:hover {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: var(--footerBackgroundColor_Proceed) !important;
 }
 
 .PathNotFoundScreenBox_Button_ReturnHome {
-  right: 2vh;
+  left: 2vh;
 }
 
 .PathNotFoundScreenBox_Button_ReturnHome:hover {
-  background-color: var(--footerBackgroundColor_Proceed) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
