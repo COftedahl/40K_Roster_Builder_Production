@@ -199,8 +199,8 @@ const App: React.FC<AppProps> = () => {
     }
 
     const response = await axios.post(server_url + "/rosters/saveroster", bodyArgs);
-
-    if (response.status !== 200) {
+    
+    if ((response.status !== 200) || (response.data.response.indexOf("Error") >= 0)) {
       console.error("Saving roster encountered error: ", response.data);
       return false;
     }
@@ -211,6 +211,7 @@ const App: React.FC<AppProps> = () => {
   };
 
   const saveRosterToPDF = async ({rosterName, rosterOwner} : {rosterOwner: string, rosterName: string}): Promise<boolean> => {
+    console.log(army, faction, detachment);
     const result = await saveRosterPDF({
       rosterName: rosterName,
       rosterOwner: rosterOwner, 
@@ -307,6 +308,35 @@ const App: React.FC<AppProps> = () => {
         <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
     </Box>
     ),
+    }, 
+    {
+      path: "error", 
+      element: (
+        <Box className="AppContainer">
+          <CssBaseline/>
+          <ThemeComponent/>
+          <Header onHomepage={false}/>
+          <Box className="MainContentPageOuterContainer">
+            <Box className="MainContentPageContainer">
+              <PathNotFoundScreen/>
+            </Box>
+          </Box>
+          <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+      </Box>
+      ), 
+      errorElement: (
+        <Box className="AppContainer">
+          <CssBaseline/>
+          <ThemeComponent/>
+          <Header onHomepage={false}/>
+          <Box className="MainContentPageOuterContainer">
+            <Box className="MainContentPageContainer">
+              <PathNotFoundScreen/>
+            </Box>
+          </Box>
+          <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+      </Box>
+      ),
     }
   ], 
   {

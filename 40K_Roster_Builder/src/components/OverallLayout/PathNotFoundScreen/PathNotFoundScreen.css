@@ -6,7 +6,7 @@
   background-color: rgb(240, 240, 240);
   border-radius: var(--standardBorderRadius);
   box-shadow: var(--standardBoxShadow);
-  min-height: calc(32vh + 0.5vw);
+  min-height: calc(48vh + 0.5vw);
   margin-top: 5vh;
 
   h6 {
@@ -73,4 +73,25 @@
 
 .PathNotFoundScreenBox_Button_ReturnHome:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.PathNotFoundScreenBox_FormInput {
+  position: relative;
+  margin: 2vh !important;
+  width: 75%;
+  input {
+    text-align: center;
+  }
+  label {
+    transform-origin: center;
+    right: 0px;
+    bottom: 0px;
+    width: 95%;
+    height: 2vh;
+    max-width: 95% !important;
+    transition-duration: 0.3s;
+  }
+  label.Mui-focused {
+    transform: translate(0px, -1vh), scale(0.775, 0.475) !important;
+  }
 }

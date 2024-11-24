@@ -24,8 +24,9 @@ const FactionSelector: React.FC<FactionSelectorProps> = ({faction, army, detachm
     FactionList.XENOS.name,  
   ]
 
-  const [armyOptions, setArmyOptions] = useState<string[]>();
-  const [detachmentOptions, setDetachmentOptions] = useState<Detachment[]>();
+  const [armyOptions, setArmyOptions] = useState<string[] | undefined>((faction && FactionList[faction?.toUpperCase().replace(" ", "_") || ""] ? FactionList[faction?.toUpperCase().replace(" ", "_") || ""].armies.map((army) => army.army) : undefined));
+  const [detachmentOptions, setDetachmentOptions] = useState<Detachment[] | undefined>(faction && FactionList[faction?.toUpperCase().replace(" ", "_") || ""] ? FactionList[faction?.toUpperCase().replace(" ", "_") || ""].armies.find((list_army) => list_army.name === army)?.detachments || undefined : undefined);
+  const [justLoaded, setJustLoaded] = useState<boolean>(true);
 
   const factionSelectorRef = React.createRef();
   const armySelectorRef = React.createRef();
@@ -62,15 +63,20 @@ const FactionSelector: React.FC<FactionSelectorProps> = ({faction, army, detachm
   };
 
   useEffect(() => {
-    if (faction && faction !== "") {
+    setJustLoaded(true);
+  }, []);  
+
+  useEffect(() => {
+    setJustLoaded(false);
+    if (faction && faction !== "" && !justLoaded) {
       if (armySelectorRef.current) {
-        setInterval(() => {armySelectorRef.current?.focus()}, 2);
+        setInterval(() => {armySelectorRef.current?.focus()}, 5);
       }
     }
   }, [faction]);  
   
   useEffect(() => {
-    if (army && army !== "") {
+    if (army && army !== "" && !justLoaded) {
       if (detachmentSelectorRef.current) {
         setInterval(() => {detachmentSelectorRef.current?.focus()}, 3);
       }
