@@ -465,3 +465,17 @@ export const FactionList: FactionList = {
     ]
   }, 
 };
+
+export interface Roster {
+  dateCreated: Date;
+  dateModified: Date;
+  owner: string;
+  name: string;
+  points: number;
+  gameEdition: string;
+  faction: string;
+  army: string;
+  detachment?: string;
+  armyUnits: UnitSelection[];
+  allyUnits: UnitSelection[];
+};

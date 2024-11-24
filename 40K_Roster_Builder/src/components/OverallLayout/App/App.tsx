@@ -15,6 +15,7 @@ import axios from 'axios';
 import { server_url } from '../../UtilityComponents/Environment Variables/Environment Variables';
 import SaveRosterScreen from '../../MainContentPage/SaveRosterScreen/SaveRosterScreen';
 import saveRosterPDF from '../../UtilityComponents/Functions/PDFFunctions';
+import ViewSavedRostersPage from '../../ViewSavedRostersPage/ViewSavedRostersPage';
 
 interface AppProps {
   
@@ -252,33 +253,33 @@ const App: React.FC<AppProps> = () => {
         {
           path: "",
           element: <>
-          <CollapsibleCard summary="Faction Selector" expanded={activeCollapsibleBox === CollapsibleBoxNames[0]} onChange={handleBoxClick} boxName={CollapsibleBoxNames[0]}>
-            <FactionSelector {...factionSelectorProps}/>
-          </CollapsibleCard>
-          <CollapsibleCard summary="Roster Builder"  expanded={activeCollapsibleBox === CollapsibleBoxNames[1]} onChange={handleBoxClick} boxName={CollapsibleBoxNames[1]}>
-            <RosterBuildingArea 
-              army={army ? army : "None"} 
-              detachment={detachment ? detachment : undefined} 
-              selectedRosterSize={battleSize} 
-              pointsUsed={pointsUsed} 
-              availableUnits={availableUnits}
-              availableAllyUnits={availableAllyUnits}
-              unitList={unitList}
-              enhancementList={enhancementList}
-              characterUnitList={characterUnitList}
-              battlelineUnitList={battlelineUnitList}
-              otherUnitList={otherUnitList}
-              setCharacterUnitList={setCharacterUnitList}
-              setBattlelineUnitList={setBattlelineUnitList}
-              setOtherUnitList={setOtherUnitList}
-              allyCharacterUnitList={allyCharacterUnitList}
-              allyBattlelineUnitList={allyBattlelineUnitList}
-              allyOtherUnitList={allyOtherUnitList}
-              setAllyCharacterUnitList={setAllyCharacterUnitList}
-              setAllyBattlelineUnitList={setAllyBattlelineUnitList}
-              setAllyOtherUnitList={setAllyOtherUnitList}/>
-          </CollapsibleCard>
-        </>,
+            <CollapsibleCard summary="Faction Selector" expanded={activeCollapsibleBox === CollapsibleBoxNames[0]} onChange={handleBoxClick} boxName={CollapsibleBoxNames[0]}>
+              <FactionSelector {...factionSelectorProps}/>
+            </CollapsibleCard>
+            <CollapsibleCard summary="Roster Builder"  expanded={activeCollapsibleBox === CollapsibleBoxNames[1]} onChange={handleBoxClick} boxName={CollapsibleBoxNames[1]}>
+              <RosterBuildingArea 
+                army={army ? army : "None"} 
+                detachment={detachment ? detachment : undefined} 
+                selectedRosterSize={battleSize} 
+                pointsUsed={pointsUsed} 
+                availableUnits={availableUnits}
+                availableAllyUnits={availableAllyUnits}
+                unitList={unitList}
+                enhancementList={enhancementList}
+                characterUnitList={characterUnitList}
+                battlelineUnitList={battlelineUnitList}
+                otherUnitList={otherUnitList}
+                setCharacterUnitList={setCharacterUnitList}
+                setBattlelineUnitList={setBattlelineUnitList}
+                setOtherUnitList={setOtherUnitList}
+                allyCharacterUnitList={allyCharacterUnitList}
+                allyBattlelineUnitList={allyBattlelineUnitList}
+                allyOtherUnitList={allyOtherUnitList}
+                setAllyCharacterUnitList={setAllyCharacterUnitList}
+                setAllyBattlelineUnitList={setAllyBattlelineUnitList}
+                setAllyOtherUnitList={setAllyOtherUnitList}/>
+            </CollapsibleCard>
+          </>,
         }
       ]
     }, 
@@ -291,6 +292,33 @@ const App: React.FC<AppProps> = () => {
         <Box className="MainContentPageOuterContainer">
             <Box className="MainContentPageContainer">
               <SaveRosterScreen saveRosterFunction={saveRoster} downloadRosterFunction={saveRosterToPDF}/>
+            </Box>
+          </Box>
+        <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+    </Box>),
+    errorElement: (
+      <Box className="AppContainer">
+        <CssBaseline/>
+        <ThemeComponent/>
+        <Header onHomepage={false}/>
+        <Box className="MainContentPageOuterContainer">
+          <Box className="MainContentPageContainer">
+            <PathNotFoundScreen/>
+          </Box>
+        </Box>
+        <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>
+    </Box>
+    ),
+    }, 
+    {
+      path: "viewrosters",
+      element: (<Box className="AppContainer">
+        <CssBaseline/>
+        <ThemeComponent/>
+        <Header onHomepage={false}/>
+        <Box className="MainContentPageOuterContainer">
+            <Box className="MainContentPageContainer">
+              <ViewSavedRostersPage/>
             </Box>
           </Box>
         <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>

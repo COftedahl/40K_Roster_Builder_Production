@@ -22,6 +22,7 @@ interface FactionAddingAreaProps {
   setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   enhancementList: Enhancement[];
   availableUnits: Unit[];
+  allowRosterModifications?: boolean;
 }
 
 const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
@@ -34,7 +35,8 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   setBattlelineUnitList, 
   setOtherUnitList, 
   enhancementList, 
-  availableUnits}) => {
+  availableUnits, 
+  allowRosterModifications}) => {
 
   const [addUnitPopupOpen, setAddUnitPopupOpen] = useState<boolean>(false);
   const [unitTypeForPopup, setUnitTypeForPopup] = useState<UnitType | undefined>();
@@ -109,11 +111,12 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
       <Box className="FactionAddingAreaBox">
         <Typography className="FactionAddingArea_TypeText">{type}</Typography>
         <Divider className="FactionAddingArea_TypeDivider"/>
-        <UnitTypeAddingArea unitType={UnitType.CHARACTERS} unitList={characterUnitList} setUnitList={setCharacterUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick}/>
-        <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick}/>
-        <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick}/>
-        <IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
+        <UnitTypeAddingArea unitType={UnitType.CHARACTERS} unitList={characterUnitList} setUnitList={setCharacterUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
+        <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
+        <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
+        {allowRosterModifications === undefined || allowRosterModifications === true ? <><IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
         <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={type === FactionAddingAreaType.ALLIES ? army + " Allies" : army}/>
+        </>: ""}
       </Box>
       }
     </>

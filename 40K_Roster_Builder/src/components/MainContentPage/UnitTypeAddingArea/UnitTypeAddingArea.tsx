@@ -14,9 +14,10 @@ interface UnitTypeAddingAreaProps {
   setUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   enhancementList: Enhancement[];
   handleUnitTypeAddingAreaAddButtonClick: (unitType: UnitType) => void;
+  allowRosterModifications?: boolean;
 }
 
-const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList, enhancementList, handleUnitTypeAddingAreaAddButtonClick}) => {
+const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitList, setUnitList, enhancementList, handleUnitTypeAddingAreaAddButtonClick, allowRosterModifications}) => {
   // const clickCard = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
   //   console.log("clicked element");
   // };
@@ -70,9 +71,13 @@ const UnitTypeAddingArea: React.FC<UnitTypeAddingAreaProps> = ({unitType, unitLi
             <UnitDisplay unit={unit} key={index} unitIndex={index} handleUnitClick={handleUnitClick}></UnitDisplay>
           );
         })}
+        {allowRosterModifications === undefined || allowRosterModifications === true ? 
         <IconButton className="UnitTypeAddingArea_AddButton" onClick={handleAddButtonClick}><AddIcon/></IconButton>
+        :
+        ""
+        }
       </Box>
-      {selectedUnit !== undefined ? 
+      {(allowRosterModifications === undefined || allowRosterModifications === true) && selectedUnit !== undefined ? 
         <EditUnitPopupScreen 
             open={isPopupOpen} 
             unit={selectedUnit.unit} 

@@ -13,7 +13,7 @@
   padding-bottom: 0.3vh;
   min-height: 4.0vh;
 
-  & :nth-child(even) {
+  & div:nth-child(even) {
     background-image: var(--unitDisplayBackgroundImage_Secondary) !important;
   }
   & :nth-child(2) {
@@ -21,10 +21,6 @@
   }
   & :nth-child(3) {
     margin-top: 0vh;
-  }
-  & :last-child {
-    /* keeps the add_unit buttons from looking weird */
-    background-image: none !important;
   }
 }
 

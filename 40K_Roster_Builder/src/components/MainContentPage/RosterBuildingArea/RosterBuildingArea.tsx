@@ -24,6 +24,7 @@ interface RosterBuildingAreaProps {
   setAllyCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setAllyBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setAllyOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
+  allowRosterModifications?: boolean;
 }
 
 const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
@@ -46,7 +47,8 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     allyOtherUnitList, 
     setAllyCharacterUnitList, 
     setAllyBattlelineUnitList, 
-    setAllyOtherUnitList}) => {
+    setAllyOtherUnitList, 
+    allowRosterModifications}) => {
 
 
   const factionAddingAreaProps = {
@@ -59,7 +61,8 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     setOtherUnitList: setOtherUnitList, 
     enhancementList: enhancementList,
     type: FactionAddingAreaType.ARMY, 
-    availableUnits: availableUnits
+    availableUnits: availableUnits, 
+    allowRosterModifications: allowRosterModifications
   }
 
   const allyFactionAddingAreaProps = {
@@ -72,7 +75,8 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     setOtherUnitList: setAllyOtherUnitList, 
     enhancementList: [],
     type: FactionAddingAreaType.ALLIES, 
-    availableUnits: availableAllyUnits
+    availableUnits: availableAllyUnits, 
+    allowRosterModifications: allowRosterModifications
   }
 
   // useEffect(() => {

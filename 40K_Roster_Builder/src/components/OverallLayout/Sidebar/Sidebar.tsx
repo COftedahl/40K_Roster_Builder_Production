@@ -67,6 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({open}) => {
   const links: Link[] = [
     {text: "Homepage", path: "/"}, 
     {text: "Save Roster", path: "/saveroster"},
+    {text: "View Saved Rosters", path: "/viewrosters"}, 
     {text: "Send Error Report", path: "/error"}
   ];
 
