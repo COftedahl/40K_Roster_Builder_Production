@@ -1,0 +1,70 @@
+.UnitTypeAddingAreaBox {
+  border-radius: var(--unitTypeAddingAreaBorderRadius);
+  box-shadow: var(--unitTypeAddingAreaBoxShadow);
+  border: var(--unitTypeAddingAreaBorder);
+  background-color: var(--unitTypeAddingAreaBackgroundColor);
+  color: var(--unitTypeAddingAreaColor);
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 1.5vh 0vh 0vh 0vh;
+  padding-bottom: 0.3vh;
+  min-height: 4.0vh;
+
+  & div:nth-child(even) {
+    background-image: var(--unitDisplayBackgroundImage_Secondary) !important;
+  }
+  & :nth-child(2) {
+    background-image: none !important;
+  }
+  & :nth-child(3) {
+    margin-top: 0vh;
+  }
+}
+
+.UnitTypeAddingArea_UnitTypeText {
+  display: flex;
+  justify-content: center;
+  /* text-align: left; */
+  flex-direction: column;
+  font-size: calc(var(--appOverallFontSize_p) + 0.25vw) !important;
+  height: 3.0vh;
+  width: 100%;
+  margin: 0.5vh 0vh 0.5vh 0vh !important;
+  /* padding: 0.0vh 1.4vw !important; */
+  /* margin-top: 0.5vw !important; */
+}
+
+.UnitTypeAddingArea_Divider {
+  position: relative;
+  border: 0.1vh solid rgba(25, 50, 130, 0.1) !important;
+  margin-bottom: 0.4vh !important;
+  /* margin: 0vh 3vh 0.4vh 1vh !important; */
+  width: 95%;
+  height: 0.01vh;
+}
+
+.UnitDisplayHeadersBox {
+  * {
+    text-decoration: underline;
+    font-size: calc(var(--appOverallFontSize_p) + 0.1vw) !important;
+  }
+}
+
+.UnitTypeAddingArea_AddButton {
+  position: absolute !important;
+  top: 0.0%;
+  right: 1.0%;
+  width: 4.0vh;
+  height: 4.0vh;
+  padding: 0px !important;
+  background-size: 60% !important;
+  background-color: rgba(0, 0, 0, 0.0);
+
+  svg {
+    font-size: 3.5vh; 
+    color: var(--appOverallColor_Icon);
+  }
+}

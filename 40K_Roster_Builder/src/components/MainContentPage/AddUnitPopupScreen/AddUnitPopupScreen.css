@@ -1,0 +1,100 @@
+.AddUnitPopupBox {
+  position: relative;
+  display: block;
+  height: fit-content !important;
+  width: 50vw !important;
+  background-color: rgb(220, 220, 220);
+  border-radius: var(--standardBorderRadius);
+  box-shadow: var(--standardBoxShadow);
+  min-height: calc(32vh + 0.5vw);
+
+  h6 {
+    margin-bottom: 0vh;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: none;
+    transform: none;
+  }
+  h6:active, h6:hover {
+    transition: none;
+    transform: none;
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+}
+
+.AddUnitPopupBox_ErrorMsg {
+  color: var(--footerBackgroundColor_Warning);
+  text-shadow: 0vh 0vh 2vh rgba(0, 0, 0, 1.0);
+  font-weight: 900 !important;
+}
+
+.AddUnitPopupBox_Button {
+  border-radius: var(--footerButtonBorderRadius) !important;
+  padding: 0px !important;
+  height: 2.5vw;
+  position: absolute !important;
+  color: var(--footerColor) !important;
+
+  border-radius: var(--footerButtonBorderRadius);
+  height: 2.5vw !important;
+  padding: 0.5vh 2.8vw !important;
+  width: 10vw;
+  font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
+  transition: background-color 0.3s !important;
+  background-color: var(--footerBackgroundColor_Button) !important;
+  box-shadow: var(--footerBoxShadow_Button);
+
+  span {
+    border-radius: var(--footerButtonBorderRadius);
+    height: 2.5vw;
+  }
+}
+
+.AddUnitPopupBox_Button_Back {
+  bottom: 2vh;
+  left: 1vw;
+}
+
+.AddUnitPopupBox_Button_Back:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.AddUnitPopupBox_Button_Save {
+  bottom: 2vh;
+  right: 1vw;
+}
+
+.AddUnitPopupBox_Button_Save:hover {
+  background-color: var(--footerBackgroundColor_Proceed) !important;
+}
+
+.AddUnitPopupBox_Divider {
+  justify-self: center;
+  margin-top: 0px;
+  border: 0.1vh solid rgba(25, 50, 130, 0.1) !important;
+  margin-bottom: 2vh !important;
+  /* margin: 0vh 3vh 0.4vh 1vh !important; */
+  width: 95%;
+  height: 0.01vh;
+}
+
+.AddUnitPopupBox_UnitSizeSelector, .AddUnitPopupBox_UnitSelector { 
+  width: 85% !important;
+  min-height: none;
+  z-index: 1205 !important;
+  margin-bottom: 2vh;
+  div {
+    line-height: normal !important;
+  }
+  svg {
+    margin-top: auto !important;
+  }
+}
+
+.AddUnitPopupBox_UnitSizeSelector_InputLabel, .AddUnitPopupBox_UnitSelector_InputLabel {
+  left: 7.9% !important;
+}
+
+.AddUnitPopupBox_UnitSizeSelector_Item, .AddUnitPopupBox_UnitSelector_Item {
+  white-space: pre !important;
+}
+

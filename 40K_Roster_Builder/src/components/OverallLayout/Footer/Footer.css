@@ -1,0 +1,71 @@
+.FooterBar {
+  width: 100%;
+  flex-grow: 0;
+  height: 2.5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  bottom: 0.3vh;
+  width: 75% !important;
+
+  background-color: var(--footerBackgroundColor);
+  border-radius: var(--footerBorderRadius);
+  border: var(--footerBorder);
+  box-shadow: var(--footerBoxShadow);
+  color: var(--footerColor);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.FooterClearButton, .FooterSaveButton {
+  border-radius: var(--footerButtonBorderRadius) !important;
+  padding: 0px !important;
+  height: 2.5vw;
+  position: absolute !important;
+  color: var(--footerColor) !important;
+
+  border-radius: var(--footerButtonBorderRadius);
+  height: 2.5vw !important;
+  padding: 0.5vh 2.8vw !important;
+  width: 10vw;
+  font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
+  transition: background-color 0.3s !important;
+  background-color: var(--footerBackgroundColor_Button) !important;
+  box-shadow: var(--footerBoxShadow_Button);
+
+  span {
+    border-radius: var(--footerButtonBorderRadius);
+    height: 2.5vw;
+  }
+} 
+
+.FooterButton {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+ }
+
+ .FooterButton_hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+ }
+
+.FooterClearButton {
+  left: 3vw;
+}
+
+.FooterClearButton:hover {
+  background-color: var(--footerBackgroundColor_Warning) !important;
+}
+
+.FooterSaveButton {
+  right: 3vw;
+}
+
+.FooterSaveButton:hover {
+  background-color: var(--footerBackgroundColor_Proceed) !important;
+}

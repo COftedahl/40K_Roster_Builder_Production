@@ -1,0 +1,62 @@
+.ViewSavedRostersPageBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ViewSavedRostersPageBox_NoRostersFound {
+  
+  height: fit-content !important;
+  width: 50vw !important;
+  background-color: rgb(240, 240, 240);
+  border-radius: var(--standardBorderRadius);
+  box-shadow: var(--standardBoxShadow);
+  min-height: calc(3vh + 0.5vw);
+  margin-top: 5vh;
+
+  h6 {
+    margin-bottom: 0vh;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: none;
+    transform: none;
+  }
+  h6:active, h6:hover {
+    transition: none;
+    transform: none;
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+}
+
+.ViewSavedRostersPageBox_Inner {
+  display: block;
+  width: 90%;
+}
+
+.ViewSavedRostersPageBox_Rosters {
+  height: 100%;
+  width: 100%;
+}
+
+.ViewSavedRostersPageBox_ButtonBox {
+  align-self: center;
+}
+
+.ViewSavedRostersPageBox_Button {
+  /* position: absolute !important; */
+  /* top: 50%; */
+  color: var(--appOverallColor_Icon) !important;
+  flex-grow: -1 !important;
+  margin: auto;
+  svg {
+    font-size: 3.5vh; 
+  }
+}
+
+.ViewSavedRostersPageBox_Button_Forward {
+  /* right: 0.5vw; */
+}
+
+.ViewSavedRostersPageBox_Button_Backward {
+  /* left: 0.5vw; */
+}

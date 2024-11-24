@@ -1,0 +1,73 @@
+.HeaderBar {
+  width: 75%;
+  flex-grow: 0;
+  height: 5vw;
+  max-height: 8%;
+  min-height: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  top: 0px;
+  
+  
+  background-color: var(--headerBackgroundColor);
+  border-radius: var(--headerBorderRadius);
+  border: var(--headerBorder);
+  box-shadow: var(--headerBoxShadow);
+  color: var(--headerColor);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.HeaderTitle {
+  flex-grow: 1;
+  max-width: 80%;
+  align-self: center;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  max-height: 100%;
+}
+
+.MenuButton {
+  position: absolute;
+  left: 1vw;
+  top: 0.35vw;
+  outline: none !important;
+  width: 3.5vw;
+  padding: 0px !important;
+  height: 3.5vw;
+  max-height: 80%;
+  max-width: 80%;
+  svg {
+    font-size: 3vw; 
+  }
+}
+
+.HelpButton {
+  position: absolute;
+  right: 1vw;
+  top: 0.35vw;
+  outline: none !important;
+  width: 3.5vw;
+  padding: 0px !important;
+  height: 3.5vw;
+  max-height: 80%;
+  max-width: 80%;
+  svg {
+    font-size: 3vw; 
+  }
+}
+
+.HeaderButton {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+}
+
+.HeaderButton_hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+}
