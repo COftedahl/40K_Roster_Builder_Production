@@ -87,7 +87,7 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
     navigate("/");
   }
 
-  const handleErrorNotesChange: React.ChangeEventHandler = (event: React.ChangeEvent) => {
+  const handleErrorNotesChange: React.ChangeEventHandler = (event: any) => {
     try {
       setErrorNotes(event.target.value);
     }

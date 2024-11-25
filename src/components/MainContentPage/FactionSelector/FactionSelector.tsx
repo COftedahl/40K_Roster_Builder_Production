@@ -28,9 +28,9 @@ const FactionSelector: React.FC<FactionSelectorProps> = ({faction, army, detachm
   const [detachmentOptions, setDetachmentOptions] = useState<Detachment[] | undefined>(faction && FactionList[faction?.toUpperCase().replace(" ", "_") || ""] ? FactionList[faction?.toUpperCase().replace(" ", "_") || ""].armies.find((list_army) => list_army.name === army)?.detachments || undefined : undefined);
   const [justLoaded, setJustLoaded] = useState<boolean>(true);
 
-  const factionSelectorRef = React.createRef();
-  const armySelectorRef = React.createRef();
-  const detachmentSelectorRef = React.createRef();
+  const factionSelectorRef: any = React.createRef();
+  const armySelectorRef: any = React.createRef();
+  const detachmentSelectorRef: any = React.createRef();
 
   const handleFactionChange = (e: SelectChangeEvent, child: ReactNode) => {
     setFaction(e.target.value);

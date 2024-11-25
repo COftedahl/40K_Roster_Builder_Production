@@ -26,7 +26,7 @@ const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, 
     event.stopPropagation();
   };
 
-  const handleUnitSelectorChange = (event: SelectChangeEvent, child: ReactNode) => {
+  const handleUnitSelectorChange = (event: SelectChangeEvent, child: any) => {
     try {
       setSelectedUnitSizeIndex(undefined);
       setSelectedUnit(availableUnits.find((unit: Unit) => unit.name === child?.props.value) || undefined);
@@ -36,7 +36,7 @@ const AddUnitPopupScreen: React.FC<AddUnitPopupScreenProps> = ({availableUnits, 
     }
   }
 
-  const handleUnitSizeSelectorChange = (event: SelectChangeEvent, child: ReactNode) => {
+  const handleUnitSizeSelectorChange = (event: SelectChangeEvent, child: any) => {
     try {
       setSelectedUnitSizeIndex(child?.props.value);
     }

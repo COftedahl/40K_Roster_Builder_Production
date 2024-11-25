@@ -45,7 +45,7 @@ const EditUnitPopupScreen: React.FC<EditUnitPopupScreenProps> = ({open, unit, un
   const [currEnhancementIndex, setCurrEnhancementIndex] = useState<number>(unit.enhancement ? availableEnhancements.indexOf(unit.enhancement) : 0);
   const [isCurrEnhancementFree, setIsCurrEnhancmentFree] = useState<boolean>(unit.enhancement?.doesCostPoints || false);
   
-  const handleSizeSelectorChange = (event: SelectChangeEvent, child: ReactNode) => {
+  const handleSizeSelectorChange = (event: SelectChangeEvent, child: any) => {
     try {
       setCurrSizeSelectionIndex(child?.props.value || 0);
     }
@@ -54,7 +54,7 @@ const EditUnitPopupScreen: React.FC<EditUnitPopupScreenProps> = ({open, unit, un
     }
   }
 
-  const handleEnhancementSelectorChange = (event: SelectChangeEvent, child: ReactNode) => {
+  const handleEnhancementSelectorChange = (event: SelectChangeEvent, child: any) => {
     try {
       if (child?.props.value <= 0) {
         setCurrEnhancementIndex(0);

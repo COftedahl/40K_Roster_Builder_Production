@@ -52,7 +52,7 @@ const SaveRosterScreen: React.FC<SaveRosterScreenProps> = ({saveRosterFunction, 
     }
   };
 
-  const handleRosterNameChange: React.ChangeEventHandler = (event: React.ChangeEvent) => {
+  const handleRosterNameChange: React.ChangeEventHandler = (event: any) => {
     try {
       setRosterName(event.target.value);
     }
@@ -61,7 +61,7 @@ const SaveRosterScreen: React.FC<SaveRosterScreenProps> = ({saveRosterFunction, 
     }
   };
 
-  const handleRosterOwnerChange: React.ChangeEventHandler = (event: React.ChangeEvent) => {
+  const handleRosterOwnerChange: React.ChangeEventHandler = (event: any) => {
     try {
       setRosterOwner(event.target.value);
     }

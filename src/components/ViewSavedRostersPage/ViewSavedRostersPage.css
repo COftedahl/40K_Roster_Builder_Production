@@ -14,6 +14,7 @@
   box-shadow: var(--standardBoxShadow);
   min-height: calc(3vh + 0.5vw);
   margin-top: 5vh;
+  flex-direction: column;
 
   h6 {
     margin-bottom: 0vh;
