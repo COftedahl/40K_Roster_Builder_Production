@@ -1,1 +1,1 @@
-export const server_url: string = "http://localhost:5000";
+export const server_url: string = "https://40-k-roster-builder-back-end-production.vercel.app";
