@@ -9,7 +9,21 @@
   background-color: rgba(0, 0, 0, 0.03);
   border-radius: var(--standardBorderRadius);
   box-shadow: var(--standardBoxShadow);
-  min-height: calc(62vh + 0.5vw);
+  /* min-height: calc(62vh + 0.5vw); */
+  min-height: 50vh;
+  max-height: 88vh;
+}
+
+.SaveRosterScreenBox_ContentBox {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 100%;
+  margin-bottom: calc(35px + 1vh); 
+  /* margin-bottom: max(5vh, 25px); */
+}
+
+.SaveRosterScreenBox_Header, .SaveRosterScreenBox_Header_Request {
+  max-width: 100%;
 }
 
 .SaveRosterScreenBox_FormInput {
@@ -24,7 +38,7 @@
     right: 0px;
     bottom: 0px;
     width: 95%;
-    height: 2vh;
+    /* height: 2vh; */
     max-width: 95% !important;
     transition-duration: 0.3s;
   }
@@ -37,6 +51,8 @@
   border-radius: var(--footerButtonBorderRadius) !important;
   padding: 0px !important;
   height: 2.5vw;
+  max-height: 25px;
+  min-height: 20px;
   /* position: absolute !important; */
   position: relative;
   color: var(--footerColor) !important;
@@ -46,6 +62,7 @@
   padding: 0.5vh 2.8vw !important;
   margin: 1vh !important;
   width: 10vw;
+  min-width: 50px;
   font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
   transition: background-color 0.3s !important;
   background-color: var(--footerBackgroundColor_Button) !important;
@@ -78,6 +95,10 @@
   background-color: var(--footerBackgroundColor_Proceed) !important;
 }
 
+.SaveRosterScreenBox_Button_Download {
+  min-width: 100px;
+}
+
 .SaveRosterScreenBox_Button_Download:hover {
   background-color: var(--footerBackgroundColor_Proceed) !important;
 }
@@ -90,4 +111,8 @@
   margin-top: 1.3vh !important;
   width: 95%;
   height: 0.01vh;
+}
+
+.SaveRosterScreenBox_DescriptionText_Download {
+  /* margin-bottom: 10px !important; */
 }

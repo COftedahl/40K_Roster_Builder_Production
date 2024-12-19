@@ -3,6 +3,8 @@ import { useEffect } from "react";
 interface Theme {
   [key: string]: string;//allows indexing of the values in Theme
 
+  minAppWidth: string;
+
   appOverallFontSize_p: string;
   appOverallFontSize_h3: string; 
   appOverallFontSize_h6: string;
@@ -58,11 +60,17 @@ interface Theme {
 
 const standardBoxShadow: string = "0.0px 1.0px 3.0px 0px rgba(0, 0, 0, 0.3), 0.0px 4.0px 8.0px 3.0px rgba(0, 0, 0, 0.15)";
 const standardBorderRadius: string = "2.5vw";
+const minAppWidth: string = "250px";
 
 export const Theme: Theme = {
-  appOverallFontSize_p: "1vw",
-  appOverallFontSize_h3: "2.5vw", 
-  appOverallFontSize_h6: "1.5vw",
+  minAppWidth: minAppWidth,
+
+  // appOverallFontSize_p: "1vw",
+  // appOverallFontSize_h3: "2.5vw", 
+  // appOverallFontSize_h6: "1.5vw",
+  appOverallFontSize_p: "auto",
+  appOverallFontSize_h3: "auto", 
+  appOverallFontSize_h6: "auto",
   appOverallBorderRadius: standardBorderRadius,
   appOverallColor: "blacK",
   appOverallBoxShadow: standardBoxShadow,

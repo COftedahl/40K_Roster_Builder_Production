@@ -101,11 +101,13 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
     <Box className="PathNotFoundScreenBox">
       <Typography variant="h6">{getErrorHeaderText(errorCode)}</Typography>
       <Divider className="PathNotFoundScreenBox_Divider"/>
-      <Typography>Oops! Looks like you found a bug! <br/>
-        {getErrorBodyText(errorCode)}
-        If you think this should be looked at, click the "Send Error Report" button below. Any notes you wish to add to the error report may be entered in the textbox below. <br/>
-        You can use the sidebar to navigate back as usual, or use the "Return Home" button below to return to the Home page. <br/>
-        Error Code: {errorCode}</Typography>
+      <Box className="PathNotFoundScreenBox_ContentBox">
+        <Typography>Oops! Looks like you found a bug! <br/>
+          {getErrorBodyText(errorCode)}
+          If you think this should be looked at, click the "Send Error Report" button below. Any notes you wish to add to the error report may be entered in the textbox below. <br/>
+          You can use the sidebar to navigate back as usual, or use the "Return Home" button below to return to the Home page. <br/>
+          Error Code: {errorCode}
+        </Typography>
         <FormControl className="PathNotFoundScreenBox_FormInput">
           <InputLabel disableAnimation>Error Notes</InputLabel>
           <Input value={errorNotes} onChange={handleErrorNotesChange} multiline>
@@ -117,6 +119,7 @@ const PathNotFoundScreen: React.FC<PathNotFoundScreenProps> = () => {
             {sendEmailButtonText}
         </IconButton>
         <IconButton className="PathNotFoundScreenBox_Button PathNotFoundScreenBox_Button_ReturnHome" onClick={handleReturnHomeClicked}>RETURN HOME</IconButton>
+      </Box>
     </Box>
     </>
   );

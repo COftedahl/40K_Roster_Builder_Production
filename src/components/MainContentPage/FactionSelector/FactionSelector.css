@@ -7,8 +7,6 @@
   .FactionSelector_Dropdown {
     display: inline-block;
     margin: 1vh 0.5vh;
-    padding: auto;
-    height: 5vh;
     transition: height 0.5s linear, width 0.5s linear, visibility 0.5s linear, opacity 0.5s linear, margin 0.5s linear;
     label {
       transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, height 0.5s linear, line-height 0.5s linear, padding 0.5s linear;

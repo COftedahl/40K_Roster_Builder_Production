@@ -28,6 +28,7 @@ const EditUnitPopupScreen: React.FC<EditUnitPopupScreenProps> = ({open, unit, un
 
   const saveData: React.MouseEventHandler = (event: React.MouseEvent) => {
     saveUnitData({...unit, selectedSizeIndex: currSizeSelectionIndex, enhancement: (currEnhancement && currEnhancement.name ? {...currEnhancement, doesCostPoints: !isCurrEnhancementFree} : undefined)}, unitIndex);
+    closeBackdropFunction();
   }
 
   const deleteUnitFromList: React.MouseEventHandler = (event: React.MouseEvent) => {
