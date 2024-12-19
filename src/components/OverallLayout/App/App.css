@@ -11,6 +11,7 @@
   min-width: var(--minAppWidth);
   height: 100vh;
   
+  vertical-align: baseline;
 }
 
 .AppContainer {
