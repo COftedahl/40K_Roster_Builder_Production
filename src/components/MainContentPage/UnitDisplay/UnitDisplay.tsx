@@ -18,8 +18,8 @@ const UnitDisplay: React.FC<UnitDisplayProps> = ({unit, handleUnitClick, unitInd
     <>
     {unit && unit.costOptions && unit.costOptions.length > 0 && 
       <Box className="UnitDisplayBox" onClick={handleBoxClick}>
-        <Typography>{unit.name}</Typography>
-        <Typography>{unit.costOptions[unit.selectedSizeIndex].cost + 
+        <Typography className="UnitDisplayTypography">{unit.name}</Typography>
+        <Typography className="UnitDisplayTypography">{unit.costOptions[unit.selectedSizeIndex].cost + 
                 (unit.enhancement &&  unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0) }</Typography>
         <Typography className="UnitDisplayTypography">{
           (unit.unitType === UnitType.CHARACTERS 
@@ -27,7 +27,7 @@ const UnitDisplay: React.FC<UnitDisplayProps> = ({unit, handleUnitClick, unitInd
             (unit.enhancement ? " with " + unit.enhancement.name : "")
           : unit.costOptions[unit.selectedSizeIndex].modelCountString)}
         </Typography>
-        <Typography>{(unit.isUnique ? "Epic " : "") + (unit.unitType === UnitType.OTHER ? "" : unit.unitType)}</Typography>
+        <Typography className="UnitDisplayTypography">{(unit.isUnique ? "Epic " : "") + (unit.unitType === UnitType.OTHER ? "" : unit.unitType)}</Typography>
       </Box>}
     </>
   );
