@@ -1,5 +1,6 @@
 .HeaderBar {
-  width: 75%;
+  /* width: 75%; */
+  width: 100%;
   flex-grow: 0;
   height: 5vw;
   max-height: 8%;
@@ -9,7 +10,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: fixed !important;
+  /* position: fixed !important; */
+  position: relative;
   top: 0px;
   
   

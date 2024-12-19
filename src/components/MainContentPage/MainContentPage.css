@@ -12,8 +12,8 @@
   flex-grow: 1;
   position: relative;
   /* top: 2%; */
-  top: calc(min(max(5vw, 3%), 8%) + 0.2vh) !important;
-  max-height: calc(100% - min(max(5vw, 3%), 8%) - 2.9vw);
+  /* top: calc(min(max(5vw, 3%), 8%) + 0.2vh) !important; */
+  /* max-height: calc(100% - min(max(5vw, 3%), 8%) - 2.9vw); */
 
   overflow: auto;
 

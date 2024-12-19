@@ -8,8 +8,9 @@
   justify-content: center;
   align-items: center;
   & .MuiDrawer-paper {
-    top: min(8%, 5vw);
-    height: calc(100% - min(8%, 5vw) - 2.8vw + 0.2vh);
+    /* top: min(8%, 5vw); */
+    top: min(max(4vw, 3vw), 8vw);
+    height: calc(100% - min(max(4vw, 3vw), 8vw) - max(25px, 2.5vw));
     position: absolute;
     border-radius: 8px;
     border-top-left-radius: 0px;

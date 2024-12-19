@@ -8,9 +8,11 @@
   justify-content: center;
   align-items: center;
 
-  position: fixed;
+  /* position: fixed; */
+  position: relative;
   bottom: 0.3vh;
-  width: 75% !important;
+  /* width: 75% !important; */
+  width: 100%;
   min-width: var(--minAppWidth);
 
   background-color: var(--footerBackgroundColor);
