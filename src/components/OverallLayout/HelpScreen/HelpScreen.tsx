@@ -26,7 +26,7 @@ const HelpScreen: React.FC<HelpScreenProps> = ({open, closeBackdropFunction}) =>
                   and then based on unit type, e.g. Character, Battleline, or other. <br/>
                   From this screen, you can use the "+" buttons on the right side to add units to your roster. <br/>
                   If you wish to edit any unit already in your roster, simply click on that unit entry and edit their data from the popup. <br/>
-                  The sidebar (accessible from the buton on the left side of the appbar on the top of your screen) allows navigation to different screens, and the buttons 
+                  The sidebar (accessible from the button on the left side of the appbar on the top of your screen) allows navigation to different screens, and the buttons 
                   on the bottom of your screen modify your roster according to their indicated functionality. <br/>
                   Any questions may be directed to your (possibly remote) IT Support Technician, Cole. <br/>
                   Happy Roster Building! 
