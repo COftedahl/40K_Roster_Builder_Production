@@ -7,12 +7,12 @@
   "display": "standalone", 
   "icons": [
     {
-      "src": "Squirrel_Square_192_PNG.png", 
+      "src": "/Squirrel_Square_192_PNG.png", 
       "sizes": "192x192", 
       "type": "image/png"
     },
     {
-      "src": "Squirrel_Square_512_PNG.png", 
+      "src": "/Squirrel_Square_512_PNG.png", 
       "sizes": "512x512", 
       "type": "image/png"
     }
