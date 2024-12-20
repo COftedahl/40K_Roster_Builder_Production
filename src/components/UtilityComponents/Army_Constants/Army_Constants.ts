@@ -147,6 +147,13 @@ interface FactionList_ArmyEntry {
 //   // WORLD_EATERS: FactionList_ArmyEntry;
 // }
 
+// {name: "AAAAA", enhancements: [
+//   {name: "AAAAA", cost: 15, doesCostPoints: true}, 
+//   {name: "AAAAA", cost: 15, doesCostPoints: true}, 
+//   {name: "AAAAA", cost: 35, doesCostPoints: true}, 
+//   {name: "AAAAA", cost: 20, doesCostPoints: true}
+// ]}
+
 export const FactionList: FactionList = {
   SPACE_MARINES: {
     key: "Space Marines", 
@@ -166,6 +173,12 @@ export const FactionList: FactionList = {
           {name: "Artisan of War", cost: 20, doesCostPoints: true}, 
           {name: "Icon of the Angel", cost: 10, doesCostPoints: true}, 
           {name: "Visage of Death", cost: 15, doesCostPoints: true},
+        ]}, 
+        {name: "Angelic Inheritors", enhancements: [
+          {name: "Prescient Flash", cost: 20, doesCostPoints: true}, 
+          {name: "Troubling Visions", cost: 15, doesCostPoints: true}, 
+          {name: "Blazing Icon", cost: 20, doesCostPoints: true}, 
+          {name: "Ordained Sacrifice", cost: 25, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.DARK_ANGELS, name: Army.DARK_ANGELS, key: Army.DARK_ANGELS, detachments: [
@@ -174,14 +187,20 @@ export const FactionList: FactionList = {
           {name: "Pennant of Remembrance", cost: 10, doesCostPoints: true}, 
           {name: "Shroud of Heroes", cost: 25, doesCostPoints: true}, 
           {name: "Stubborn Tenacity", cost: 15, doesCostPoints: true},
+        ]}, 
+        {name: "Lion's Blade Task Force", enhancements: [
+          {name: "Calibanite Armaments", cost: 15, doesCostPoints: true}, 
+          {name: "Lord of the Hunt", cost: 15, doesCostPoints: true}, 
+          {name: "Stalwart Champion", cost: 25, doesCostPoints: true}, 
+          {name: "Fulgus Magna", cost: 20, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.DEATHWATCH, name: Army.DEATHWATCH, key: Army.DEATHWATCH, detachments: [
         {name: "Black Spear Task Force", enhancements: [
-          {name: "Beacon Angelis", cost: 30, doesCostPoints: true}, 
-          {name: "Osseus Key", cost: 20, doesCostPoints: true}, 
-          {name: "The Tome of Ectoclades", cost: 40, doesCostPoints: true}, 
-          {name: "Thief of Secrets", cost: 15, doesCostPoints: true},
+          {name: "Beacon Angelis", cost: 25, doesCostPoints: true}, 
+          {name: "Osseus Key", cost: 15, doesCostPoints: true}, 
+          {name: "The Tome of Ectoclades", cost: 30, doesCostPoints: true}, 
+          {name: "Thief of Secrets", cost: 25, doesCostPoints: true},
         ]}
       ]}, 
       {army: Army.GREY_KNIGHTS, name: Army.GREY_KNIGHTS, key: Army.GREY_KNIGHTS, detachments: [
@@ -190,6 +209,12 @@ export const FactionList: FactionList = {
           {name: "First to the Fray", cost: 35, doesCostPoints: true}, 
           {name: "Inescapable Wrath", cost: 15, doesCostPoints: true}, 
           {name: "Sigil of Exigence", cost: 30, doesCostPoints: true},
+        ]}, 
+        {name: "Warpbane Task Force", enhancements: [
+          {name: "Mandulian Reliquary", cost: 20, doesCostPoints: true}, 
+          {name: "Radiant Champion", cost: 15, doesCostPoints: true}, 
+          {name: "Phial of the Abyss", cost: 25, doesCostPoints: true}, 
+          {name: "Paragon of Sanctity", cost: 10, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.SPACE_MARINES, name: Army.SPACE_MARINES, key: Army.SPACE_MARINES, detachments: [
@@ -234,6 +259,12 @@ export const FactionList: FactionList = {
           {name: "Ghostweave Cloak", cost: 15, doesCostPoints: true}, 
           {name: "Shadow War Veteran", cost: 30, doesCostPoints: true}, 
           {name: "The Blade Driven Deep", cost: 25, doesCostPoints: true},
+        ]}, 
+        {name: "Librarius Conclave", enhancements: [
+          {name: "Prescience", cost: 25, doesCostPoints: true}, 
+          {name: "Celerity", cost: 30, doesCostPoints: true}, 
+          {name: "Obfuscation", cost: 20, doesCostPoints: true}, 
+          {name: "Fusillade", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.SPACE_WOLVES, name: Army.SPACE_WOLVES, key: Army.SPACE_WOLVES, detachments: [
@@ -256,6 +287,12 @@ export const FactionList: FactionList = {
           {name: "Litanies of Faith", cost: 25, doesCostPoints: true}, 
           {name: "Mantle of Ophelia", cost: 20, doesCostPoints: true}, 
           {name: "Saintly Example", cost: 10, doesCostPoints: true},
+        ]}, 
+        {name: "Champions of Faith", enhancements: [
+          {name: "Triptych of Judgement", cost: 15, doesCostPoints: true}, 
+          {name: "Mark of Devotion", cost: 30, doesCostPoints: true}, 
+          {name: "Eyes of the Oracle", cost: 10, doesCostPoints: true}, 
+          {name: "Sanctified Amulet", cost: 25, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.ADEPTUS_CUSTODES, name: Army.ADEPTUS_CUSTODES, key: Army.ADEPTUS_CUSTODES, detachments: [
@@ -264,6 +301,12 @@ export const FactionList: FactionList = {
           {name: "Inspirational Example", cost: 10, doesCostPoints: true}, 
           {name: "Unstoppable Destroyer", cost: 25, doesCostPoints: true}, 
           {name: "Veiled Blade", cost: 25, doesCostPoints: true},
+        ]}, 
+        {name: "Solar Spearhead", enhancements: [
+          {name: "Adamantine Talisman", cost: 25, doesCostPoints: true}, 
+          {name: "Augury Uplink", cost: 25, doesCostPoints: true}, 
+          {name: "Honoured Fallen", cost: 15, doesCostPoints: true}, 
+          {name: "Veteran of the Kataphraktoi", cost: 10, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.ADEPTUS_MECHANICUS, name: Army.ADEPTUS_MECHANICUS, key: Army.ADEPTUS_MECHANICUS, detachments: [
@@ -272,6 +315,12 @@ export const FactionList: FactionList = {
           {name: "Excoriating Emanation", cost: 25, doesCostPoints: true}, 
           {name: "Master Annihilator", cost: 35, doesCostPoints: true}, 
           {name: "Omni-Sterilizer", cost: 20, doesCostPoints: true}
+        ]}, 
+        {name: "Haloscreed Battle Clade", enhancements: [
+          {name: "Transoracular Dyad Wafers", cost: 30, doesCostPoints: true}, 
+          {name: "Cognitive Reinforcements", cost: 35, doesCostPoints: true}, 
+          {name: "Sanctified Ordinance", cost: 10, doesCostPoints: true}, 
+          {name: "Inloaded Lethality", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.ADEPTUS_TITANICUS, name: Army.ADEPTUS_TITANICUS, key: Army.ADEPTUS_TITANICUS, detachments: [
@@ -288,6 +337,12 @@ export const FactionList: FactionList = {
           {name: "Reader of the Runes", cost: 20, doesCostPoints: true}, 
           {name: "The Phoenix Gem", cost: 25, doesCostPoints: true}, 
           {name: "The Weeping Stones", cost: 15, doesCostPoints: true},
+        ]}, 
+        {name: "Veiled Blade Elimination Force", enhancements: [
+          {name: "Decoy Targets", cost: 40, doesCostPoints: true}, 
+          {name: "Esoteric Explosives", cost: 40, doesCostPoints: true}, 
+          {name: "Intraneural Biotech", cost: 35, doesCostPoints: true}, 
+          {name: "Micromelta Rounds", cost: 45, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.ASTRA_MILITARUM, name: Army.ASTRA_MILITARUM, key: Army.ASTRA_MILITARUM, detachments: [
@@ -296,6 +351,12 @@ export const FactionList: FactionList = {
           {name: "Drill Commander", cost: 20, doesCostPoints: true}, 
           {name: "Grand Strategist", cost: 15, doesCostPoints: true}, 
           {name: "Kurov's Aquila", cost: 40, doesCostPoints: true},
+        ]}, 
+        {name: "Bridgehead Strike", enhancements: [
+          {name: "Bombast-Class Vox-Array", cost: 25, doesCostPoints: true}, 
+          {name: "Priority-Drop Beacon", cost: 30, doesCostPoints: true}, 
+          {name: "Shroud Projector", cost: 15, doesCostPoints: true}, 
+          {name: "Advance Augury", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.IMPERIAL_KNIGHTS, name: Army.IMPERIAL_KNIGHTS, key: Army.IMPERIAL_KNIGHTS, detachments: [
@@ -305,6 +366,12 @@ export const FactionList: FactionList = {
           {name: "Mythic Hero", cost: 25, doesCostPoints: true},
           {name: "Revered Knight", cost: 20, doesCostPoints: true},
           {name: "Unyielding Paragon", cost: 40, doesCostPoints: true},
+        ]}, 
+        {name: "Questor Forgepact", enhancements: [
+          {name: "Omnissian Champion", cost: 30, doesCostPoints: true}, 
+          {name: "Knight of the Opus Mechanica", cost: 20, doesCostPoints: true}, 
+          {name: "Magos Questoris", cost: 35, doesCostPoints: true}, 
+          {name: "Vocifer Magnificat", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
     ]
@@ -319,6 +386,30 @@ export const FactionList: FactionList = {
           {name: "Soulstealer", cost: 15, doesCostPoints: true}, 
           {name: "The Endless Gift", cost: 30, doesCostPoints: true}, 
           {name: "The Everstave", cost: 25, doesCostPoints: true}, 
+        ]}, 
+        {name: "Blood Legion", enhancements: [
+          {name: "Slaughterthirst", cost: 35, doesCostPoints: true}, 
+          {name: "Fury's Cage", cost: 20, doesCostPoints: true}, 
+          {name: "Brazenmaw", cost: 15, doesCostPoints: true}, 
+          {name: "Gateway Unto Damnation", cost: 10, doesCostPoints: true}
+        ]}, 
+        {name: "Legion of Excess", enhancements: [
+          {name: "False Majesty", cost: 30, doesCostPoints: true}, 
+          {name: "Dreaming Crown", cost: 30, doesCostPoints: true}, 
+          {name: "Avatar of Perfection", cost: 15, doesCostPoints: true}, 
+          {name: "Soul Glutton", cost: 10, doesCostPoints: true}
+        ]},
+        {name: "Plague Legion", enhancements: [
+          {name: "Cankerblight", cost: 15, doesCostPoints: true}, 
+          {name: "Maggot Maws", cost: 15, doesCostPoints: true}, 
+          {name: "Droning Shroud", cost: 35, doesCostPoints: true}, 
+          {name: "Font of Spores", cost: 20, doesCostPoints: true}
+        ]}, 
+        {name: "Scintillating Legion", enhancements: [
+          {name: "Inescapable Eye", cost: 10, doesCostPoints: true}, 
+          {name: "Infernal Puppeteer", cost: 10, doesCostPoints: true}, 
+          {name: "Neverblade", cost: 20, doesCostPoints: true}, 
+          {name: "Improbable Shield", cost: 30, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.CHAOS_KNIGHTS, name: Army.CHAOS_KNIGHTS, key: Army.CHAOS_KNIGHTS, detachments: [
@@ -327,6 +418,12 @@ export const FactionList: FactionList = {
           {name: "Lord of Dread", cost: 35, doesCostPoints: true}, 
           {name: "Panolpy of the Cursed Knight", cost: 40, doesCostPoints: true}, 
           {name: "The Traitor's Mark", cost: 30, doesCostPoints: true}, 
+        ]}, 
+        {name: "Iconoclast Fiefdom", enhancements: [
+          {name: "Profane Altar", cost: 20, doesCostPoints: true}, 
+          {name: "Pave the Way", cost: 15, doesCostPoints: true}, 
+          {name: "Tyrant's Banner", cost: 5, doesCostPoints: true}, 
+          {name: "Diabolical Resilience", cost: 35, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.CHAOS_SPACE_MARINES, name: Army.CHAOS_SPACE_MARINES, key: Army.CHAOS_SPACE_MARINES, detachments: [
@@ -336,6 +433,12 @@ export const FactionList: FactionList = {
           {name: "Liber Hereticus", cost: 40, doesCostPoints: true}, 
           {name: "Orbs of Unlife", cost: 25, doesCostPoints: true}, 
           {name: "Talisman of Burning Blood", cost: 20, doesCostPoints: true},
+        ]}, 
+        {name: "Creations of Bile", enhancements: [
+          {name: "Surgical Precision", cost: 10, doesCostPoints: true}, 
+          {name: "Living Carapace", cost: 15, doesCostPoints: true}, 
+          {name: "Helm of All-Seeing", cost: 25, doesCostPoints: true}, 
+          {name: "Prime Test Subject", cost: 35, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.DEATH_GUARD, name: Army.DEATH_GUARD, key: Army.DEATH_GUARD, detachments: [
@@ -344,6 +447,12 @@ export const FactionList: FactionList = {
           {name: "Living Plague", cost: 20, doesCostPoints: true}, 
           {name: "Shamblerot", cost: 25, doesCostPoints: true}, 
           {name: "The Droning", cost: 10, doesCostPoints: true}, 
+        ]}, 
+        {name: "Flyblown Host", enhancements: [
+          {name: "Droning Chorus", cost: 15, doesCostPoints: true}, 
+          {name: "Insectile Murmuration", cost: 20, doesCostPoints: true}, 
+          {name: "Rejuvenating Swarm", cost: 10, doesCostPoints: true}, 
+          {name: "Plagueveil", cost: 25, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.THOUSAND_SONS, name: Army.THOUSAND_SONS, key: Army.THOUSAND_SONS, detachments: [
@@ -352,6 +461,12 @@ export const FactionList: FactionList = {
           {name: "Athenaen Scrolls", cost: 20, doesCostPoints: true}, 
           {name: "Lord of Forbidden Lore", cost: 25, doesCostPoints: true}, 
           {name: "Umbralefic Crystal", cost: 20, doesCostPoints: true}, 
+        ]}, 
+        {name: "Hexwarp Thrallband", enhancements: [
+          {name: "Arcane Might", cost: 20, doesCostPoints: true}, 
+          {name: "Empowered Manifestation", cost: 20, doesCostPoints: true}, 
+          {name: "Empyric Onslaught", cost: 25, doesCostPoints: true}, 
+          {name: "Noctilith Mantle", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.WORLD_EATERS, name: Army.WORLD_EATERS, key: Army.WORLD_EATERS, detachments: [
@@ -374,6 +489,12 @@ export const FactionList: FactionList = {
           {name: "Reader of the Runes", cost: 20, doesCostPoints: true}, 
           {name: "The Phoenix Gem", cost: 25, doesCostPoints: true}, 
           {name: "The Weeping Stones", cost: 15, doesCostPoints: true}, 
+        ]}, 
+        {name: "Armoured Warhost", enhancements: [
+          {name: "Guiding Presence", cost: 25, doesCostPoints: true}, 
+          {name: "Harmonisation Matrix", cost: 30, doesCostPoints: true}, 
+          {name: "Spirit Stone of Raelyth", cost: 20, doesCostPoints: true}, 
+          {name: "Guileful Strategist", cost: 15, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.DRUKHARI, name: Army.DRUKHARI, key: Army.DRUKHARI, detachments: [
@@ -382,6 +503,12 @@ export const FactionList: FactionList = {
           {name: "Blood Dancer", cost: 20, doesCostPoints: true}, 
           {name: "Labyrinthine Cunning", cost: 30, doesCostPoints: true}, 
           {name: "The Art of Pain", cost: 25, doesCostPoints: true}, 
+        ]}, 
+        {name: "Reaper's Wager", enhancements: [
+          {name: "Archraider", cost: 15, doesCostPoints: true}, 
+          {name: "Webway Walker", cost: 15, doesCostPoints: true}, 
+          {name: "Reaper's Cowl", cost: 25, doesCostPoints: true}, 
+          {name: "Conductor of Torment", cost: 20, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.GENESTEALER_CULTS, name: Army.GENESTEALER_CULTS, key: Army.GENESTEALER_CULTS, detachments: [
@@ -390,6 +517,12 @@ export const FactionList: FactionList = {
           {name: "Inscrutible Cunning", cost: 30, doesCostPoints: true}, 
           {name: "Meticulous Planner", cost: 40, doesCostPoints: true}, 
           {name: "Prowling Agitant", cost: 15, doesCostPoints: true}, 
+        ]}, 
+        {name: "Final Day", enhancements: [
+          {name: "Synaptic Auger", cost: 15, doesCostPoints: true}, 
+          {name: "Enraptured Damnation", cost: 10, doesCostPoints: true}, 
+          {name: "Vanguard Tyrant", cost: 25, doesCostPoints: true}, 
+          {name: "Inhuman Integration", cost: 20, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.LEAGUES_OF_VOTANN, name: Army.LEAGUES_OF_VOTANN, key: Army.LEAGUES_OF_VOTANN, detachments: [
@@ -398,6 +531,12 @@ export const FactionList: FactionList = {
           {name: "Appraising Glare", cost: 20, doesCostPoints: true}, 
           {name: "Grim Demeanour", cost: 20, doesCostPoints: true}, 
           {name: "Wayfarer's Grace", cost: 25, doesCostPoints: true}, 
+        ]}, 
+        {name: "Hearthband", enhancements: [
+          {name: "Bastion Shield", cost: 25, doesCostPoints: true}, 
+          {name: "Quake Multigenerator", cost: 15, doesCostPoints: true}, 
+          {name: "Ironskein", cost: 10, doesCostPoints: true}, 
+          {name: "High Kahl", cost: 30, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.NECRONS, name: Army.NECRONS, key: Army.NECRONS, detachments: [
@@ -406,6 +545,12 @@ export const FactionList: FactionList = {
           {name: "Sempiternal Weave", cost: 10, doesCostPoints: true}, 
           {name: "The Sovereign Coronal", cost: 30, doesCostPoints: true}, 
           {name: "Veil of Darkness", cost: 20, doesCostPoints: true}, 
+        ]}, 
+        {name: "Starshatter Arsenal", enhancements: [
+          {name: "Dread Majesty", cost: 30, doesCostPoints: true}, 
+          {name: "Miniaturised Nebuloscope", cost: 15, doesCostPoints: true}, 
+          {name: "Demanding Leader", cost: 10, doesCostPoints: true}, 
+          {name: "Chrono-Impedance Fields", cost: 25, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.ORKS, name: Army.ORKS, key: Army.ORKS, detachments: [
@@ -414,6 +559,12 @@ export const FactionList: FactionList = {
           {name: "Headwoppa's Killchoppa", cost: 20, doesCostPoints: true}, 
           {name: "Kunnin' but Brutal", cost: 15, doesCostPoints: true}, 
           {name: "Supa-Cybork Body", cost: 15, doesCostPoints: true}, 
+        ]}, 
+        {name: "Taktikal Brigade", enhancements: [
+          {name: "Skwad Leader", cost: 15, doesCostPoints: true}, 
+          {name: "Mek Kaptin", cost: 35, doesCostPoints: true}, 
+          {name: "Mork's Kunnin", cost: 15, doesCostPoints: true}, 
+          {name: "Gob Boomer", cost: 10, doesCostPoints: true}
         ]}
       ]}, 
       {army: Army.TAU_EMPIRE, name: Army.TAU_EMPIRE, key: Army.TAU_EMPIRE, detachments: [
@@ -460,6 +611,12 @@ export const FactionList: FactionList = {
           {name: "Hunting Grounds", cost: 20, doesCostPoints: true}, 
           {name: "Neuronode", cost: 30, doesCostPoints: true}, 
           {name: "Stalker", cost: 10, doesCostPoints: true}, 
+        ]}, 
+        {name: "Warrior Bioform Onslaught", enhancements: [
+          {name: "Synaptic Tyrant", cost: 10, doesCostPoints: true}, 
+          {name: "Oracular Adaptation", cost: 20, doesCostPoints: true}, 
+          {name: "Sensory Assimilation", cost: 20, doesCostPoints: true}, 
+          {name: "Elevated Might", cost: 30, doesCostPoints: true}
         ]}
       ]}, 
     ]
