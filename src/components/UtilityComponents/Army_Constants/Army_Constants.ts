@@ -30,7 +30,7 @@ export interface CostOption {
 
 export interface Unit {
   name: string;
-  unitType: UnitType;
+  unitType: UnitType | string;
   costOptions: CostOption[];
   isUnique: boolean;
   army: Army;

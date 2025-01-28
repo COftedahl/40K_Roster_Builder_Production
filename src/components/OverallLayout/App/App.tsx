@@ -16,6 +16,7 @@ import { server_url } from '../../UtilityComponents/Environment Variables/Enviro
 import SaveRosterScreen from '../../MainContentPage/SaveRosterScreen/SaveRosterScreen';
 import saveRosterPDF from '../../UtilityComponents/Functions/PDFFunctions';
 import ViewSavedRostersPage from '../../ViewSavedRostersPage/ViewSavedRostersPage';
+import updateArmyRestrictions from '../../UtilityComponents/Functions/ArmyRestrictions';
 
 interface AppProps {
   
@@ -68,6 +69,7 @@ const App: React.FC<AppProps> = () => {
   
   useEffect(() => {
     setUnitList([...characterUnitList, ...battlelineUnitList, ...otherUnitList]);
+    updateArmyRestrictions(faction, army, [...characterUnitList, ...battlelineUnitList, ...otherUnitList], setUnitList, availableUnits, setAvailableUnits);
   }, [characterUnitList, battlelineUnitList, otherUnitList]);
 
   useEffect(() => {
