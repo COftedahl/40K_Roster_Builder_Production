@@ -106,7 +106,7 @@ const App: React.FC<AppProps> = () => {
     try {
       if (army && army.length > 0 && army.toLowerCase() !== "none") {
         const response = await axios.post(server_url + "/units/factionunits", {
-          armyName: army,
+          armyName: army.toUpperCase(),
         });
   
         if (!response.data || response.data.length === 0) {
