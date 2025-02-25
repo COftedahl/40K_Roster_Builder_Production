@@ -48,3 +48,9 @@
     outline: none;
   }
 }
+
+@media (max-width: 900px) {
+  .AppContainer {
+    width: 100%;
+  }
+}

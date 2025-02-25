@@ -71,12 +71,12 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   }
 
   const addUnit = (unitSelection: UnitSelection) => {
-    if (unitSelection.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase()) {
+    if (unitSelection.unitType && unitSelection.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase()) {
       unitSelection.unitType = UnitType.CHARACTERS;
       characterUnitList = [...characterUnitList, unitSelection];
       setCharacterUnitList(characterUnitList);
     }
-    else if (unitSelection.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase()) {
+    else if (unitSelection.unitType && unitSelection.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase()) {
       unitSelection.unitType = UnitType.BATTLELINE;
       battlelineUnitList = [...battlelineUnitList, unitSelection];
       setBattlelineUnitList(battlelineUnitList);
