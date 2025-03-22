@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CollapsibleCard from '../../UtilityComponents/CollapsibleCard/CollapsibleCard';
 import FactionSelector from '../../MainContentPage/FactionSelector/FactionSelector';
 import RosterBuildingArea from '../../MainContentPage/RosterBuildingArea/RosterBuildingArea';
-import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
+import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Roster, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
 import PathNotFoundScreen from '../PathNotFoundScreen/PathNotFoundScreen';
 import './App.css'
 import axios from 'axios';
@@ -227,6 +227,41 @@ const App: React.FC<AppProps> = () => {
     });
     return result;
   };
+
+  const setArmyUnitListBreakdowns = (armyList: UnitSelection[]) => {
+    const characterUnits: UnitSelection[] = armyList.filter((armyUnit: UnitSelection) => armyUnit.unitType && armyUnit.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase());
+    const battlelineUnits: UnitSelection[] = armyList.filter((armyUnit: UnitSelection) => armyUnit.unitType && armyUnit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase());
+    const otherUnits: UnitSelection[] = armyList.filter((armyUnit: UnitSelection) => !armyUnit.unitType || armyUnit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase());
+
+    setCharacterUnitList(characterUnits);
+    setBattlelineUnitList(battlelineUnits);
+    setOtherUnitList(otherUnits);
+  }
+
+  const setAllyUnitListBreakdowns = (allyList: UnitSelection[]) => {
+    const characterUnits: UnitSelection[] = allyList.filter((armyUnit: UnitSelection) => armyUnit.unitType && armyUnit.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase());
+    const battlelineUnits: UnitSelection[] = allyList.filter((armyUnit: UnitSelection) => armyUnit.unitType && armyUnit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase());
+    const otherUnits: UnitSelection[] = allyList.filter((armyUnit: UnitSelection) => !armyUnit.unitType || armyUnit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase());
+
+    setCharacterUnitList(characterUnits);
+    setBattlelineUnitList(battlelineUnits);
+    setOtherUnitList(otherUnits);
+  }
+
+  const handleViewingRosterSelected = (roster: Roster) => {
+    console.log("Loading roster from db: ", roster);
+    setFaction(roster.faction);
+    setArmy(roster.army);
+    setAllyUnitListBreakdowns(roster.allyUnits);
+    setArmyUnitListBreakdowns(roster.armyUnits);
+    if (roster.detachment) {
+      const detachmentOptions: Detachment[] = (FactionList[roster.faction?.toUpperCase().replace(" ", "_") || ""].armies.find((army) => army.name === roster.army)?.detachments);
+      const detachment = (detachmentOptions && detachmentOptions.length > 0 ? detachmentOptions.find((detachment: Detachment) => detachment.name.toLowerCase() === roster.detachment.toLowerCase()) : null);
+      if (detachment) {
+        setDetachment(detachment);
+      }
+    }
+  }
   
   const router = createBrowserRouter([
     {
@@ -320,7 +355,7 @@ const App: React.FC<AppProps> = () => {
         <Header onHomepage={false}/>
         <Box className="MainContentPageOuterContainer">
             <Box className="MainContentPageContainer">
-              <ViewSavedRostersPage/>
+              <ViewSavedRostersPage handleSelectClicked={handleViewingRosterSelected}/>
             </Box>
           </Box>
         <Footer onHomepage={false} clearButtonFunction={handleClearButtonClicked}/>

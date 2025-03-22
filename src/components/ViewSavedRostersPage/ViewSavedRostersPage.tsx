@@ -6,13 +6,16 @@ import axios from "axios";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import RosterBuildingArea from "../MainContentPage/RosterBuildingArea/RosterBuildingArea";
+import { useNavigate } from "react-router-dom";
 import './ViewSavedRostersPage.css';
 
 interface ViewSavedRostersPageProps {
-
+  handleSelectClicked: (roster: Roster) => void, 
 }
 
-const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = () => {
+const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) => {
+
+    const navigate = useNavigate();
 
   const [rosterList, setRosterList] = useState<Roster[]>([]);
   const [currRosterIndex, setCurrRosterIndex] = useState<number>(-1);
@@ -38,6 +41,7 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = () => {
         console.error("Fetch all rosters request returned error: ", response.data);
       }
       setRosterList(response.data.response);
+      console.log(response.data.response);
     }
     catch (e) {
       console.error("Fetch all rosters request returned error: ", e);
@@ -61,6 +65,13 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = () => {
       setCurrRosterIndex(currRosterIndex + 1);
     }
   };
+
+  const handleSelectClicked = () => {
+    if (rosterList && (rosterList.length > currRosterIndex) && (rosterList[currRosterIndex])) {
+      props.handleSelectClicked(rosterList[currRosterIndex]);
+      navigate("/");
+    }
+  }
 
   useEffect(() => {
     if (rosterList === undefined || rosterList.length <= 0) {
@@ -109,6 +120,7 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = () => {
           <IconButton className="ViewSavedRostersPageBox_Button ViewSavedRostersPageBox_Button_Backward" onClick={handleBackwardClicked}><ArrowBackIosIcon/></IconButton>
         </Box>
         <Box className="ViewSavedRostersPageBox_Inner">
+          <IconButton className={"ViewSavedRostersPageBox_Button ViewSavedRostersPageBox_Button_Select"} onClick={handleSelectClicked}>SELECT ROSTER</IconButton>
           <Typography className="ViewSavedRostersPageBox_RosterMetadataText">{rosterList[currRosterIndex].name}<br/>{rosterList[currRosterIndex].owner}</Typography>
           <RosterBuildingArea
             army={rosterList[currRosterIndex].army} 

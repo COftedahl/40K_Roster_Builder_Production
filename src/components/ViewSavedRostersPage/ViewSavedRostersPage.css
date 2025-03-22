@@ -61,3 +61,26 @@
 .ViewSavedRostersPageBox_Button_Backward {
   /* left: 0.5vw; */
 }
+
+.ViewSavedRostersPageBox_Button_Select {
+  border-radius: var(--footerButtonBorderRadius) !important;
+  padding: 0rem !important;
+  height: 2.5vw;
+  min-height: 20px;
+  color: var(--footerColor) !important;
+  margin: 1rem !important;
+
+  border-radius: var(--footerButtonBorderRadius);
+  padding: 0.5vh 2.8vw !important;
+  width: 20vw;
+  min-width: 50px;
+  font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
+  transition: background-color 0.3s !important;
+  background-color: var(--footerBackgroundColor_Button) !important;
+  box-shadow: var(--footerBoxShadow_Button);
+
+  span {
+    border-radius: var(--footerButtonBorderRadius);
+    height: 2.5vw;
+  }
+}
