@@ -1899,7 +1899,55 @@ export const FactionList: FactionList = {
               "name": "Death Guard",
               "key": "Death Guard",
               "detachments": [
-                  {
+                {
+                      "name": "Champions of Contagion",
+                      "enhancements": [
+                          {
+                              "name": "Cornucophagus",
+                              "cost": 35,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Final Ingredient",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Needle of Nurgle",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Visions of Virulence",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  }, {
+                      "name": "Death Lord's Chosen",
+                      "enhancements": [
+                          {
+                              "name": "Face of Death",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Helm of the Fly King",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Vile Vigour",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Warprot Talisman",
+                              "cost": 30,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
                       "name": "Flyblown Host",
                       "enhancements": [
                           {
@@ -1920,6 +1968,103 @@ export const FactionList: FactionList = {
                           {
                               "name": "Rejuvenating Swarm",
                               "cost": 10,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },
+                  {
+                      "name": "Mortarion's Hammer",
+                      "enhancements": [
+                          {
+                              "name": "Bilemaw Blight",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Eye of Affliction",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Shriekworm Familiar",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Tendrilous Emissions",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Shamblerot Vectorium",
+                      "enhancements": [
+                          {
+                              "name": "Lord of the Walking Pox",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Sorrowsyphon",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Talisman of Burgeoning",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Witherbone Pipes",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Tallyband Summoners",
+                      "enhancements": [
+                          {
+                              "name": "Beckoning Blight",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Entropic Knell",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Fell Harvester",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Tome of Bounteous Blessings",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Virulent Vectorium",
+                      "enhancements": [
+                          {
+                              "name": "Arch Contaminator",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Daemon Weapon of Nurgle",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Furnace of Plagues",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Revolting Regeneration",
+                              "cost": 20,
                               "doesCostPoints": true
                           }
                       ]
@@ -1980,8 +2125,127 @@ export const FactionList: FactionList = {
                               "doesCostPoints": true
                           }
                       ]
-                  },
-                  {
+                  }, {
+                      "name": "Changehost of Deceit",
+                      "enhancements": [
+                          {
+                              "name": "Diabolic Savant",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Duplicitous Malediction",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Nethershriek Mind-Eater",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Tome of True Names",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Grand Coven",
+                      "enhancements": [
+                          {
+                              "name": "Eldritch Vortex of E'taph",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Incandaeum",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Lord of Forbidden Lore",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Umbralefic Crystal",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Rubricae Phalanx",
+                      "enhancements": [
+                          {
+                              "name": "Arcane Thralls",
+                              "cost": 5,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Lord of the Rubricae",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Risen Rubricae",
+                              "cost": 30,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "The Stave Abominus",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Warpforged Cabal",
+                      "enhancements": [
+                          {
+                              "name": "Biomechanical Mutation",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "The Perplexing Cloak",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Warp Syphon",
+                              "cost": 5,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Warp-Cursed Runemaster",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          }
+                      ]
+                  },{
+                      "name": "Warpmeld Pact",
+                      "enhancements": [
+                          {
+                              "name": "Bray Lord",
+                              "cost": 15,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Diamond of Distortion",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Flowing Flesh",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Warpmeld Dagger",
+                              "cost": 10,
+                              "doesCostPoints": true
+                          }
+                      ]
+                    }, {
                       "name": "Hexwarp Thrallband",
                       "enhancements": [
                           {
@@ -2005,7 +2269,7 @@ export const FactionList: FactionList = {
                               "doesCostPoints": true
                           }
                       ]
-                  }
+                  }, 
               ]
           },
           {
