@@ -1602,6 +1602,31 @@ export const FactionList: FactionList = {
                               "doesCostPoints": true
                           }
                       ]
+                  },
+                  {
+                      "name": "Shadow Legion",
+                      "enhancements": [
+                          {
+                              "name": "Fade to Darkness",
+                              "cost": 30,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Leaping Shadows",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Mantle of Gloom",
+                              "cost": 25,
+                              "doesCostPoints": true
+                          },
+                          {
+                              "name": "Malice Made Manifest",
+                              "cost": 20,
+                              "doesCostPoints": true
+                          }
+                      ]
                   }
               ]
           },
