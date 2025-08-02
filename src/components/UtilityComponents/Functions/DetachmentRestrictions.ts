@@ -13,7 +13,7 @@ export const updateDetachmentUnitRestrictions = (
     availableAllyUnits: Unit[],  
     setAvailableAllyUnits: React.Dispatch<React.SetStateAction<Unit[]>>, 
 ) => {
-  console.log("Checking Detachment restrictions on " + faction);
+  // console.log("Checking Detachment restrictions on " + faction);
   switch (faction) {
     case Faction.IMPERIUM: 
 
@@ -40,7 +40,7 @@ const checkChaosFactionDetachments = (
     availableAllyUnits: Unit[], 
     setAvailableAllyUnits: React.Dispatch<React.SetStateAction<Unit[]>>, 
 ) => {
-  console.log("Checking Detachment restrictions on " + army);
+  // console.log("Checking Detachment restrictions on " + army);
   switch (army) {
     case Army.CHAOS_DAEMONS: 
       checkChaosDaemonsDetachmentRestrictions(detachment, unitList, setUnitList, availableUnitList, setAvailableUnitList, availableAllyUnits, setAvailableAllyUnits);
@@ -60,7 +60,7 @@ const checkChaosDaemonsDetachmentRestrictions = (
     availableAllyUnits: Unit[], 
     setAvailableAllyUnits: React.Dispatch<React.SetStateAction<Unit[]>>, 
 ) => {
-  console.log("Checking Detachment restrictions on " + detachment.name);
+  // console.log("Checking Detachment restrictions on " + detachment.name);
   switch (detachment.name) {
     case FactionList.CHAOS.armies.find((army: FactionList_ArmyEntry) => army.name === Army.CHAOS_DAEMONS).detachments.find((detachment: Detachment) => detachment.name.toLowerCase().includes("shadow")).name: 
       checkChaosDaemons_ShadowLegionDetachmentRestrictions(unitList, setUnitList, availableUnitList, setAvailableUnitList, availableAllyUnits, setAvailableAllyUnits);
@@ -119,7 +119,7 @@ const checkChaosDaemons_ShadowLegionDetachmentRestrictions = async (
     });
 
     console.log("Adding ally units for Shadow Legion", allowedExtraUnits);
-    setAvailableAllyUnits([...availableAllyUnits, ...allowedExtraUnits]);
+    setAvailableAllyUnits([...allowedExtraUnits, ...availableAllyUnits]);
   }
   catch (e) {
     console.error(e);
