@@ -1,4 +1,4 @@
-import { Unit, UnitSelection, UnitType } from "../Army_Constants/Army_Constants";
+import { Army, Detachment, Unit, UnitSelection, UnitType } from "../Army_Constants/Army_Constants";
 import { Faction } from "../Army_Constants/Army_Constants";
 
 const updateArmyRestrictions = (
@@ -17,13 +17,30 @@ const updateArmyRestrictions = (
 
       break;
     case Faction.CHAOS: 
-
+      checkChaosFaction(army, unitList, setUnitList, availableUnitList, setAvailableUnitList);
       break;
     case Faction.XENOS: 
 
       break;
   }
 };
+
+const checkChaosFaction = (
+    army: string |  null, 
+    unitList: UnitSelection[], 
+    setUnitList: React.Dispatch<React.SetStateAction<UnitSelection[]>>,
+    availableUnitList: Unit[],
+    setAvailableUnitList: React.Dispatch<React.SetStateAction<Unit[]>>, 
+) => {
+  switch(army) {
+    case Army.THOUSAND_SONS: 
+      
+      break;
+    case Army.CHAOS_DAEMONS: 
+
+      break;
+  }
+}
 
 const checkImperiumFaction = (
     army: string |  null, 

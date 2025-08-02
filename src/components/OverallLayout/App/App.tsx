@@ -16,7 +16,8 @@ import { server_url } from '../../UtilityComponents/Environment Variables/Enviro
 import SaveRosterScreen from '../../MainContentPage/SaveRosterScreen/SaveRosterScreen';
 import saveRosterPDF from '../../UtilityComponents/Functions/PDFFunctions';
 import ViewSavedRostersPage from '../../ViewSavedRostersPage/ViewSavedRostersPage';
-import updateArmyRestrictions from '../../UtilityComponents/Functions/ArmyRestrictions';
+import updateArmyRestrictions from '../../UtilityComponents/Functions/ArmyUnitRestrictions';
+import { updateDetachmentUnitRestrictions } from '../../UtilityComponents/Functions/DetachmentRestrictions';
 
 interface AppProps {
   
@@ -78,6 +79,7 @@ const App: React.FC<AppProps> = () => {
 
   useEffect(() => {
     setEnhancementList(detachment ? detachment.enhancements : []);
+    updateDetachmentUnitRestrictions(faction, army, detachment, [...characterUnitList, ...battlelineUnitList, ...otherUnitList], setUnitList, availableUnits, setAvailableUnits, availableAllyUnits, setAvailableAllyUnits);
   }, [detachment]);
 
   useEffect(() => {

@@ -91,7 +91,7 @@ export interface Detachment {
   enhancements: Enhancement[];
 }
 
-interface FactionList {
+export interface FactionList {
   [key: string]: FactionListEntry;
 
   SPACE_MARINES: FactionListEntry;
@@ -100,13 +100,13 @@ interface FactionList {
   XENOS: FactionListEntry;
 }
 
-interface FactionListEntry {
+export interface FactionListEntry {
   key: string;
   name: string;
   armies: FactionList_ArmyEntry[];
 }
 
-interface FactionList_ArmyEntry {
+export interface FactionList_ArmyEntry {
   key: string;
   army: string;
   name: string;
