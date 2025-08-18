@@ -124,8 +124,8 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
           <Typography className="ViewSavedRostersPageBox_RosterMetadataText">{rosterList[currRosterIndex].name}<br/>{rosterList[currRosterIndex].owner}</Typography>
           <RosterBuildingArea
             army={rosterList[currRosterIndex].army} 
-            detachment={FactionList[rosterList[currRosterIndex].faction.toUpperCase()].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments ? 
-              FactionList[rosterList[currRosterIndex].faction.toUpperCase()].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments[0]: undefined}
+            detachment={FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ","_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments ? 
+              FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ","_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments[0]: undefined}
             pointsUsed={rosterList[currRosterIndex].points} 
             availableUnits={[]} 
             availableAllyUnits={[]} 
