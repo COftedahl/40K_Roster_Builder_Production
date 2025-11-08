@@ -65,6 +65,7 @@ export enum Army {
   DEATHWATCH = "Deathwatch",
   DEATH_GUARD = "Death Guard",
   DRUKHARI = "Drukhari",
+  EMPERORS_CHILDREN = "Emperors Children", 
   GENESTEALER_CULTS = "Genestealer Cults",
   GREY_KNIGHTS = "Grey Knights",
   IMPERIAL_KNIGHTS = "Imperial Knights",
@@ -2120,6 +2121,163 @@ export const FactionList: FactionList = {
                       ]
                   }
               ]
+          },
+          {
+            "army": "Emperors Children", 
+            "name": "Emperors Children", 
+            "key": "Emperors Children", 
+            "detachments": [
+                {
+                    "name": "Carnival of Excess",
+                    "enhancements": [
+                        {
+                            "name": "Dark Blessings",
+                            "cost": 10, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Empyric Suffusion",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Possessed Blade",
+                            "cost": 25,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Warp Walker",
+                            "cost": 30,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Coterie of the Conceited",
+                    "enhancements": [
+                        {
+                            "name": "Pledge of Dark Glory",
+                            "cost": 25,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Pledge of Eternal Servitude",
+                            "cost": 25,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Pledge of Mortal Pain",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Pledge of Unholy Fortune",
+                            "cost": 30,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Mercurial Host",
+                    "enhancements": [
+                        {
+                            "name": "Intoxicating Musk",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Loathsome Dexterity",
+                            "cost": 10,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Steeped in Suffering",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Tactical Perfection",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Peerless Bladesmen",
+                    "enhancements": [
+                        {
+                            "name": "Blinding Speed",
+                            "cost": 25, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Distortion",
+                            "cost": 25, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Faultless Opportunist",
+                            "cost": 15, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Rise to the Challenge",
+                            "cost": 30, 
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Rapid Evisceration",
+                    "enhancements": [
+                        {
+                            "name": "Accomplished Tactician",
+                            "cost": 35, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Heretek Adept",
+                            "cost": 35, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Spearhead Striker",
+                            "cost": 20, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Sublime Prescience",
+                            "cost": 25, 
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Slaaneshs Chosen",
+                    "enhancements": [
+                        {
+                            "name": "Eager to Prove",
+                            "cost": 15, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Proud and Vainglorious",
+                            "cost": 20, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Repulsed by Weakness",
+                            "cost": 25, 
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Slayer of Champions",
+                            "cost": 15, 
+                            "doesCostPoints": true
+                        }
+                    ]
+                }
+            ]
           },
           {
               "army": "Thousand Sons",
