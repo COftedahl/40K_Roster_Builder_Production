@@ -728,62 +728,112 @@ export const FactionList: FactionList = {
               ]
           },
           {
-              "army": "Space Wolves",
-              "name": "Space Wolves",
-              "key": "Space Wolves",
-              "detachments": [
-                  {
-                      "name": "Champions of Fenris",
-                      "enhancements": [
-                          {
-                              "name": "Fangrune Pendant",
-                              "cost": 15,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "Foes Fate",
-                              "cost": 15,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "Longstrider",
-                              "cost": 20,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "Wolves Wisdom",
-                              "cost": 30,
-                              "doesCostPoints": true
-                          }
-                      ]
-                  },
-                  {
-                      "name": "Champions of Russ",
-                      "enhancements": [
-                          {
-                              "name": "Black Death",
-                              "cost": 25,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "Frost Weapon",
-                              "cost": 15,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "The Pelt of Balewolf",
-                              "cost": 10,
-                              "doesCostPoints": true
-                          },
-                          {
-                              "name": "Wolf Tail Talisman",
-                              "cost": 20,
-                              "doesCostPoints": true
-                          }
-                      ]
-                  }
-              ]
-          }
+            "army": "Space Wolves",
+            "name": "Space Wolves",
+            "key": "Space Wolves",
+            "detachments": [
+                {
+                    "name": "Champions of Fenris",
+                    "enhancements": [
+                        {
+                            "name": "Fangrune Pendant",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Foes Fate",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Longstrider",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Wolves Wisdom",
+                            "cost": 30,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Saga of the Beastslayer",
+                    "enhancements": [
+                        {
+                            "name": "Elders Guidance",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Helm of the Beastslayer",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Hunters Guile",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Wolf-touched",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Saga of the Bold",
+                    "enhancements": [
+                        {
+                            "name": "Braggarts Steel",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Hordeslayer",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Skjald",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Thunderwolfs Fortitude",
+                            "cost": 25,
+                            "doesCostPoints": true
+                        }
+                    ]
+                },
+                {
+                    "name": "Saga of the Hunter",
+                    "enhancements": [
+                        {
+                            "name": "Fenrisian Grit",
+                            "cost": 15,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Feral Rage",
+                            "cost": 10,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Swift Hunter",
+                            "cost": 20,
+                            "doesCostPoints": true
+                        },
+                        {
+                            "name": "Wolf Master",
+                            "cost": 5,
+                            "doesCostPoints": true
+                        }
+                    ]
+                }
+            ]
+            }
       ]
   },
   IMPERIUM: {
