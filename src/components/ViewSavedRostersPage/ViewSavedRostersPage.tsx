@@ -89,7 +89,10 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
   }, [rosterList]);
 
   useEffect(() => {
-    if (rosterList && rosterList.length > 0) {
+    console.log("Resetting from index change")
+    setArmyUnits([])
+    setAllyUnits([])
+    if (rosterList && rosterList.length > 0 && currRosterIndex >= 0 && currRosterIndex < rosterList.length) {
       setArmyUnits(rosterList[currRosterIndex].armyUnits);
       setAllyUnits(rosterList[currRosterIndex].allyUnits);
     }
@@ -101,6 +104,11 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
       setBattlelineUnitList(armyUnits.filter((unit: UnitSelection) => unit.unitType && unit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase()));
       setOtherUnitList(armyUnits.filter((unit: UnitSelection) => unit.unitType === undefined || (unit.unitType && unit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase())));
     }
+    else {
+      setCharacterUnitList([])
+      setBattlelineUnitList([])
+      setOtherUnitList([])
+    }
   }, [armyUnits]);
 
   useEffect(() => {
@@ -108,6 +116,11 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
       setAllyCharacterUnitList(allyUnits.filter((unit: UnitSelection) => unit.unitType && unit.unitType.toLowerCase() === UnitType.CHARACTERS.toLowerCase()));
       setAllyBattlelineUnitList(allyUnits.filter((unit: UnitSelection) => unit.unitType && unit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase()));
       setAllyOtherUnitList(allyUnits.filter((unit: UnitSelection) => unit.unitType === undefined || (unit.unitType && unit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase())));
+    }
+    else {
+      setAllyCharacterUnitList([])
+      setAllyBattlelineUnitList([])
+      setAllyOtherUnitList([])
     }
   }, [allyUnits]);
 
