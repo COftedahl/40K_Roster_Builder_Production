@@ -245,9 +245,9 @@ const App: React.FC<AppProps> = () => {
     const battlelineUnits: UnitSelection[] = allyList.filter((armyUnit: UnitSelection) => armyUnit.unitType && armyUnit.unitType.toLowerCase() === UnitType.BATTLELINE.toLowerCase());
     const otherUnits: UnitSelection[] = allyList.filter((armyUnit: UnitSelection) => !armyUnit.unitType || armyUnit.unitType.toLowerCase() === UnitType.OTHER.toLowerCase());
 
-    setCharacterUnitList(characterUnits);
-    setBattlelineUnitList(battlelineUnits);
-    setOtherUnitList(otherUnits);
+    setAllyCharacterUnitList(characterUnits);
+    setAllyBattlelineUnitList(battlelineUnits);
+    setAllyOtherUnitList(otherUnits);
   }
 
   const handleViewingRosterSelected = (roster: Roster) => {
