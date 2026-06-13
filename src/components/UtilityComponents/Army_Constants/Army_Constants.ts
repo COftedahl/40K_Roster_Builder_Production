@@ -3766,3 +3766,97 @@ export interface Roster {
   armyUnits: UnitSelection[];
   allyUnits: UnitSelection[];
 };
+
+export interface ICustomCharacterWeapon {
+  name: string, 
+  cost: number, 
+};
+
+export interface ICustomCharacterLoadoutOptions {
+  availableLoadouts: string[], 
+  availableRangedWeapons: ICustomCharacterWeapon[], 
+  availableMeleeWeapons: ICustomCharacterWeapon[], 
+  rangedSlots: number, 
+  meleeSlots: number, 
+};
+
+export interface ICustomCharacterAbility {
+  name: string, 
+  cost: number, 
+  restrictions: string, 
+};
+
+export interface ICustomCharacterSpecialism {
+  name: string, 
+  cost: number, 
+  restrictions: string, 
+};
+
+export interface ICustomCharacter {
+  archetype: string, 
+  faction: Faction, 
+  army: string, 
+  basePoints: number, 
+  availableSpecialisms: ICustomCharacterSpecialism[], 
+  availableAbilities: ICustomCharacterAbility[], 
+  availableWeapons: ICustomCharacterLoadoutOptions, 
+};
+
+export interface ICustomCharacterSelection {
+  archetype: string, 
+  totalCost: string, 
+  faction: Faction, 
+  army: string, 
+  selectedSpecialisms: ICustomCharacterSpecialism[], 
+  selectedAbilities: ICustomCharacterAbility[], 
+  loadout: ICustomCharacterWeapon[], 
+};
+
+export const CustomCharacterList: ICustomCharacter[] = [];
+const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Champion of the Chapter",
+    faction: Faction.SPACE_MARINES,
+    army: "ADEPTUS_ASTARTES",
+    basePoints: 70,
+    availableSpecialisms: [
+      {
+        name: "Conversion Field",
+        cost: 10,
+        restrictions: ""
+      }, 
+    ],
+    availableAbilities: [
+      {
+        name: "Adamantine Will",
+        cost: 0,
+        restrictions: ""
+      }
+    ],
+    availableWeapons: {
+      availableLoadouts: ["1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: [
+        {
+          name: "Combi Weapon",
+          cost: 0
+        }, 
+        {
+          name: "Forge Bolter",
+          cost: 0
+        }, 
+      ],
+      availableMeleeWeapons: [
+        {
+          name: "Close-Combat Weapon",
+          cost: 0
+        }, 
+        {
+          name: "Crozius Arcanum",
+          cost: 0
+        }, 
+      ],
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }
+];
