@@ -1,0 +1,26 @@
+.AddCustomCharacterPopupBox {
+  max-width: 50vw;
+  min-height: 50vh;
+  div {
+    justify-self: center;
+  align-self: center;
+  }
+}
+
+.AddCustomCharacterPopupBox_Divider {
+  justify-self: center;
+  align-self: center;
+  margin-top: 0px;
+  border: 0.1vh solid rgba(25, 50, 130, 0.1) !important;
+  margin-bottom: 2vh !important;
+  /* margin: 0vh 3vh 0.4vh 1vh !important; */
+  width: 95%;
+  height: 0.01vh;
+}
+
+div.AddCustomCharacter_InputAreaDiv {
+  width: 85%;
+  * {
+    line-height: normal;
+  }
+}

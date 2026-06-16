@@ -3804,7 +3804,7 @@ export interface ICustomCharacter {
 
 export interface ICustomCharacterSelection {
   archetype: string, 
-  totalCost: string, 
+  totalCost: number, 
   faction: Faction, 
   army: string, 
   selectedSpecialisms: ICustomCharacterSpecialism[], 
@@ -3812,7 +3812,6 @@ export interface ICustomCharacterSelection {
   loadout: ICustomCharacterWeapon[], 
 };
 
-export const CustomCharacterList: ICustomCharacter[] = [];
 const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
   {
     archetype: "Champion of the Chapter",
@@ -3860,3 +3859,7 @@ const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
     }
   }
 ];
+
+export const CustomCharacterList: ICustomCharacter[] = [
+  ...AdeptusAstartesCustomCharacterList, 
+]
