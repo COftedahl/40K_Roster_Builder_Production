@@ -20,7 +20,72 @@
 
 div.AddCustomCharacter_InputAreaDiv {
   width: 85%;
+  max-width: 50vw;
+  max-height: 35vh;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: 1rem;
   * {
     line-height: normal;
+    box-sizing: border-box;
   }
+}
+
+div.AddCustomCharacter_InputAreaDiv > * {
+  margin-bottom: 0.5rem;
+}
+
+.AddCustomCharacterPopupBox_Button{
+  border-radius: var(--footerButtonBorderRadius) !important;
+  padding: 0px !important;
+  height: 2.5vw;
+  min-height: 20px;
+  position: absolute !important;
+  color: var(--footerColor) !important;
+
+  border-radius: var(--footerButtonBorderRadius);
+  height: 2.5vw !important;
+  padding: 0.5vh 2.8vw !important;
+  width: 10vw;
+  min-width: 50px;
+  font-size: calc(var(--appOverallFontSize_h6) - 0.17vw) !important;
+  transition: background-color 0.3s !important;
+  background-color: var(--footerBackgroundColor_Button) !important;
+  box-shadow: var(--footerBoxShadow_Button);
+
+  span {
+    border-radius: var(--footerButtonBorderRadius);
+    height: 2.5vw;
+  }
+}
+
+.AddCustomCharacterPopupBox_Button_Back {
+  bottom: 2vh;
+  left: 1vw;
+}
+
+.AddCustomCharacterPopupBox_Button_Back:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.AddCustomCharacterPopupBox_Button_Save {
+  bottom: 2vh;
+  right: 1vw;
+}
+
+.AddCustomCharacterPopupBox_Button_Save:hover {
+  background-color: var(--footerBackgroundColor_Proceed) !important;
+}
+
+.AddCustomCharacterPopupBox_SpacingPar {
+  padding: 1.5rem;
+}
+
+hr.AddCustomCharacterPopupBox_InputArea_Divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem !important;
+}
+
+p.AddCustomCharacterPopupBox_LoadoutAreaText {
+  margin: 0px;
 }

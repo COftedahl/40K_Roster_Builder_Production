@@ -120,7 +120,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
         {allowRosterModifications === undefined || allowRosterModifications === true ? <><IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
         <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={type === FactionAddingAreaType.ALLIES ? army + " Allies" : army}/>
-        <AddCustomCharacterPopup display={addCustomCharacterPopupOpen} onAddUnit={() => { alert("Adding Unit")} } closePopup={() => setAddCustomCharacterPopupOpen(false)} army={army} availableCharacters={CustomCharacterList}/>
+        <AddCustomCharacterPopup display={addCustomCharacterPopupOpen} onAddUnit={(newUnit) => { console.log(newUnit);} } closePopup={() => setAddCustomCharacterPopupOpen(false)} army={army} availableCharacters={CustomCharacterList}/>
         </>: ""}
       </Box>
       }
