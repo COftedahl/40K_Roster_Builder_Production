@@ -25,11 +25,15 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
   const [selectedCharacter, setSelectedCharacter] = useState<ICustomCharacter | null>(null);
   const [selectedSpecialism, setSelectedSpecialism] = useState<ICustomCharacterSpecialism | null>(null);
   const [selectedAbility, setSelectedAbility] = useState<ICustomCharacterAbility | null>(null);
-  const [selectedLoadout, setSelectedLoadout] = useState<ICustomCharacterWeapon[]>([]);
+  const [selectedLoadout, setSelectedLoadout] = useState<(ICustomCharacterWeapon | null)[]>([]);
   const [currCost, setCurrCost] = useState<number>(0);
   const [currWeaponIndex, setCurrWeaponIndex] = useState<number>(0);
   const [weaponFilter, setWeaponFilter] = useState<string>("all");
   const [availableWeaponsForSlot, setAvailableWeaponsForSlot] = useState<ICustomCharacterWeapon[]>([]);
+
+  useEffect(() => {
+    console.log("Loadout: ", selectedLoadout);
+  }, [selectedLoadout])
 
   const handleBoxClicked: React.MouseEventHandler = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -61,6 +65,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
       setSelectedCharacter(() => newVal);
       updateCost({archetype: newVal, specialism: null, ability: null, loadout: []});
       refreshAvailableWeapons(newVal, "all");
+      setSelectedLoadout(Array(getTotalNumberWeaponSlots(newVal)).fill(null));
     }
     catch (e) {
       console.error(e);
@@ -116,12 +121,59 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     }
   }
 
+  const handleWeaponChanged = (event: SelectChangeEvent, child: any) => {
+    try {
+      if (selectedCharacter !== null) {
+        const newVal: ICustomCharacterWeapon | null = getAllAvailableWeapons(selectedCharacter).find((weapon: ICustomCharacterWeapon) => weapon.name === child?.props.value) || null;
+        selectedLoadout.splice(currWeaponIndex, 1, newVal);
+        const newArray: (ICustomCharacterWeapon | null)[] = selectedLoadout;
+        setSelectedLoadout(() => [...newArray]);
+        updateCost({...getCharacterSelections(), loadout: newArray});
+      }
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
+  const getTotalNumberWeaponSlots = (character: ICustomCharacter | null): number => {
+    if (character !== null) {
+      return (character.availableWeapons.meleeSlots + character.availableWeapons.rangedSlots);
+    }
+    else {
+      return 0;
+    }
+  }
+
+  const handleForwardArrowClicked = () => {
+    setWeaponFilter("all");
+    refreshAvailableWeapons(selectedCharacter, "all");
+    if (selectedCharacter !== null) {
+      setCurrWeaponIndex((oldVal) => (oldVal + 1) % getTotalNumberWeaponSlots(selectedCharacter));
+    }
+    else {
+      setCurrWeaponIndex(0);
+    }
+  }
+
+  const handleBackwardArrowClicked = () => {
+    setWeaponFilter("all");
+    refreshAvailableWeapons(selectedCharacter, "all");
+    if (selectedCharacter !== null) {
+      const newVal = currWeaponIndex - 1 + (currWeaponIndex <= 0 ? (selectedCharacter.availableWeapons.meleeSlots + selectedCharacter.availableWeapons.rangedSlots) : 0);
+      setCurrWeaponIndex(() => newVal);
+    }
+    else {
+      setCurrWeaponIndex(0);
+    }
+  }
+
   const calculateCost = (selections: ICharacterSelections): number => {
     return (selections.archetype ? 
       selections.archetype.basePoints + 
         (selections.ability ? selections.ability.cost : 0) + 
         (selections.specialism ? selections.specialism.cost : 0) + 
-        (selections.loadout.reduce((accum: number, currWeapon: ICustomCharacterWeapon) => accum + currWeapon.cost, 0))
+        (selections.loadout.reduce((accum: number, currWeapon: ICustomCharacterWeapon | null) => accum + (currWeapon !== null ? currWeapon.cost : 0), 0))
     :
       0
     );
@@ -136,6 +188,13 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     }
   }
 
+  const getAllAvailableWeapons = (character: ICustomCharacter): ICustomCharacterWeapon[] => {
+    if (character !== null) {
+      return [...character.availableWeapons.availableRangedWeapons, ...character.availableWeapons.availableMeleeWeapons]
+    }
+    return [];
+  }
+
   const handleAddUnitClicked = () => {
     if (selectedCharacter !== null) {
       props.onAddUnit({
@@ -143,9 +202,9 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
         totalCost: calculateCost(getCharacterSelections()),
         faction: selectedCharacter.faction,
         army: selectedCharacter.army,
-        selectedSpecialisms: [selectedSpecialism],
-        selectedAbilities: [selectedAbility],
-        loadout: []
+        selectedSpecialisms: [selectedSpecialism].filter((val) => val !== null),
+        selectedAbilities: [selectedAbility].filter((val) => val !== null),
+        loadout: selectedLoadout.filter((val) => val !== null), 
       });
     }
   }
@@ -234,7 +293,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
               Loadout
             </p>
             <div className="AddCustomCharacterPopupBox_LoadoutArea flexRow centerAlign spaceBetweenJustify">
-              <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Backward" onClick={() => {}}><ArrowBackIosIcon/></IconButton>
+              <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Backward" onClick={handleBackwardArrowClicked}><ArrowBackIosIcon/></IconButton>
               <div>
                 <p>
                   {selectedCharacter !== null ? 
@@ -262,7 +321,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
                       })}
                     </NativeSelect>
                   : 
-                    <Select id="AddCustomCharacterPopupBox_WeaponSelector" className="AddCustomCharacterPopupBox_WeaponSelector" value={""} label={"Weapon " + currWeaponIndex} onChange={() => {}}>
+                    <Select id="AddCustomCharacterPopupBox_WeaponSelector" className="AddCustomCharacterPopupBox_WeaponSelector" value={selectedLoadout.length > 0 && selectedLoadout[currWeaponIndex] !== null ? selectedLoadout[currWeaponIndex].name : ""} label={"Weapon " + currWeaponIndex} onChange={handleWeaponChanged}>
                       <MenuItem value={""}>None</MenuItem>
                       {selectedCharacter !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
                         return (<MenuItem className="AddCustomCharacterPopupBox_WeaponSelector" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts")}</MenuItem>);
@@ -271,7 +330,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
                   }
                 </FormControl>
               </div>
-              <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Forward" onClick={() => {}}><ArrowForwardIosIcon/></IconButton>
+              <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Forward" onClick={handleForwardArrowClicked}><ArrowForwardIosIcon/></IconButton>
             </div>
           </div>
           <div className="AddCustomCharacterPopupBox_SpacingPar borderBox"/>
