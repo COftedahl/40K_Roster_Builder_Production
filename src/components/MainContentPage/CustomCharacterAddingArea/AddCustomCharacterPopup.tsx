@@ -31,10 +31,6 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
   const [weaponFilter, setWeaponFilter] = useState<string>("all");
   const [availableWeaponsForSlot, setAvailableWeaponsForSlot] = useState<ICustomCharacterWeapon[]>([]);
 
-  useEffect(() => {
-    console.log("Loadout: ", selectedLoadout);
-  }, [selectedLoadout])
-
   const handleBoxClicked: React.MouseEventHandler = (event: React.MouseEvent) => {
     event.stopPropagation();
   };
@@ -96,6 +92,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
 
   const handleWeaponFilterChanged = (event: ChangeEvent<HTMLInputElement>, value: string) => {
     setWeaponFilter(value);
+    handleWeaponChanged(event, {props: {value: null}});
     refreshAvailableWeapons(selectedCharacter, value);
   }
 
@@ -206,6 +203,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
         selectedAbilities: [selectedAbility].filter((val) => val !== null),
         loadout: selectedLoadout.filter((val) => val !== null), 
       });
+      handleClosePopup();
     }
   }
 

@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CollapsibleCard from '../../UtilityComponents/CollapsibleCard/CollapsibleCard';
 import FactionSelector from '../../MainContentPage/FactionSelector/FactionSelector';
 import RosterBuildingArea from '../../MainContentPage/RosterBuildingArea/RosterBuildingArea';
-import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Roster, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
+import { Army, BattleSize, CustomCharacterList, Detachment, Enhancement, Faction, FactionList, ICustomCharacter, ICustomCharacterSelection, Roster, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
 import PathNotFoundScreen from '../PathNotFoundScreen/PathNotFoundScreen';
 import './App.css'
 import axios from 'axios';
@@ -35,7 +35,7 @@ const App: React.FC<AppProps> = () => {
   const [battleSize, setBattleSize] = useState<BattleSize | null>(null);
 
   
-
+  const [availableCustomCharacters, setAvailableCustomCharacters] = useState<ICustomCharacter[]>([]);
   const [availableUnits, setAvailableUnits] = useState<Unit[]>([]);
   const [availableAllyUnits, setAvailableAllyUnits] = useState<Unit[]>([]);
   // const [availableCharacterUnits, setAvailableCharacterUnits] = useState<Unit[]>([]);
@@ -50,6 +50,7 @@ const App: React.FC<AppProps> = () => {
   // const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.CHARACTERS));
   // const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.BATTLELINE));
   // const [otherUnitList, setOtherUnitList] = useState<UnitSelection[]>(unitListConst.filter((unit) => unit.unitType === UnitType.OTHER));
+  const [customCharacterList, setCustomCharacterList] = useState<ICustomCharacterSelection[]>([]);
   const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>([]);
   const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>([]);
   const [otherUnitList, setOtherUnitList] = useState<UnitSelection[]>([]);
@@ -85,6 +86,7 @@ const App: React.FC<AppProps> = () => {
   useEffect(() => {
     retrieveAvailableUnits();
     retrieveAvailableAllyUnits();
+    getAvailableCustomCharacters();
   }, [army]);
 
   useEffect(() => {
@@ -93,12 +95,13 @@ const App: React.FC<AppProps> = () => {
       unitList.map((unit: UnitSelection) => {
         cost += (unit.costOptions[unit.selectedSizeIndex]?.cost) + (unit.enhancement && unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0);
       });
+      cost += customCharacterList.reduce((accum: number, character: ICustomCharacterSelection) => accum + character.totalCost, 0);
       allyUnitList.map((unit: UnitSelection) => {
         cost += (unit.costOptions[unit.selectedSizeIndex]?.cost) + (unit.enhancement && unit.enhancement.doesCostPoints ? unit.enhancement.cost : 0);
       });
       return cost;
     });
-  }, [unitList, allyUnitList]);
+  }, [unitList, allyUnitList, customCharacterList]);
 
   const handleBoxClick = (clickedBoxName: string) => (event: React.SyntheticEvent, isBoxClicked: boolean) => {
     setActiveCollabsibleBox(isBoxClicked ? clickedBoxName : "");
@@ -128,6 +131,13 @@ const App: React.FC<AppProps> = () => {
       console.error(e);
     }
   };  
+
+  const getAvailableCustomCharacters = () => {
+    console.log("Switched army: ", army);
+    const avlblChars: ICustomCharacter[] = CustomCharacterList.filter((character: ICustomCharacter) => character.army === army);
+    console.log("avlbl chars: ", avlblChars);
+    setAvailableCustomCharacters(avlblChars);
+  }
 
   const retrieveAvailableAllyUnits = async () => {
     try {
@@ -301,13 +311,16 @@ const App: React.FC<AppProps> = () => {
                 detachment={detachment ? detachment : undefined} 
                 selectedRosterSize={battleSize} 
                 pointsUsed={pointsUsed} 
+                availableCustomCharacters={availableCustomCharacters}
                 availableUnits={availableUnits}
                 availableAllyUnits={availableAllyUnits}
                 unitList={unitList}
                 enhancementList={enhancementList}
+                customCharacterList={customCharacterList}
                 characterUnitList={characterUnitList}
                 battlelineUnitList={battlelineUnitList}
                 otherUnitList={otherUnitList}
+                setCustomCharacterList={setCustomCharacterList}
                 setCharacterUnitList={setCharacterUnitList}
                 setBattlelineUnitList={setBattlelineUnitList}
                 setOtherUnitList={setOtherUnitList}

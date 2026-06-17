@@ -3816,7 +3816,7 @@ const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
   {
     archetype: "Champion of the Chapter",
     faction: Faction.SPACE_MARINES,
-    army: "ADEPTUS_ASTARTES",
+    army: "Space Marines",
     basePoints: 70,
     availableSpecialisms: [
       {

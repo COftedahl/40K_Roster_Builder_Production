@@ -1,7 +1,7 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
-import { CustomCharacterList, Enhancement, ICustomCharacterSelection, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { CustomCharacterList, Enhancement, ICustomCharacter, ICustomCharacterSelection, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './FactionAddingArea.css';
 import { SetStateAction, useEffect, useState } from "react";
 import AddUnitPopupScreen from "../AddUnitPopupScreen/AddUnitPopupScreen";
@@ -16,28 +16,34 @@ export const enum FactionAddingAreaType {
 interface FactionAddingAreaProps {
   army: string;
   type: FactionAddingAreaType;
+  customCharacterList: ICustomCharacterSelection[], 
   characterUnitList: UnitSelection[];
   battlelineUnitList: UnitSelection[];
   otherUnitList: UnitSelection[];
+  setCustomCharacterList: React.Dispatch<SetStateAction<ICustomCharacterSelection[]>>;
   setCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   enhancementList: Enhancement[];
   availableUnits: Unit[];
+  availableCustomCharacters: ICustomCharacter[], 
   allowRosterModifications?: boolean;
 }
 
 const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   army, 
   type, 
+  customCharacterList, 
   characterUnitList, 
   battlelineUnitList, 
   otherUnitList, 
+  setCustomCharacterList, 
   setCharacterUnitList, 
   setBattlelineUnitList, 
   setOtherUnitList, 
   enhancementList, 
   availableUnits, 
+  availableCustomCharacters, 
   allowRosterModifications}) => {
 
   const [addUnitPopupOpen, setAddUnitPopupOpen] = useState<boolean>(false);
@@ -108,19 +114,28 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
     }
   }, [availableUnits]);
 
+  const handleAddNewCharacter = (character: ICustomCharacterSelection) => {
+    customCharacterList.push(character);
+    setCustomCharacterList(() => [...customCharacterList]);
+  }
+
   return (
     <>
       {army !== undefined && army !== "" && 
       <Box className="FactionAddingAreaBox">
         <Typography className="FactionAddingArea_TypeText">{type}</Typography>
         <Divider className="FactionAddingArea_TypeDivider"/>
-        <CustomCharacterAddingArea setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} availableCharacters={[]} characterList={[]} setCharacterList={() => {}}/>
+        {type === FactionAddingAreaType.ARMY ? 
+          <CustomCharacterAddingArea setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} characterList={customCharacterList} setCharacterList={setCustomCharacterList}/>
+        :
+          ""
+        }
         <UnitTypeAddingArea unitType={UnitType.CHARACTERS} unitList={characterUnitList} setUnitList={setCharacterUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
         <UnitTypeAddingArea unitType={UnitType.BATTLELINE} unitList={battlelineUnitList} setUnitList={setBattlelineUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
         <UnitTypeAddingArea unitType={UnitType.OTHER} unitList={otherUnitList} setUnitList={setOtherUnitList} enhancementList={enhancementList} handleUnitTypeAddingAreaAddButtonClick={handleUnitTypeAddingAreaAddButtonClick} allowRosterModifications={allowRosterModifications}/>
         {allowRosterModifications === undefined || allowRosterModifications === true ? <><IconButton className="FactionAddingArea_AddButton" onClick={handleClick}><AddIcon/></IconButton>
         <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={type === FactionAddingAreaType.ALLIES ? army + " Allies" : army}/>
-        <AddCustomCharacterPopup display={addCustomCharacterPopupOpen} onAddUnit={(newUnit) => { console.log(newUnit);} } closePopup={() => setAddCustomCharacterPopupOpen(false)} army={army} availableCharacters={CustomCharacterList}/>
+        <AddCustomCharacterPopup display={addCustomCharacterPopupOpen} onAddUnit={handleAddNewCharacter} closePopup={() => setAddCustomCharacterPopupOpen(false)} army={army} availableCharacters={availableCustomCharacters}/>
         </>: ""}
       </Box>
       }

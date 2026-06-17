@@ -1,5 +1,5 @@
 import { SetStateAction } from "react";
-import { BattleSize, Detachment, Enhancement, Unit, UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { BattleSize, Detachment, Enhancement, ICustomCharacter, ICustomCharacterSelection, Unit, UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import FactionAddingArea, {FactionAddingAreaType} from "../FactionAddingArea/FactionAddingArea";
 import QuickRosterStats from "../QuickRosterStats/QuickRosterStats";
 
@@ -8,13 +8,16 @@ interface RosterBuildingAreaProps {
   detachment?: Detachment | null;
   selectedRosterSize?: BattleSize | null;
   pointsUsed: number;
+  availableCustomCharacters: ICustomCharacter[];
   availableUnits: Unit[];
   availableAllyUnits: Unit[];
   unitList: UnitSelection[];
   enhancementList: Enhancement[];
+  customCharacterList: ICustomCharacterSelection[];
   characterUnitList: UnitSelection[];
   battlelineUnitList: UnitSelection[];
   otherUnitList: UnitSelection[];
+  setCustomCharacterList: React.Dispatch<SetStateAction<ICustomCharacterSelection[]>>;
   setCharacterUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setBattlelineUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
   setOtherUnitList: React.Dispatch<SetStateAction<UnitSelection[]>>;
@@ -32,13 +35,16 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
     detachment, 
     selectedRosterSize, 
     pointsUsed, 
+    availableCustomCharacters, 
     availableUnits,
     availableAllyUnits,
     unitList, 
     enhancementList, 
+    customCharacterList, 
     characterUnitList, 
     battlelineUnitList, 
     otherUnitList, 
+    setCustomCharacterList, 
     setCharacterUnitList, 
     setBattlelineUnitList, 
     setOtherUnitList, 
@@ -53,28 +59,34 @@ const RosterBuildingArea: React.FC<RosterBuildingAreaProps> = ({
 
   const factionAddingAreaProps = {
     army: army,
+    customCharacterList: customCharacterList, 
     characterUnitList: characterUnitList, 
     battlelineUnitList: battlelineUnitList, 
     otherUnitList: otherUnitList, 
+    setCustomCharacterList: setCustomCharacterList, 
     setCharacterUnitList: setCharacterUnitList, 
     setBattlelineUnitList: setBattlelineUnitList, 
     setOtherUnitList: setOtherUnitList, 
     enhancementList: enhancementList,
     type: FactionAddingAreaType.ARMY, 
+    availableCustomCharacters: availableCustomCharacters, 
     availableUnits: availableUnits, 
     allowRosterModifications: allowRosterModifications
   }
 
   const allyFactionAddingAreaProps = {
     army: army,
+    customCharacterList: [], 
     characterUnitList: allyCharacterUnitList, 
     battlelineUnitList: allyBattlelineUnitList, 
     otherUnitList: allyOtherUnitList, 
+    setCustomCharacterList: setCustomCharacterList, 
     setCharacterUnitList: setAllyCharacterUnitList, 
     setBattlelineUnitList: setAllyBattlelineUnitList, 
     setOtherUnitList: setAllyOtherUnitList, 
     enhancementList: [],
     type: FactionAddingAreaType.ALLIES, 
+    availableCustomCharacters: [], 
     availableUnits: availableAllyUnits, 
     allowRosterModifications: allowRosterModifications
   }

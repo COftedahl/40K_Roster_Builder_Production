@@ -9,7 +9,6 @@ interface CustomCharacterAddingAreaProps {
   setShowAddUnitPopup: (newVal: boolean) => void, 
   characterList: ICustomCharacterSelection[], 
   setCharacterList: (newList: ICustomCharacterSelection[]) => void, 
-  availableCharacters: ICustomCharacter[], 
   allowRosterModifications: boolean, 
 }
 
@@ -26,10 +25,6 @@ const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (pro
   const handleAddButtonClick = () => {
     props.setShowAddUnitPopup(true);
   };
-
-  const handleAddCharacter = (characterAdding) => {
-
-  }
 
   return (
     <>
