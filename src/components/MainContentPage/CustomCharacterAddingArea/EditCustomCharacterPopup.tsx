@@ -1,9 +1,10 @@
 import { Backdrop, Box, Divider, FormControl, FormControlLabel, FormLabel, IconButton, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, Select, SelectChangeEvent } from "@mui/material";
 import { ICustomCharacter, ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import { PropaneSharp } from "@mui/icons-material";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { ICharacterSelections } from "./AddCustomCharacterPopup";
 
 interface EditCustomCharacterPopupProps {
@@ -34,17 +35,18 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
   }
 
   const getStartingSpecialism = (): ICustomCharacterSpecialism | null => {
-    const result = props.unit !== null && props.unit.selectedSpecialisms ? JSON.parse(JSON.stringify(props.unit.selectedSpecialisms[0])) : null;
+    const result = props.unit !== null && props.unit.selectedSpecialisms && props.unit.selectedSpecialisms.length > 0 ? JSON.parse(JSON.stringify(props.unit.selectedSpecialisms[0])) : null;
     // console.log(result);
     return result;
   }
 
   const getStartingAbility = (): ICustomCharacterAbility | null => {
-    const result = props.unit !== null && props.unit.selectedAbilities ? JSON.parse(JSON.stringify(props.unit.selectedAbilities[0])) : null;
+    const result = props.unit !== null && props.unit.selectedAbilities && props.unit.selectedAbilities.length > 0 ? JSON.parse(JSON.stringify(props.unit.selectedAbilities[0])) : null;
     // console.log(result);
     return result;
   }
 
+  const scrollingArea = useRef(null);
   const [selectedSpecialism, setSelectedSpecialism] = useState<ICustomCharacterSpecialism | null>(getStartingSpecialism());
   const [selectedAbility, setSelectedAbility] = useState<ICustomCharacterAbility | null>(getStartingAbility());
   const [selectedLoadout, setSelectedLoadout] = useState<(ICustomCharacterWeapon | null)[]>(getStartingLoadoutArray());
@@ -79,6 +81,11 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
   const handleBoxClicked: React.MouseEventHandler = (event: React.MouseEvent) => {
     event.stopPropagation();
   };
+
+  const handleDeleteClicked = () => {
+    props.deleteCharacter();
+    handleClosePopup();
+  }
 
   const resetCharacterOptions = () => {
     setSelectedSpecialism(null);
@@ -209,13 +216,33 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
   }
 
   const handleSaveClicked = () => {
-
+    props.saveCharacter({
+      archetype: props.unit.archetype,
+      totalCost: calculateCost(getCharacterSelections()),
+      faction: props.unit.faction,
+      army: props.unit.army,
+      selectedSpecialisms: [selectedSpecialism],
+      selectedAbilities: [selectedAbility],
+      loadout: [...selectedLoadout].filter((val) => val !== null), 
+    });
+    handleClosePopup();
   }
 
   let isUserOnMobileDevice: boolean = false;
   useEffect(() => {
     isUserOnMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }, []);
+
+  useEffect(() => {
+    try {
+      if (scrollingArea.current) {
+        scrollingArea.current.scrollTo({top: 0});
+      }
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }, [props.open])
 
   return (
     <Backdrop className="EditCustomCharacterPopupBackground" sx={{zIndex: (theme) => theme.zIndex.drawer + 2}} open={props.open} onClick={handleClosePopup}>
@@ -225,12 +252,12 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
             <p className="AddCustomCharacter_Header_BoxNameText">
               {props.unit.archetype}
             </p>
-            <p key={props.unit.totalCost}>
-              {props.unit.totalCost} pts
+            <p key={currCost}>
+              {currCost} pts
             </p>
           </div>
           <Divider className="AddCustomCharacterPopupBox_Divider"/>
-          <div className="EditCustomCharacter_InputArea">
+          <div className="EditCustomCharacter_InputArea" ref={scrollingArea} key={props.open ? 1 : 0}>
             <FormControl>
               <InputLabel htmlFor="AddCustomCharacterPopupBox_SpecialismSelector" className="AddCustomCharacterPopupBox_ArchetypeSelectorLabel">Specialism
               </InputLabel>
@@ -245,7 +272,7 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
                 <Select id="AddCustomCharacterPopupBox_SpecialismSelector" className="AddCustomCharacterPopupBox_SpecialismSelector" value={selectedSpecialism ? selectedSpecialism.name : ""} label="Specialism" onChange={handleSpecialismChanged}>
                   <MenuItem value={""}>None</MenuItem>
                   {props.characterData !== null && props.characterData.availableSpecialisms !== undefined && props.characterData.availableSpecialisms !== null && props.characterData.availableSpecialisms.length > 0 && props.characterData.availableSpecialisms.map((specialism: ICustomCharacterSpecialism, index: number) => {
-                    console.log("Specialism: ", specialism, "selected specialism: ", selectedSpecialism)
+                    // console.log("Specialism: ", specialism, "selected specialism: ", selectedSpecialism)
                     return (<MenuItem className="AddCustomCharacterPopupBox_SpecialismSelector_Item" value={specialism.name} key={index}>{(specialism.name + " | " + specialism.cost + " pts" + (specialism.restrictions.length > 0 ? " | " + specialism.restrictions : ""))}</MenuItem>);
                   })}
                 </Select>
@@ -317,6 +344,7 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
             <div className="AddCustomCharacterPopupBox_SpacingParOne padding1 borderBox"/>
             <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Back" onClick={handleClosePopup}>BACK</IconButton>
             <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Save" onClick={handleSaveClicked} disabled={false}>Save</IconButton>
+            <IconButton className="EditUnitPopupBox_Button EditUnitPopupBox_Button_Delete" onClick={handleDeleteClicked}><DeleteIcon/></IconButton>
           </div>
           <div className="AddCustomCharacterPopupBox_SpacingPar borderBox"/>
         </Box>

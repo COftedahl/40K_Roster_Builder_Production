@@ -46,6 +46,16 @@ const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (pro
     props.setShowAddUnitPopup(true);
   };
 
+  const handleDeleteClicked = () => {
+    props.characterList.splice(selectedIndex, 1);
+    props.setCharacterList([...props.characterList]);
+  }
+
+  const handleSaveCharacter = (character: ICustomCharacterSelection) => {
+    props.characterList.splice(selectedIndex, 1, character);
+    props.setCharacterList([...props.characterList]);
+  }
+
   return (
     <>
       <Box className="CustomCharacterAddingAreaBox">
@@ -68,7 +78,7 @@ const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (pro
       </Box>
       {(props.allowRosterModifications === undefined || props.allowRosterModifications === true) && selectedUnit !== undefined ? 
         //edit unit screen here
-        <EditCustomCharacterPopup open={isEditPopupOpen} unit={selectedUnit} onClose={handleCloseEditPopup} deleteCharacter={() => {}} saveCharacter={() => {}} characterData={getUnitData(selectedUnit)}/>
+        <EditCustomCharacterPopup open={isEditPopupOpen} unit={selectedUnit} onClose={handleCloseEditPopup} deleteCharacter={handleDeleteClicked} saveCharacter={handleSaveCharacter} characterData={getUnitData(selectedUnit)}/>
       : 
         ""
       }

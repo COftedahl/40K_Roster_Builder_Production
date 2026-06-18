@@ -1,7 +1,7 @@
 import { Backdrop, Box, Divider, FormControl, FormControlLabel, FormLabel, IconButton, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, Select, SelectChangeEvent } from "@mui/material";
 import { ICustomCharacter, ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './AddCustomCharacterPopup.css';
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -22,6 +22,7 @@ export interface ICharacterSelections {
 
 const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: AddCustomCharacterPopupProps) => {
 
+  const scrollingArea = useRef(null);
   const [selectedCharacter, setSelectedCharacter] = useState<ICustomCharacter | null>(null);
   const [selectedSpecialism, setSelectedSpecialism] = useState<ICustomCharacterSpecialism | null>(null);
   const [selectedAbility, setSelectedAbility] = useState<ICustomCharacterAbility | null>(null);
@@ -212,6 +213,17 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     isUserOnMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }, []);
 
+  useEffect(() => {
+    try {
+      if (scrollingArea.current) {
+        scrollingArea.current.scrollTo({top: 0});
+      }
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }, [props.display]);
+
   return (
     <>
       <Backdrop open={props.display} sx={{zIndex: (theme) => theme.zIndex.drawer + 2}} onClick={handleClosePopup}>
@@ -228,7 +240,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
             </p>
           </div>
           <Divider className="AddCustomCharacterPopupBox_Divider"/>
-          <div className="AddCustomCharacter_InputAreaDiv">
+          <div className="AddCustomCharacter_InputAreaDiv" ref={scrollingArea}>
             <FormControl>
               <InputLabel htmlFor="AddCustomCharacterPopupBox_ArchetypeSelector" className="AddCustomCharacterPopupBox_ArchetypeSelectorLabel">Archetype
               </InputLabel>
