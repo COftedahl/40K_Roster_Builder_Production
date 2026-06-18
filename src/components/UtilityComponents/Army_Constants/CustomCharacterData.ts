@@ -1,4 +1,4 @@
-import { Faction } from "./Army_Constants";
+import { Army, Faction } from "./Army_Constants";
 
 export interface ICustomCharacterWeapon {
   name: string, 
@@ -358,7 +358,7 @@ const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
   {
     archetype: "Champion of the Chapter",
     faction: Faction.SPACE_MARINES,
-    army: "Space Marines",
+    army: Army.SPACE_MARINES,
     basePoints: 70,
     availableSpecialisms: AdeptusAstartesSpecialismsList,
     availableAbilities: AdeptusAstartesAbilitiesList,
@@ -402,7 +402,7 @@ const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
   }, 
 ];
 
-const DarkAngelsSpecialismsList: ICustomCharacterAbility[] = [
+const DarkAngelsSpecialismsList: ICustomCharacterSpecialism[] = [
   {
     name: "Ravenwing Bike",
     cost: 20,
@@ -410,7 +410,7 @@ const DarkAngelsSpecialismsList: ICustomCharacterAbility[] = [
   }, 
 ];
 
-const DarkAngelsAbilitiesList: ICustomCharacterSpecialism[] = [
+const DarkAngelsAbilitiesList: ICustomCharacterAbility[] = [
   {
     name: "Ravenwing Hunter",
     cost: 0,
@@ -427,6 +427,29 @@ const DarkAngelsRangedWeaponsList: ICustomCharacterWeapon[] = [
   {
     name: "Astartes Grenade Launcher",
     cost: 0,
+    restrictions: "Mounted Only, Limit 1 Per Model"
+  }, 
+  {
+    name: "Plasma Talon",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const DarkAngelsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Calibanite Greatsword",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Great Weapon of the Unforgiven",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Relic Weapon",
+    cost: 0,
     restrictions: ""
   }, 
 ]
@@ -435,6 +458,7 @@ const DarkAngelsCustomCharacterList: ICustomCharacter[] = [
   ...AdeptusAstartesCustomCharacterList.map((character: ICustomCharacter) => {
     return {
       ...character, 
+      army: Army.DARK_ANGELS, 
       availableAbilities: [...character.availableAbilities, 
         ...DarkAngelsAbilitiesList, 
       ], 
@@ -444,10 +468,257 @@ const DarkAngelsCustomCharacterList: ICustomCharacter[] = [
       availableWeapons: {
         ...character.availableWeapons, 
         availableMeleeWeapons: [...character.availableWeapons.availableMeleeWeapons, 
-
+          ...DarkAngelsMeleeWeaponsList
         ], 
         availableRangedWeapons: [...character.availableWeapons.availableRangedWeapons, 
+          ...DarkAngelsRangedWeaponsList
+        ], 
+      }
+    }
+  }), 
+];
 
+const BloodAngelsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Death Companion",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Death Companion with Jump Pack",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Hero of the Golden Host",
+    cost: 10,
+    restrictions: "Champion of the Chapter Only"
+  }, 
+  {
+    name: "Venerable Death Companion",
+    cost: 10,
+    restrictions: "Dreadnought Only"
+  }, 
+  {
+    name: "Venerable Librarian",
+    cost: 0,
+    restrictions: "Dreadnought Only"
+  }, 
+];
+
+const BloodAngelsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Blood Chalice",
+    cost: 20,
+    restrictions: "Champion of the Chapter Only"
+  }, 
+  {
+    name: "Forlorn Hero",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const BloodAngelsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Angelus Boltgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const BloodAngelsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Encarmine Blade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Encarmine Spear",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Eviscerator",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const BloodAngelsCustomCharacterList: ICustomCharacter[] = [
+  ...AdeptusAstartesCustomCharacterList.map((character: ICustomCharacter) => {
+    return {
+      ...character, 
+      army: Army.BLOOD_ANGELS, 
+      availableAbilities: [...character.availableAbilities, 
+        ...BloodAngelsAbilitiesList, 
+      ], 
+      availableSpecialisms: [...character.availableSpecialisms, 
+        ...BloodAngelsSpecialismsList, 
+      ], 
+      availableWeapons: {
+        ...character.availableWeapons, 
+        availableMeleeWeapons: [...character.availableWeapons.availableMeleeWeapons, 
+          ...BloodAngelsMeleeWeaponsList
+        ], 
+        availableRangedWeapons: [...character.availableWeapons.availableRangedWeapons, 
+          ...BloodAngelsRangedWeaponsList
+        ], 
+      }
+    }
+  }), 
+];
+
+const SpaceWolvesSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Curse of the Wulfen",
+    cost: 0,
+    restrictions: "Champion of the Chapter Only"
+  }, 
+  {
+    name: "Fenrisian Terminator Armour",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Thunderwolf Mount",
+    cost: 20,
+    restrictions: "Champion of the Chapter Only"
+  }, 
+  {
+    name: "Wolf Lord's Chosen",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+];
+
+const SpaceWolvesAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Storm Shield",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const SpaceWolvesRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Stormfang Auto-Launcher",
+    cost: 0,
+    restrictions: "Wulfen Only"
+  }, 
+  {
+    name: "Helfrost Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const SpaceWolvesMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Teeth and Claws",
+    cost: 0,
+    restrictions: "Model with Thunderwolf Mount Only, Limit 1 Per Model"
+  }, 
+]
+
+const SpaceWolvesCustomCharacterList: ICustomCharacter[] = [
+  ...AdeptusAstartesCustomCharacterList.map((character: ICustomCharacter) => {
+    return {
+      ...character, 
+      army: Army.SPACE_WOLVES, 
+      availableAbilities: [...character.availableAbilities, 
+        ...SpaceWolvesAbilitiesList, 
+      ], 
+      availableSpecialisms: [...character.availableSpecialisms, 
+        ...SpaceWolvesSpecialismsList, 
+      ], 
+      availableWeapons: {
+        ...character.availableWeapons, 
+        availableMeleeWeapons: [...character.availableWeapons.availableMeleeWeapons, 
+          ...SpaceWolvesMeleeWeaponsList
+        ], 
+        availableRangedWeapons: [...character.availableWeapons.availableRangedWeapons, 
+          ...SpaceWolvesRangedWeaponsList
+        ], 
+      }
+    }
+  }), 
+];
+
+const BlackTemplarsSpecialismsList: ICustomCharacterSpecialism[] = [];
+
+const BlackTemplarsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Armour of Faith",
+    cost: 0,
+    restrictions: "Infantry or Mounted Only, Limit 1 Per Army, Cannot include this model in an army that includes an Emperor's Champion Model"
+  }, 
+  {
+    name: "Condemnatory Annihilation",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Inspirational Exemplar",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Remoreseless Persecution",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Vehement Aggression",
+    cost: 20,
+    restrictions: ""
+  }, 
+  {
+    name: "Vengeful Exhortation",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const BlackTemplarsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Pyreblaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Pyre Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const BlackTemplarsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Black Sword",
+    cost: 0,
+    restrictions: "Limit 1 Per Army, Cannot include this model in an army that includes an Emperor's Champion model"
+  }, 
+]
+
+const BlackTemplarsCustomCharacterList: ICustomCharacter[] = [
+  ...AdeptusAstartesCustomCharacterList.map((character: ICustomCharacter) => {
+    return {
+      ...character, 
+      army: Army.BLACK_TEMPLARS, 
+      availableAbilities: [...character.availableAbilities, 
+        ...BlackTemplarsAbilitiesList, 
+      ], 
+      availableSpecialisms: [...character.availableSpecialisms, 
+        ...BlackTemplarsSpecialismsList, 
+      ], 
+      availableWeapons: {
+        ...character.availableWeapons, 
+        availableMeleeWeapons: [...character.availableWeapons.availableMeleeWeapons, 
+          ...BlackTemplarsMeleeWeaponsList
+        ], 
+        availableRangedWeapons: [...character.availableWeapons.availableRangedWeapons, 
+          ...BlackTemplarsRangedWeaponsList
         ], 
       }
     }
@@ -456,4 +727,8 @@ const DarkAngelsCustomCharacterList: ICustomCharacter[] = [
 
 export const CustomCharacterList: ICustomCharacter[] = [
   ...AdeptusAstartesCustomCharacterList, 
+  ...DarkAngelsCustomCharacterList, 
+  ...BloodAngelsCustomCharacterList, 
+  ...SpaceWolvesCustomCharacterList, 
+  ...BlackTemplarsCustomCharacterList, 
 ]
