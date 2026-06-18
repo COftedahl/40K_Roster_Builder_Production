@@ -1,5 +1,5 @@
-import { Color, PDFDocument, rgb, StandardFonts } from "pdf-lib";
-import { UnitSelection } from "../Army_Constants/Army_Constants";
+import { Color, PDFDocument, PDFFont, PDFPage, rgb, StandardFonts } from "pdf-lib";
+import { ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon, UnitSelection } from "../Army_Constants/Army_Constants";
 import download from 'downloadjs';
 
 interface saveRosterPDFProps {
@@ -9,6 +9,7 @@ interface saveRosterPDFProps {
   army: string;
   detachment: string;
   rosterCost: number;
+  customCharacters: ICustomCharacterSelection[], 
   armyUnits: UnitSelection[];
   allyUnits: UnitSelection[];
 }
@@ -16,10 +17,39 @@ interface saveRosterPDFProps {
 const gameEdition: string = "10";
 const gameEditionString: string = gameEdition + "th Edition: Index Points";
 
+const calculateNumberRowsRequired = (text: string, maxWidth: number, fontSize: number, font: PDFFont): number => {
+  return Math.ceil(font.widthOfTextAtSize(text, fontSize) / (1.0 * maxWidth));
+}
+
+//returns the total y distance written to
+const writeMultiRowText = (text: string, startX: number, startY: number, lineHeight: number, maxWidth: number, fontSize: number, color: Color, font: PDFFont, page: PDFPage): number => {
+  let currY: number = startY;
+  let yDelta: number = 0;
+  let remainingText: string = text;
+  let currIndex: number = 1;
+  while (remainingText.length > 0) {
+    while ((font.widthOfTextAtSize(remainingText.substring(0, currIndex + 1), fontSize) <= maxWidth) && (currIndex + 1 <= remainingText.length)) {
+      currIndex += 1;
+    }
+
+    page.drawText(remainingText.substring(0, currIndex), {
+      x: startX, maxWidth: maxWidth, color: color, font: font, size: fontSize, y: currY, 
+    })
+    console.log("Wrote: ", remainingText.substring(0, currIndex));
+    currY -= lineHeight;
+    remainingText = remainingText.substring(currIndex);
+    currIndex = 1;
+    yDelta += lineHeight;
+  }
+  return Math.max(lineHeight, yDelta);
+}
+
 const saveRosterPDF = async (props: saveRosterPDFProps): Promise<boolean> => {
   try {
     const formatter = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'long', day: '2-digit', hourCycle: 'h24', hour: '2-digit', minute: '2-digit', second: '2-digit'});
     //to get current date & time, use formatter.format();
+
+    //x-margin size = 10
 
     const pdfDoc = await PDFDocument.create();
     const pdfPage = pdfDoc.addPage();
@@ -58,11 +88,45 @@ const saveRosterPDF = async (props: saveRosterPDFProps): Promise<boolean> => {
     currYPos -= 40;
 
     //draw roster entries
+
+      //draw custom character entries
+    pdfPage.drawText("Custom Characters", {
+      x: 5, y: currYPos, size: 20, color: blackColor, font: boldFont
+    });
+    currYPos -= 15;
+    let drawGreyBackground = true;//flag to alternate grey/white lines in the roster
+    //draw field headers
+    if (props.customCharacters.length > 0) {
+      pdfPage.drawText("Archetype", {x: 15, y: currYPos, maxWidth: (width - 20) * (1.0/5.0), color: blackColor, size: 10, font: boldFont});
+      pdfPage.drawText("Cost (pts)", {x: 15 + (width - 20) * (1.0/5.0), y: currYPos, maxWidth: (width - 20) / 10, color: blackColor, size: 10, font: boldFont});
+      pdfPage.drawText("Abilities", {x: 15 + (width - 20) * (3.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10, font: boldFont});
+      pdfPage.drawText("Specialisms", {x: 15 + (width - 20) * (5.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10, font: boldFont});
+      pdfPage.drawText("Loadout", {x: 15 + (width - 20) * (7.0/10.0), y: currYPos, maxWidth: (width - 20) * (3.0/10.0), color: blackColor, size: 10, font: boldFont});
+    }
+    for (let unit of props.customCharacters) {
+      currYPos -= 15;
+      if (drawGreyBackground) {
+        const numRows: number = calculateNumberRowsRequired(unit.loadout.reduce((accum: string, weapon: ICustomCharacterWeapon) => accum + (accum.length > 0 ? ", " : "") + weapon.name, ""), (width - 20) * (3.0/10.0), 10, pdfFont);
+        console.log("Rectangle Height: ", numRows);
+        pdfPage.drawRectangle({x: 10, y: currYPos - 3.5 + 15, height: (-15 * (numRows + 1)) + 15, width: width - 20, color: lightGreyColor});
+        // pdfPage.drawRectangle({x: 10, y: currYPos - 3.5, height: 15, width: width - 20, color: lightGreyColor});
+      }
+      drawGreyBackground = !drawGreyBackground;
+      pdfPage.drawText(unit.archetype, {x: 15, y: currYPos, maxWidth: (width - 20) * (1.0/5.0), color: blackColor, size: 10});
+      pdfPage.drawText("" + unit.totalCost, {x: 15 + 18 + (width - 20) * (1.0/5.0), y: currYPos, maxWidth: (width - 20) / 10, color: blackColor, size: 10});
+      pdfPage.drawText(unit.selectedAbilities.reduce((accum: string, ability: ICustomCharacterAbility) => accum + (accum.length > 0 ? ", " : "") + ability.name, ""), {x: 15 + (width - 20) * (3.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10});
+      pdfPage.drawText(unit.selectedSpecialisms.reduce((accum: string, specialism: ICustomCharacterSpecialism) => accum + (accum.length > 0 ? ", " : "") + specialism.name, ""), {x: 15 + (width - 20) * (5.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10});
+      const delta: number = (writeMultiRowText(unit.loadout.reduce((accum: string, weapon: ICustomCharacterWeapon) => accum + (accum.length > 0 ? ", " : "") + weapon.name, ""), 15 + (width - 20) * (7.0/10.0), currYPos, 15, (width - 20) * (2.75/10.0), 10, blackColor, pdfFont, pdfPage) - 15);
+      console.log("Delta: ", delta);
+      currYPos -= delta;
+    }
+    currYPos -= 40;
+
       //draw army roster entries
     pdfPage.drawText("Army Units", 
       {x: 5, y: currYPos, size: 20, color: blackColor, font: boldFont});
     currYPos -= 15;
-    let drawGreyBackground = true;//flag to alternate grey/white lines in the roster
+    drawGreyBackground = true;//flag to alternate grey/white lines in the roster
     //draw field headers
     if (props.armyUnits.length > 0) {
       pdfPage.drawText("Unit Name", {x: 15, y: currYPos, maxWidth: (width - 20) * (3/8), color: blackColor, size: 10, font: boldFont});

@@ -207,6 +207,7 @@ const App: React.FC<AppProps> = () => {
       faction: faction, 
       detachment: (detachment ? detachment.name : "none"),
       army: army, 
+      customCharacters: customCharacterList, 
       armyUnits: unitList, 
       allyUnits: allyUnitList
     }
@@ -232,6 +233,7 @@ const App: React.FC<AppProps> = () => {
       army: army || "", 
       detachment: (detachment && detachment !== null ? detachment.name : ""), 
       rosterCost: pointsUsed, 
+      customCharacters: customCharacterList, 
       armyUnits: unitList, 
       allyUnits: allyUnitList
     });

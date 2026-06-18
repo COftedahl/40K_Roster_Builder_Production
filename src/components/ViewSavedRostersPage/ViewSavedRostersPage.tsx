@@ -1,6 +1,6 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { FactionList, Roster, UnitSelection, UnitType } from "../UtilityComponents/Army_Constants/Army_Constants";
+import { SetStateAction, useEffect, useState } from "react";
+import { FactionList, ICustomCharacterSelection, Roster, UnitSelection, UnitType } from "../UtilityComponents/Army_Constants/Army_Constants";
 import { server_url } from "../UtilityComponents/Environment Variables/Environment Variables";
 import axios from "axios";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -22,6 +22,7 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
 
   const [armyUnits, setArmyUnits] = useState<UnitSelection[]>([]);
   const [allyUnits, setAllyUnits] = useState<UnitSelection[]>([]);
+  const [customCharacterList, setCustomCharacterList] = useState<ICustomCharacterSelection[]>([]);
   const [characterUnitList, setCharacterUnitList] = useState<UnitSelection[]>([]);
   const [battlelineUnitList, setBattlelineUnitList] = useState<UnitSelection[]>([]);
   const [otherUnitList, setOtherUnitList] = useState<UnitSelection[]>([]);
@@ -92,9 +93,11 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
     console.log("Resetting from index change")
     setArmyUnits([])
     setAllyUnits([])
+    setCustomCharacterList([]);
     if (rosterList && rosterList.length > 0 && currRosterIndex >= 0 && currRosterIndex < rosterList.length) {
       setArmyUnits(rosterList[currRosterIndex].armyUnits);
       setAllyUnits(rosterList[currRosterIndex].allyUnits);
+      setCustomCharacterList(rosterList[currRosterIndex].customCharacters || []);
     }
   }, [currRosterIndex]);
 
@@ -136,30 +139,33 @@ const ViewSavedRostersPage: React.FC<ViewSavedRostersPageProps> = ({...props}) =
           <IconButton className={"ViewSavedRostersPageBox_Button ViewSavedRostersPageBox_Button_Select"} onClick={handleSelectClicked}>SELECT ROSTER</IconButton>
           <Typography className="ViewSavedRostersPageBox_RosterMetadataText">{rosterList[currRosterIndex].name}<br/>{rosterList[currRosterIndex].owner}</Typography>
           <RosterBuildingArea
-            army={rosterList[currRosterIndex].army} 
-            detachment={FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ","_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments ? (
-                rosterList[currRosterIndex].detachment ? FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ","_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments.find((currDetachment) => currDetachment.name.toLowerCase().replace(" ", "_") === rosterList[currRosterIndex].detachment.toLowerCase().replace(" ", "_"))
-                : FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ","_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments[0] ) 
-              : undefined}
-            pointsUsed={rosterList[currRosterIndex].points} 
-            availableUnits={[]} 
-            availableAllyUnits={[]} 
-            unitList={[]} 
-            enhancementList={[]} 
-            characterUnitList={characterUnitList} 
-            battlelineUnitList={battlelineUnitList} 
-            otherUnitList={otherUnitList} 
-            setCharacterUnitList={() => {}}
-            setBattlelineUnitList={() => {}}
-            setOtherUnitList={() => {}}
-            allyCharacterUnitList={allyCharacterUnitList}
-            allyBattlelineUnitList={allyBattlelineUnitList}
-            allyOtherUnitList={allyOtherUnitList}
-            setAllyCharacterUnitList={() => {}}
-            setAllyBattlelineUnitList={() => {}}
-            setAllyOtherUnitList={() => {}}
-            allowRosterModifications={false}
-          />
+                army={rosterList[currRosterIndex].army}
+                detachment={FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ", "_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments ? (
+                  rosterList[currRosterIndex].detachment ? FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ", "_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments.find((currDetachment) => currDetachment.name.toLowerCase().replace(" ", "_") === rosterList[currRosterIndex].detachment.toLowerCase().replace(" ", "_"))
+                    : FactionList[rosterList[currRosterIndex].faction.toUpperCase().replaceAll(" ", "_")].armies.find((army) => army.name === rosterList[currRosterIndex].army)?.detachments[0])
+                  : undefined}
+                pointsUsed={rosterList[currRosterIndex].points}
+                availableUnits={[]}
+                availableAllyUnits={[]}
+                unitList={[]}
+                enhancementList={[]}
+                characterUnitList={characterUnitList}
+                battlelineUnitList={battlelineUnitList}
+                otherUnitList={otherUnitList}
+                setCharacterUnitList={() => { } }
+                setBattlelineUnitList={() => { } }
+                setOtherUnitList={() => { } }
+                allyCharacterUnitList={allyCharacterUnitList}
+                allyBattlelineUnitList={allyBattlelineUnitList}
+                allyOtherUnitList={allyOtherUnitList}
+                setAllyCharacterUnitList={() => { } }
+                setAllyBattlelineUnitList={() => { } }
+                setAllyOtherUnitList={() => { } }
+                allowRosterModifications={false} 
+                availableCustomCharacters={[]} 
+                customCharacterList={customCharacterList} 
+                setCustomCharacterList={setCustomCharacterList}
+              />
         </Box>
         <Box className="ViewSavedRostersPageBox ViewSavedRostersPageBox_ButtonBox">
           <IconButton className="ViewSavedRostersPageBox_Button ViewSavedRostersPageBox_Button_Forward" onClick={handleForwardClicked}><ArrowForwardIosIcon/></IconButton>

@@ -3763,6 +3763,7 @@ export interface Roster {
   faction: string;
   army: string;
   detachment?: string;
+  customCharacters?: ICustomCharacterSelection[], 
   armyUnits: UnitSelection[];
   allyUnits: UnitSelection[];
 };
