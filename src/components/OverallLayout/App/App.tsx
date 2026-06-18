@@ -133,9 +133,7 @@ const App: React.FC<AppProps> = () => {
   };  
 
   const getAvailableCustomCharacters = () => {
-    console.log("Switched army: ", army);
     const avlblChars: ICustomCharacter[] = CustomCharacterList.filter((character: ICustomCharacter) => character.army === army);
-    console.log("avlbl chars: ", avlblChars);
     setAvailableCustomCharacters(avlblChars);
   }
 

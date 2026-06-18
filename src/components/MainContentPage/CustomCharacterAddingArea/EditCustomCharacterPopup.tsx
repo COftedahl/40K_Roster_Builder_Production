@@ -1,47 +1,86 @@
 import { Backdrop, Box, Divider, FormControl, FormControlLabel, FormLabel, IconButton, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, Select, SelectChangeEvent } from "@mui/material";
 import { ICustomCharacter, ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon } from "../../UtilityComponents/Army_Constants/Army_Constants";
-import './AddCustomCharacterPopup.css';
+import { PropaneSharp } from "@mui/icons-material";
 import { ChangeEvent, useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { ICharacterSelections } from "./AddCustomCharacterPopup";
 
-interface AddCustomCharacterPopupProps {
-  display: boolean, 
-  closePopup: () => void, 
-  onAddUnit: (characterAdding: ICustomCharacterSelection) => void, 
-  army: string, 
-  availableCharacters: ICustomCharacter[], 
+interface EditCustomCharacterPopupProps {
+  open: boolean, 
+  onClose: () => void, 
+  unit: ICustomCharacterSelection | null, 
+  characterData: ICustomCharacter | null, 
+  saveCharacter: (newCharacter: ICustomCharacterSelection) => void, 
+  deleteCharacter: () => void, 
 }
 
-export interface ICharacterSelections {
-  archetype: ICustomCharacter | null, 
-  specialism: ICustomCharacterSpecialism | null, 
-  ability: ICustomCharacterAbility | null, 
-  loadout: ICustomCharacterWeapon[], 
-}
+const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props) => {
 
-const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: AddCustomCharacterPopupProps) => {
+  const getTotalNumberWeaponSlots = (character: ICustomCharacter | null): number => {
+    if (character !== null) {
+      return (character.availableWeapons.meleeSlots + character.availableWeapons.rangedSlots);
+    }
+    else {
+      return 0;
+    }
+  }
 
-  const [selectedCharacter, setSelectedCharacter] = useState<ICustomCharacter | null>(null);
-  const [selectedSpecialism, setSelectedSpecialism] = useState<ICustomCharacterSpecialism | null>(null);
-  const [selectedAbility, setSelectedAbility] = useState<ICustomCharacterAbility | null>(null);
-  const [selectedLoadout, setSelectedLoadout] = useState<(ICustomCharacterWeapon | null)[]>([]);
-  const [currCost, setCurrCost] = useState<number>(0);
+  const getStartingLoadoutArray = (): (ICustomCharacterWeapon | null)[] => {
+    // console.log("StartingCharacterData: ", props.characterData);
+    const arr = props.unit !== null ? [...props.unit.loadout, ...Array(getTotalNumberWeaponSlots(props.characterData) - props.unit.loadout.length).fill(null)] : [];
+    // console.log(arr);
+    return arr;
+  }
+
+  const getStartingSpecialism = (): ICustomCharacterSpecialism | null => {
+    const result = props.unit !== null && props.unit.selectedSpecialisms ? JSON.parse(JSON.stringify(props.unit.selectedSpecialisms[0])) : null;
+    // console.log(result);
+    return result;
+  }
+
+  const getStartingAbility = (): ICustomCharacterAbility | null => {
+    const result = props.unit !== null && props.unit.selectedAbilities ? JSON.parse(JSON.stringify(props.unit.selectedAbilities[0])) : null;
+    // console.log(result);
+    return result;
+  }
+
+  const [selectedSpecialism, setSelectedSpecialism] = useState<ICustomCharacterSpecialism | null>(getStartingSpecialism());
+  const [selectedAbility, setSelectedAbility] = useState<ICustomCharacterAbility | null>(getStartingAbility());
+  const [selectedLoadout, setSelectedLoadout] = useState<(ICustomCharacterWeapon | null)[]>(getStartingLoadoutArray());
+  const [currCost, setCurrCost] = useState<number>(props.unit !== null ? props.unit.totalCost : 0);
   const [currWeaponIndex, setCurrWeaponIndex] = useState<number>(0);
   const [weaponFilter, setWeaponFilter] = useState<string>("all");
   const [availableWeaponsForSlot, setAvailableWeaponsForSlot] = useState<ICustomCharacterWeapon[]>([]);
+
+  const setStartingValues = () => {
+    setSelectedSpecialism(getStartingSpecialism());
+    setSelectedAbility(getStartingAbility());
+    setSelectedLoadout(getStartingLoadoutArray());
+    setCurrCost(props.unit !== null ? props.unit.totalCost : 0);
+  }
+
+  useEffect(() => {
+    setStartingValues();
+    // logValues();
+  }, [props.open])
+
+  const logValues = () => {
+    console.log("specialism: ", selectedSpecialism);
+    console.log("abilities: ", selectedAbility);
+    console.log("Loadout: ", selectedLoadout);
+  }
+
+  const handleClosePopup = () => {
+    resetCharacterOptions();
+    props.onClose();
+  }
 
   const handleBoxClicked: React.MouseEventHandler = (event: React.MouseEvent) => {
     event.stopPropagation();
   };
 
-  const handleClosePopup = () => {
-    resetCharacterOptions();
-    props.closePopup();
-  }
-
   const resetCharacterOptions = () => {
-    setSelectedCharacter(null);
     setSelectedSpecialism(null);
     setSelectedAbility(null);
     setSelectedLoadout([]);
@@ -54,23 +93,9 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     setCurrCost(() => calculateCost(selections));
   }
 
-  const handleArchetypeSelectorChange = (event: SelectChangeEvent, child: any) => {
-    try {
-      resetCharacterOptions();
-      const newVal: ICustomCharacter | null = props.availableCharacters.find((character: ICustomCharacter) => character.archetype === child?.props.value) || null;
-      setSelectedCharacter(() => newVal);
-      updateCost({archetype: newVal, specialism: null, ability: null, loadout: []});
-      refreshAvailableWeapons(newVal, "all");
-      setSelectedLoadout(Array(getTotalNumberWeaponSlots(newVal)).fill(null));
-    }
-    catch (e) {
-      console.error(e);
-    }
-  }
-
   const handleSpecialismChanged = (event: SelectChangeEvent, child: any) => {
     try {
-      const newVal: ICustomCharacterSpecialism | null = selectedCharacter.availableSpecialisms.find((specialism: ICustomCharacterSpecialism) => specialism.name === child?.props.value) || null;
+      const newVal: ICustomCharacterSpecialism | null = props.characterData.availableSpecialisms.find((specialism: ICustomCharacterSpecialism) => specialism.name === child?.props.value) || null;
       setSelectedSpecialism(() => newVal)
       updateCost({...getCharacterSelections(), specialism: newVal});
     }
@@ -81,7 +106,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
 
   const handleAbilityChanged = (event: SelectChangeEvent, child: any) => {
     try {
-      const newVal : ICustomCharacterAbility | null = selectedCharacter.availableAbilities.find((ability: ICustomCharacterAbility) => ability.name === child?.props.value) || null;
+      const newVal : ICustomCharacterAbility | null = props.characterData.availableAbilities.find((ability: ICustomCharacterAbility) => ability.name === child?.props.value) || null;
       setSelectedAbility(() => newVal);
       updateCost({...getCharacterSelections(), ability: newVal});
     }
@@ -93,7 +118,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
   const handleWeaponFilterChanged = (event: ChangeEvent<HTMLInputElement>, value: string) => {
     setWeaponFilter(value);
     handleWeaponChanged(event, {props: {value: null}});
-    refreshAvailableWeapons(selectedCharacter, value);
+    refreshAvailableWeapons(props.characterData, value);
   }
 
   const refreshAvailableWeapons = (character: ICustomCharacter, filter: string) => {
@@ -120,8 +145,8 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
 
   const handleWeaponChanged = (event: SelectChangeEvent, child: any) => {
     try {
-      if (selectedCharacter !== null) {
-        const newVal: ICustomCharacterWeapon | null = getAllAvailableWeapons(selectedCharacter).find((weapon: ICustomCharacterWeapon) => weapon.name === child?.props.value) || null;
+      if (props.characterData !== null) {
+        const newVal: ICustomCharacterWeapon | null = getAllAvailableWeapons(props.characterData).find((weapon: ICustomCharacterWeapon) => weapon.name === child?.props.value) || null;
         selectedLoadout.splice(currWeaponIndex, 1, newVal);
         const newArray: (ICustomCharacterWeapon | null)[] = selectedLoadout;
         setSelectedLoadout(() => [...newArray]);
@@ -133,20 +158,11 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     }
   }
 
-  const getTotalNumberWeaponSlots = (character: ICustomCharacter | null): number => {
-    if (character !== null) {
-      return (character.availableWeapons.meleeSlots + character.availableWeapons.rangedSlots);
-    }
-    else {
-      return 0;
-    }
-  }
-
   const handleForwardArrowClicked = () => {
     setWeaponFilter("all");
-    refreshAvailableWeapons(selectedCharacter, "all");
-    if (selectedCharacter !== null) {
-      setCurrWeaponIndex((oldVal) => (oldVal + 1) % getTotalNumberWeaponSlots(selectedCharacter));
+    refreshAvailableWeapons(props.characterData, "all");
+    if (props.characterData !== null) {
+      setCurrWeaponIndex((oldVal) => (oldVal + 1) % getTotalNumberWeaponSlots(props.characterData));
     }
     else {
       setCurrWeaponIndex(0);
@@ -155,9 +171,9 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
 
   const handleBackwardArrowClicked = () => {
     setWeaponFilter("all");
-    refreshAvailableWeapons(selectedCharacter, "all");
-    if (selectedCharacter !== null) {
-      const newVal = currWeaponIndex - 1 + (currWeaponIndex <= 0 ? (selectedCharacter.availableWeapons.meleeSlots + selectedCharacter.availableWeapons.rangedSlots) : 0);
+    refreshAvailableWeapons(props.characterData, "all");
+    if (props.characterData !== null) {
+      const newVal = currWeaponIndex - 1 + (currWeaponIndex <= 0 ? (props.characterData.availableWeapons.meleeSlots + props.characterData.availableWeapons.rangedSlots) : 0);
       setCurrWeaponIndex(() => newVal);
     }
     else {
@@ -178,7 +194,7 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
 
   const getCharacterSelections = (): ICharacterSelections => {
     return {
-      archetype: selectedCharacter, 
+      archetype: props.characterData, 
       ability: selectedAbility, 
       specialism: selectedSpecialism, 
       loadout: selectedLoadout, 
@@ -192,19 +208,8 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
     return [];
   }
 
-  const handleAddUnitClicked = () => {
-    if (selectedCharacter !== null) {
-      props.onAddUnit({
-        archetype: selectedCharacter.archetype,
-        totalCost: calculateCost(getCharacterSelections()),
-        faction: selectedCharacter.faction,
-        army: selectedCharacter.army,
-        selectedSpecialisms: [selectedSpecialism].filter((val) => val !== null),
-        selectedAbilities: [selectedAbility].filter((val) => val !== null),
-        loadout: selectedLoadout.filter((val) => val !== null), 
-      });
-      handleClosePopup();
-    }
+  const handleSaveClicked = () => {
+
   }
 
   let isUserOnMobileDevice: boolean = false;
@@ -213,55 +218,34 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
   }, []);
 
   return (
-    <>
-      <Backdrop open={props.display} sx={{zIndex: (theme) => theme.zIndex.drawer + 2}} onClick={handleClosePopup}>
-        <div className="AddCustomCharacterPopupBox card positionRelative" onClick={handleBoxClicked}>
+    <Backdrop className="EditCustomCharacterPopupBackground" sx={{zIndex: (theme) => theme.zIndex.drawer + 2}} open={props.open} onClick={handleClosePopup}>
+      {props.unit !== null && props.unit !== undefined && props.characterData !== null && props.unit !== null && 
+        <Box className="EditCustomCharacterDiv card PopupCard positionRelative" onClick={handleBoxClicked}>
           <div>
-            <p className="AddCustomCharacter_Header_FactionText">
-              {props.army}
-            </p>
             <p className="AddCustomCharacter_Header_BoxNameText">
-              Custom Character
+              {props.unit.archetype}
             </p>
-            <p key={currCost}>
-              {currCost} pts
+            <p key={props.unit.totalCost}>
+              {props.unit.totalCost} pts
             </p>
           </div>
           <Divider className="AddCustomCharacterPopupBox_Divider"/>
-          <div className="AddCustomCharacter_InputAreaDiv">
-            <FormControl>
-              <InputLabel htmlFor="AddCustomCharacterPopupBox_ArchetypeSelector" className="AddCustomCharacterPopupBox_ArchetypeSelectorLabel">Archetype
-              </InputLabel>
-              {isUserOnMobileDevice ? 
-                <NativeSelect className="AddCustomCharacterPopupBox_ArchetypeSelector">
-                  <option value={null}>None</option>
-                  {props.availableCharacters !== undefined && props.availableCharacters.length > 0 && props.availableCharacters.map((availableUnit: ICustomCharacter, index: number) => {
-                    return (<option className="AddCustomCharacterPopupBox_ArchetypeSelector_Item" value={availableUnit.archetype} key={index}>{(availableUnit.archetype + " | " + availableUnit.basePoints + " pts")}</option>);
-                  })}
-                </NativeSelect>
-              : 
-                <Select id="AddCustomCharacterPopupBox_ArchetypeSelector" className="AddCustomCharacterPopupBox_ArchetypeSelector" value={selectedCharacter ? selectedCharacter.archetype : ""} label="Archetype" onChange={handleArchetypeSelectorChange}>
-                  <MenuItem value={null}>None</MenuItem>
-                  {props.availableCharacters !== undefined && props.availableCharacters.length > 0 && props.availableCharacters.map((availableUnit: ICustomCharacter, index: number) => {
-                    return (<MenuItem className="AddCustomCharacterPopupBox_ArchetypeSelector_Item" value={availableUnit.archetype} key={index}>{(availableUnit.archetype + " | " + availableUnit.basePoints + " pts")}</MenuItem>);
-                  })}
-                </Select>
-              }
-            </FormControl>
+          <div className="EditCustomCharacter_InputArea">
             <FormControl>
               <InputLabel htmlFor="AddCustomCharacterPopupBox_SpecialismSelector" className="AddCustomCharacterPopupBox_ArchetypeSelectorLabel">Specialism
               </InputLabel>
               {isUserOnMobileDevice ? 
                 <NativeSelect className="AddCustomCharacterPopupBox_SpecialismSelector">
                   <option value={""}>None</option>
-                  {selectedCharacter !== null && selectedCharacter.availableSpecialisms !== undefined && selectedCharacter.availableSpecialisms !== null && selectedCharacter.availableSpecialisms.length > 0 && selectedCharacter.availableSpecialisms.map((specialism: ICustomCharacterSpecialism, index: number) => {
+                  {props.characterData !== null && props.characterData.availableSpecialisms !== undefined && props.characterData.availableSpecialisms !== null && props.characterData.availableSpecialisms.length > 0 && props.characterData.availableSpecialisms.map((specialism: ICustomCharacterSpecialism, index: number) => {
                     return (<option className="AddCustomCharacterPopupBox_SpecialismSelector_Item" value={specialism.name} key={index}>{(specialism.name + " | " + specialism.cost + " pts" + (specialism.restrictions.length > 0 ? " | " + specialism.restrictions : ""))}</option>);
                   })}
                 </NativeSelect>
               : 
                 <Select id="AddCustomCharacterPopupBox_SpecialismSelector" className="AddCustomCharacterPopupBox_SpecialismSelector" value={selectedSpecialism ? selectedSpecialism.name : ""} label="Specialism" onChange={handleSpecialismChanged}>
                   <MenuItem value={""}>None</MenuItem>
-                  {selectedCharacter !== null && selectedCharacter.availableSpecialisms !== undefined && selectedCharacter.availableSpecialisms !== null && selectedCharacter.availableSpecialisms.length > 0 && selectedCharacter.availableSpecialisms.map((specialism: ICustomCharacterSpecialism, index: number) => {
+                  {props.characterData !== null && props.characterData.availableSpecialisms !== undefined && props.characterData.availableSpecialisms !== null && props.characterData.availableSpecialisms.length > 0 && props.characterData.availableSpecialisms.map((specialism: ICustomCharacterSpecialism, index: number) => {
+                    console.log("Specialism: ", specialism, "selected specialism: ", selectedSpecialism)
                     return (<MenuItem className="AddCustomCharacterPopupBox_SpecialismSelector_Item" value={specialism.name} key={index}>{(specialism.name + " | " + specialism.cost + " pts" + (specialism.restrictions.length > 0 ? " | " + specialism.restrictions : ""))}</MenuItem>);
                   })}
                 </Select>
@@ -273,14 +257,14 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
               {isUserOnMobileDevice ? 
                 <NativeSelect className="AddCustomCharacterPopupBox_AbilitySelector">
                   <option value={""}>None</option>
-                  {selectedCharacter !== null && selectedCharacter.availableAbilities !== undefined && selectedCharacter.availableAbilities.length > 0 && selectedCharacter.availableAbilities.map((ability: ICustomCharacterAbility, index: number) => {
+                  {props.characterData !== null && props.characterData.availableAbilities !== undefined && props.characterData.availableAbilities.length > 0 && props.characterData.availableAbilities.map((ability: ICustomCharacterAbility, index: number) => {
                     return (<option className="AddCustomCharacterPopupBox_AbilitySelector_Item" value={ability.name} key={index}>{(ability.name + " | " + ability.cost + " pts" + (ability.restrictions.length > 0 ? " | " + ability.restrictions : ""))}</option>);
                   })}
                 </NativeSelect>
               : 
                 <Select id="AddCustomCharacterPopupBox_AbilitySelector" className="AddCustomCharacterPopupBox_AbilitySelector" value={selectedAbility ? selectedAbility.name : ""} label="Ability" onChange={handleAbilityChanged}>
                   <MenuItem value={""}>None</MenuItem>
-                  {selectedCharacter !== null && selectedCharacter.availableAbilities !== undefined && selectedCharacter.availableAbilities.length > 0 && selectedCharacter.availableAbilities.map((ability: ICustomCharacterAbility, index: number) => {
+                  {props.characterData !== null && props.characterData.availableAbilities !== undefined && props.characterData.availableAbilities.length > 0 && props.characterData.availableAbilities.map((ability: ICustomCharacterAbility, index: number) => {
                     return (<MenuItem className="AddCustomCharacterPopupBox_AbilitySelector_Item" value={ability.name} key={index}>{(ability.name + " | " + ability.cost + " pts" + (ability.restrictions.length > 0 ? " | " + ability.restrictions : ""))}</MenuItem>);
                   })}
                 </Select>
@@ -294,8 +278,8 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
               <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Backward" onClick={handleBackwardArrowClicked}><ArrowBackIosIcon/></IconButton>
               <div>
                 <p>
-                  {selectedCharacter !== null ? 
-                    "This character may be armed with " + selectedCharacter.availableWeapons.availableLoadouts.join(" OR ") + "."
+                  {props.characterData !== null ? 
+                    "This character may be armed with " + props.characterData.availableWeapons.availableLoadouts.join(" OR ") + "."
                   : 
                     ""
                   }
@@ -314,14 +298,14 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
                   {isUserOnMobileDevice ? 
                     <NativeSelect className="AddCustomCharacterPopupBox_WeaponSelector">
                       <option value={""}>None</option>
-                      {selectedCharacter !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
+                      {props.characterData !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
                         return (<option className="AddCustomCharacterPopupBox_WeaponSelector_Item" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts")}</option>);
                       })}
                     </NativeSelect>
                   : 
                     <Select id="AddCustomCharacterPopupBox_WeaponSelector" className="AddCustomCharacterPopupBox_WeaponSelector" value={selectedLoadout.length > 0 && selectedLoadout[currWeaponIndex] !== null ? selectedLoadout[currWeaponIndex].name : ""} label={"Weapon " + currWeaponIndex} onChange={handleWeaponChanged}>
                       <MenuItem value={""}>None</MenuItem>
-                      {selectedCharacter !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
+                      {props.characterData !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
                         return (<MenuItem className="AddCustomCharacterPopupBox_WeaponSelector" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts")}</MenuItem>);
                       })}
                     </Select>
@@ -330,14 +314,15 @@ const AddCustomCharacterPopup: React.FC<AddCustomCharacterPopupProps> = (props: 
               </div>
               <IconButton className="AddCustomCharacterPopupBox_ArrowButton AddCustomCharacterPopupBox_Button_Forward" onClick={handleForwardArrowClicked}><ArrowForwardIosIcon/></IconButton>
             </div>
+            <div className="AddCustomCharacterPopupBox_SpacingParOne padding1 borderBox"/>
+            <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Back" onClick={handleClosePopup}>BACK</IconButton>
+            <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Save" onClick={handleSaveClicked} disabled={false}>Save</IconButton>
           </div>
           <div className="AddCustomCharacterPopupBox_SpacingPar borderBox"/>
-          <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Back" onClick={handleClosePopup}>BACK</IconButton>
-          <IconButton className="AddCustomCharacterPopupBox_Button AddCustomCharacterPopupBox_Button_Save" onClick={handleAddUnitClicked} disabled={false}>Add</IconButton>
-        </div>
-      </Backdrop>
-    </>
+        </Box>
+      }
+    </Backdrop>
   );
 }
 
-export default AddCustomCharacterPopup;
+export default EditCustomCharacterPopup;

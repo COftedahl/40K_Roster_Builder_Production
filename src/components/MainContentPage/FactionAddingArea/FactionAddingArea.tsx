@@ -126,7 +126,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <Typography className="FactionAddingArea_TypeText">{type}</Typography>
         <Divider className="FactionAddingArea_TypeDivider"/>
         {type === FactionAddingAreaType.ARMY ? 
-          <CustomCharacterAddingArea setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} characterList={customCharacterList} setCharacterList={setCustomCharacterList}/>
+          <CustomCharacterAddingArea availableCustomCharacters={availableCustomCharacters} setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} characterList={customCharacterList} setCharacterList={setCustomCharacterList}/>
         :
           ""
         }
