@@ -35,7 +35,7 @@ const writeMultiRowText = (text: string, startX: number, startY: number, lineHei
     page.drawText(remainingText.substring(0, currIndex), {
       x: startX, maxWidth: maxWidth, color: color, font: font, size: fontSize, y: currY, 
     })
-    console.log("Wrote: ", remainingText.substring(0, currIndex));
+    // console.log("Wrote: ", remainingText.substring(0, currIndex));
     currY -= lineHeight;
     remainingText = remainingText.substring(currIndex);
     currIndex = 1;
@@ -107,7 +107,6 @@ const saveRosterPDF = async (props: saveRosterPDFProps): Promise<boolean> => {
       currYPos -= 15;
       if (drawGreyBackground) {
         const numRows: number = calculateNumberRowsRequired(unit.loadout.reduce((accum: string, weapon: ICustomCharacterWeapon) => accum + (accum.length > 0 ? ", " : "") + weapon.name, ""), (width - 20) * (3.0/10.0), 10, pdfFont);
-        console.log("Rectangle Height: ", numRows);
         pdfPage.drawRectangle({x: 10, y: currYPos - 3.5 + 15, height: (-15 * (numRows + 1)) + 15, width: width - 20, color: lightGreyColor});
         // pdfPage.drawRectangle({x: 10, y: currYPos - 3.5, height: 15, width: width - 20, color: lightGreyColor});
       }
@@ -117,7 +116,6 @@ const saveRosterPDF = async (props: saveRosterPDFProps): Promise<boolean> => {
       pdfPage.drawText(unit.selectedAbilities.reduce((accum: string, ability: ICustomCharacterAbility) => accum + (accum.length > 0 ? ", " : "") + ability.name, ""), {x: 15 + (width - 20) * (3.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10});
       pdfPage.drawText(unit.selectedSpecialisms.reduce((accum: string, specialism: ICustomCharacterSpecialism) => accum + (accum.length > 0 ? ", " : "") + specialism.name, ""), {x: 15 + (width - 20) * (5.0/10.0), y: currYPos, maxWidth: (width - 20) / 5, color: blackColor, size: 10});
       const delta: number = (writeMultiRowText(unit.loadout.reduce((accum: string, weapon: ICustomCharacterWeapon) => accum + (accum.length > 0 ? ", " : "") + weapon.name, ""), 15 + (width - 20) * (7.0/10.0), currYPos, 15, (width - 20) * (2.75/10.0), 10, blackColor, pdfFont, pdfPage) - 15);
-      console.log("Delta: ", delta);
       currYPos -= delta;
     }
     currYPos -= 40;

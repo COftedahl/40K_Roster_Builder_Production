@@ -1,6 +1,6 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import { ReactNode, SetStateAction, useEffect, useRef, useState } from "react";
-import { Detachment, FactionList, BattleSize, BattleSizeOptions } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Detachment, FactionList, BattleSize, BattleSizeOptions, FactionListEntry } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './FactionSelector.css';
 import React from "react";
 

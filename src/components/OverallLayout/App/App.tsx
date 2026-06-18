@@ -207,7 +207,7 @@ const App: React.FC<AppProps> = () => {
       faction: faction, 
       detachment: (detachment ? detachment.name : "none"),
       army: army, 
-      customCharacters: customCharacterList, 
+      customCharacters: customCharacterList.map((character: ICustomCharacterSelection) => {return {...character, faction: faction}}), 
       armyUnits: unitList, 
       allyUnits: allyUnitList
     }
@@ -262,6 +262,12 @@ const App: React.FC<AppProps> = () => {
 
   const handleViewingRosterSelected = (roster: Roster) => {
     console.log("Loading roster from db: ", roster);
+    if (roster.customCharacters !== undefined) {
+      setCustomCharacterList(roster.customCharacters);
+    }
+    else {
+      setCustomCharacterList([]);
+    }
     setFaction(roster.faction);
     setArmy(roster.army);
     setAllyUnitListBreakdowns(roster.allyUnits);
