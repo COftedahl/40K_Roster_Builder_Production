@@ -1,7 +1,8 @@
 import { SetStateAction } from "react";
-import { BattleSize, Detachment, Enhancement, ICustomCharacter, ICustomCharacterSelection, Unit, UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { BattleSize, Detachment, Enhancement, Unit, UnitSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import FactionAddingArea, {FactionAddingAreaType} from "../FactionAddingArea/FactionAddingArea";
 import QuickRosterStats from "../QuickRosterStats/QuickRosterStats";
+import { ICustomCharacter, ICustomCharacterSelection } from "../../UtilityComponents/Army_Constants/CustomCharacterData";
 
 interface RosterBuildingAreaProps {
   army: string;

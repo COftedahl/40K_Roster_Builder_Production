@@ -1,11 +1,11 @@
 import { Backdrop, Box, Divider, FormControl, FormControlLabel, FormLabel, IconButton, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, Select, SelectChangeEvent } from "@mui/material";
-import { ICustomCharacter, ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import { PropaneSharp } from "@mui/icons-material";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { ICharacterSelections } from "./AddCustomCharacterPopup";
+import { ICustomCharacterSelection, ICustomCharacter, ICustomCharacterWeapon, ICustomCharacterSpecialism, ICustomCharacterAbility } from "../../UtilityComponents/Army_Constants/CustomCharacterData";
 
 interface EditCustomCharacterPopupProps {
   open: boolean, 
@@ -29,7 +29,7 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
 
   const getStartingLoadoutArray = (): (ICustomCharacterWeapon | null)[] => {
     // console.log("StartingCharacterData: ", props.characterData);
-    const arr = props.unit !== null ? [...props.unit.loadout, ...Array(getTotalNumberWeaponSlots(props.characterData) - props.unit.loadout.length).fill(null)] : [];
+    const arr = props.unit !== null && props.characterData !== null ? [...props.unit.loadout, ...Array(getTotalNumberWeaponSlots(props.characterData) - props.unit.loadout.length).fill(null)] : [];
     // console.log(arr);
     return arr;
   }
@@ -326,14 +326,14 @@ const EditCustomCharacterPopup: React.FC<EditCustomCharacterPopupProps> = (props
                     <NativeSelect className="AddCustomCharacterPopupBox_WeaponSelector">
                       <option value={""}>None</option>
                       {props.characterData !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
-                        return (<option className="AddCustomCharacterPopupBox_WeaponSelector_Item" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts")}</option>);
+                        return (<option className="AddCustomCharacterPopupBox_WeaponSelector_Item" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts" + (weapon.restrictions.length > 0 ? " | " + weapon.restrictions : ""))}</option>);
                       })}
                     </NativeSelect>
                   : 
                     <Select id="AddCustomCharacterPopupBox_WeaponSelector" className="AddCustomCharacterPopupBox_WeaponSelector" value={selectedLoadout.length > 0 && selectedLoadout[currWeaponIndex] !== null ? selectedLoadout[currWeaponIndex].name : ""} label={"Weapon " + currWeaponIndex} onChange={handleWeaponChanged}>
                       <MenuItem value={""}>None</MenuItem>
                       {props.characterData !== null && availableWeaponsForSlot !== undefined && availableWeaponsForSlot.length > 0 && availableWeaponsForSlot.map((weapon: ICustomCharacterWeapon, index: number) => {
-                        return (<MenuItem className="AddCustomCharacterPopupBox_WeaponSelector" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts")}</MenuItem>);
+                        return (<MenuItem className="AddCustomCharacterPopupBox_WeaponSelector" value={weapon.name} key={index}>{(weapon.name + " | " + weapon.cost + " pts" + (weapon.restrictions.length > 0 ? " | " + weapon.restrictions : ""))}</MenuItem>);
                       })}
                     </Select>
                   }

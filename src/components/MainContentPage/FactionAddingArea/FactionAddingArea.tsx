@@ -1,12 +1,13 @@
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import UnitTypeAddingArea from "../UnitTypeAddingArea/UnitTypeAddingArea";
-import { CustomCharacterList, Enhancement, ICustomCharacter, ICustomCharacterSelection, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
+import { Enhancement, Unit, UnitSelection, UnitType } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import './FactionAddingArea.css';
 import { SetStateAction, useEffect, useState } from "react";
 import AddUnitPopupScreen from "../AddUnitPopupScreen/AddUnitPopupScreen";
 import CustomCharacterAddingArea from "../CustomCharacterAddingArea/CustomCharacterAddingArea";
 import AddCustomCharacterPopup from "../CustomCharacterAddingArea/AddCustomCharacterPopup";
+import { ICustomCharacter, ICustomCharacterSelection } from "../../UtilityComponents/Army_Constants/CustomCharacterData";
 
 export const enum FactionAddingAreaType {
   ARMY = "ARMY", 

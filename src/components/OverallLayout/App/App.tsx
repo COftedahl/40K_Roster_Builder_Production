@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CollapsibleCard from '../../UtilityComponents/CollapsibleCard/CollapsibleCard';
 import FactionSelector from '../../MainContentPage/FactionSelector/FactionSelector';
 import RosterBuildingArea from '../../MainContentPage/RosterBuildingArea/RosterBuildingArea';
-import { Army, BattleSize, CustomCharacterList, Detachment, Enhancement, Faction, FactionList, ICustomCharacter, ICustomCharacterSelection, Roster, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
+import { Army, BattleSize, Detachment, Enhancement, Faction, FactionList, Roster, Unit, UnitSelection, UnitType } from '../../UtilityComponents/Army_Constants/Army_Constants';
 import PathNotFoundScreen from '../PathNotFoundScreen/PathNotFoundScreen';
 import './App.css'
 import axios from 'axios';
@@ -18,6 +18,7 @@ import saveRosterPDF from '../../UtilityComponents/Functions/PDFFunctions';
 import ViewSavedRostersPage from '../../ViewSavedRostersPage/ViewSavedRostersPage';
 import updateArmyRestrictions from '../../UtilityComponents/Functions/ArmyUnitRestrictions';
 import { updateDetachmentUnitRestrictions } from '../../UtilityComponents/Functions/DetachmentRestrictions';
+import { ICustomCharacter, ICustomCharacterSelection, CustomCharacterList } from '../../UtilityComponents/Army_Constants/CustomCharacterData';
 
 interface AppProps {
   
@@ -186,6 +187,8 @@ const App: React.FC<AppProps> = () => {
   }
 
   const handleClearButtonClicked = () => {
+    setCustomCharacterList([]);
+    setAvailableCustomCharacters([]);
     setCharacterUnitList([]);
     setBattlelineUnitList([]);
     setOtherUnitList([]);
