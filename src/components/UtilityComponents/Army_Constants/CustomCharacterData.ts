@@ -402,6 +402,58 @@ const AdeptusAstartesCustomCharacterList: ICustomCharacter[] = [
   }, 
 ];
 
+const DarkAngelsSpecialismsList: ICustomCharacterAbility[] = [
+  {
+    name: "Ravenwing Bike",
+    cost: 20,
+    restrictions: "Infantry Only"
+  }, 
+];
+
+const DarkAngelsAbilitiesList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Ravenwing Hunter",
+    cost: 0,
+    restrictions: "Mounted Only"
+  }, 
+  {
+    name: "Tortuous Revelation",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const DarkAngelsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Astartes Grenade Launcher",
+    cost: 0,
+    restrictions: ""
+  }, 
+]
+
+const DarkAngelsCustomCharacterList: ICustomCharacter[] = [
+  ...AdeptusAstartesCustomCharacterList.map((character: ICustomCharacter) => {
+    return {
+      ...character, 
+      availableAbilities: [...character.availableAbilities, 
+        ...DarkAngelsAbilitiesList, 
+      ], 
+      availableSpecialisms: [...character.availableSpecialisms, 
+        ...DarkAngelsSpecialismsList, 
+      ], 
+      availableWeapons: {
+        ...character.availableWeapons, 
+        availableMeleeWeapons: [...character.availableWeapons.availableMeleeWeapons, 
+
+        ], 
+        availableRangedWeapons: [...character.availableWeapons.availableRangedWeapons, 
+
+        ], 
+      }
+    }
+  }), 
+];
+
 export const CustomCharacterList: ICustomCharacter[] = [
   ...AdeptusAstartesCustomCharacterList, 
 ]

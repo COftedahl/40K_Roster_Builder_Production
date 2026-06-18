@@ -1,6 +1,7 @@
 import { Color, PDFDocument, PDFFont, PDFPage, rgb, StandardFonts } from "pdf-lib";
-import { ICustomCharacterAbility, ICustomCharacterSelection, ICustomCharacterSpecialism, ICustomCharacterWeapon, UnitSelection } from "../Army_Constants/Army_Constants";
 import download from 'downloadjs';
+import { UnitSelection } from "../Army_Constants/Army_Constants";
+import { ICustomCharacterSelection, ICustomCharacterWeapon, ICustomCharacterAbility, ICustomCharacterSpecialism } from "../Army_Constants/CustomCharacterData";
 
 interface saveRosterPDFProps {
   rosterName: string;

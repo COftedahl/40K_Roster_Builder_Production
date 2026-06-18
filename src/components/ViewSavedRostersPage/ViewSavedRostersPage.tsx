@@ -1,6 +1,5 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { SetStateAction, useEffect, useState } from "react";
-import { FactionList, ICustomCharacterSelection, Roster, UnitSelection, UnitType } from "../UtilityComponents/Army_Constants/Army_Constants";
 import { server_url } from "../UtilityComponents/Environment Variables/Environment Variables";
 import axios from "axios";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -8,6 +7,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import RosterBuildingArea from "../MainContentPage/RosterBuildingArea/RosterBuildingArea";
 import { useNavigate } from "react-router-dom";
 import './ViewSavedRostersPage.css';
+import { Roster, UnitSelection, UnitType, FactionList } from "../UtilityComponents/Army_Constants/Army_Constants";
+import { ICustomCharacterSelection } from "../UtilityComponents/Army_Constants/CustomCharacterData";
 
 interface ViewSavedRostersPageProps {
   handleSelectClicked: (roster: Roster) => void, 

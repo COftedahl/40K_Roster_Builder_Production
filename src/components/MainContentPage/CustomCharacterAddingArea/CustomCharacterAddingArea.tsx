@@ -1,11 +1,11 @@
 import { Box, Typography, Divider, IconButton } from "@mui/material";
-import { UnitType, UnitSelection, ICustomCharacter, ICustomCharacterSelection } from "../../UtilityComponents/Army_Constants/Army_Constants";
 import AddIcon from '@mui/icons-material/Add';
 import UnitDisplay from "../UnitDisplay/UnitDisplay";
 import { useState } from "react";
 import AddCustomCharacterPopup from "./AddCustomCharacterPopup";
 import CharacterDisplay from "./CharacterDisplay";
 import EditCustomCharacterPopup from "./EditCustomCharacterPopup";
+import { ICustomCharacterSelection, ICustomCharacter } from "../../UtilityComponents/Army_Constants/CustomCharacterData";
 
 interface CustomCharacterAddingAreaProps {
   setShowAddUnitPopup: (newVal: boolean) => void, 
