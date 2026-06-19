@@ -1,0 +1,49 @@
+const TestFactionSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Test",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TestFactionAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Test",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TestFactionRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Test",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+];
+
+const TestFactionMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Test",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+];
+
+const TestFactionCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Test",
+    faction: Faction.SPACE_MARINES,
+    army: Army.SPACE_MARINES,
+    basePoints: 70,
+    availableSpecialisms: TestFactionSpecialismsList,
+    availableAbilities: TestFactionAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: TestFactionRangedWeaponsList,
+      availableMeleeWeapons: TestFactionMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
