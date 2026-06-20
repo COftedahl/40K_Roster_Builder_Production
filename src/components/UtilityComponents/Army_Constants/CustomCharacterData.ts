@@ -2232,6 +2232,1516 @@ const GreyKnightsCustomCharacterList: ICustomCharacter[] = [
   }, 
 ];
 
+const ChaosSpaceMarinesSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Combat Bike",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Daemon Host",
+    cost: 10,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Jump Pack",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Sigil of Corruption",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Terminator Armour",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+];
+
+const ChaosSpaceMarinesAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Daemonkin",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Dark Zealotry",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Lord of Chaos",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Master of Mechanisms",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Prescience",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const ChaosSpaceMarinesRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Balefire Tome",
+    cost: 0, 
+    restrictions: "Psyker Only", 
+  }, 
+  {
+    name: "Baleflamer",
+    cost: 0,
+    restrictions: "Sould Forge Tyrant Only, You cannot select more than one of these weapons on a model"
+  }, 
+  {
+    name: "Boltgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flamer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Heavy Flamer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Helstalker Autocannon",
+    cost: 0,
+    restrictions: "Soul Forge Tyrant Only, You cannot select more than one of these weapons on a model"
+  }, 
+  {
+    name: "Infernal Gaze",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Magma Cutter",
+    cost: 0,
+    restrictions: "Soul Forge Tyrant Only"
+  }, 
+  {
+    name: "Meltagun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plasmagun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Reaper Autocannon",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Rite of Possession",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flamer Tendril",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Melta Tendril",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plasma Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const ChaosSpaceMarinesMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Accursed Weapon",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Astartes Chainblade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Axe of Dismemberment",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bladed Limbs",
+    cost: 0,
+    restrictions: "Soul Forge Tyrant Only"
+  }, 
+  {
+    name: "Chainfist",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Daemon Hammer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Exalted Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Force Weapon",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Impaler Chainglaive",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Fist",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Staff of Possession",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Technovirus Injector",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Twin Lightning Claws",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const ChaosSpaceMarinesCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Exalted Champion",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_SPACE_MARINES,
+    basePoints: 90,
+    availableSpecialisms: ChaosSpaceMarinesSpecialismsList,
+    availableAbilities: ChaosSpaceMarinesAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: ChaosSpaceMarinesRangedWeaponsList,
+      availableMeleeWeapons: ChaosSpaceMarinesMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Sorcerous Champion",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_SPACE_MARINES,
+    basePoints: 80,
+    availableSpecialisms: ChaosSpaceMarinesSpecialismsList,
+    availableAbilities: ChaosSpaceMarinesAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: ChaosSpaceMarinesRangedWeaponsList,
+      availableMeleeWeapons: ChaosSpaceMarinesMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Soul Forge Tyrant",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_SPACE_MARINES,
+    basePoints: 160,
+    availableSpecialisms: ChaosSpaceMarinesSpecialismsList,
+    availableAbilities: ChaosSpaceMarinesAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-2 Ranged Weapon, 0-2 Pistols, 1-3 Melee Weapons"],
+      availableRangedWeapons: ChaosSpaceMarinesRangedWeaponsList,
+      availableMeleeWeapons: ChaosSpaceMarinesMeleeWeaponsList,
+      rangedSlots: 4,
+      meleeSlots: 3
+    }
+  }, 
+];
+
+const WorldEatersSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Augmetic Legs",
+    cost: 0,
+    restrictions: "Bloodcult Champion Only"
+  }, 
+  {
+    name: "Daemonheart",
+    cost: 0,
+    restrictions: "Butcherlord of Eight-Blessed Lord Only"
+  }, 
+  {
+    name: "Jump Pack",
+    cost: 10,
+    restrictions: "Butcherlord Only"
+  }, 
+  {
+    name: "Terminator Armour",
+    cost: 0,
+    restrictions: "Butcherlord Only"
+  }, 
+];
+
+const WorldEatersAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Bellowed Challenge",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Forwards For Blood!",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Lord of Slaughter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Murderous Insight",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rage Eternal",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const WorldEatersRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Blood Harpoon",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Combi-Bolter",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Combi-Weapon",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Heavy Flamer",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Reaper Autocannon",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Autopistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plasma Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const WorldEatersMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Accursed Weapon",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Axe of Dismemberment",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bladed Horn",
+    cost: 0,
+    restrictions: "Eight Blessed Lord Only, You cannot select more than one of these weapons per model"
+  }, 
+  {
+    name: "Chainblades",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Chainfist",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Daemon Hammer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Exalted Chainblade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Khornate Eviscerator",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Mauler Chainblade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Paired Manglers",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Fist",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Skullsmasher and Mangler",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const WorldEatersCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Butcherlord",
+    faction: Faction.CHAOS,
+    army: Army.WORLD_EATERS,
+    basePoints: 90,
+    availableSpecialisms: WorldEatersSpecialismsList,
+    availableAbilities: WorldEatersAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: WorldEatersRangedWeaponsList,
+      availableMeleeWeapons: WorldEatersMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Eight-Blessed Lord",
+    faction: Faction.CHAOS,
+    army: Army.WORLD_EATERS,
+    basePoints: 90,
+    availableSpecialisms: WorldEatersSpecialismsList,
+    availableAbilities: WorldEatersAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: WorldEatersRangedWeaponsList,
+      availableMeleeWeapons: WorldEatersMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Bloodcult Champion",
+    faction: Faction.CHAOS,
+    army: Army.WORLD_EATERS,
+    basePoints: 60,
+    availableSpecialisms: WorldEatersSpecialismsList,
+    availableAbilities: WorldEatersAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: WorldEatersRangedWeaponsList,
+      availableMeleeWeapons: WorldEatersMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const ThousandSonsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Disc of Tzeentch",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Terminator Armour",
+    cost: 0,
+    restrictions: "Magister Only"
+  }, 
+];
+
+const ThousandSonsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Arcane Shield",
+    cost: 10,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Binding Tendrils",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Empyric Guidance",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Malefic Will",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Marked by Fate",
+    cost: 10,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Swathed in Illusion",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Twisted Sorceries",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const ThousandSonsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Arcane Fire",
+    cost: 0, 
+    restrictions: "Psyker Only", 
+  }, 
+  {
+    name: "Astral Blast",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Baleful Devolution",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Fatecaster Greatbow",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Fires of the Abyss",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Gaze of Hate",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Heavy Warpflamer",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Hellfyre Missile Rack",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Inferno Boltgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Inferno Combi-Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Inferno Combi-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Pandaemonic Delusion",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Soulreaper Cannon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Warpflamer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Autopistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Inferno Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Warpflame Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const ThousandSonsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Chainsword",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Divining Spear",
+    cost: 0,
+    restrictions: "Mutant Only"
+  }, 
+  {
+    name: "Force Weapon",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Prosperine Khopesh",
+    cost: 0,
+    restrictions: "Terminator or Magister Only"
+  }, 
+  {
+    name: "Tzaangor Blades",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const ThousandSonsCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Magister",
+    faction: Faction.CHAOS,
+    army: Army.THOUSAND_SONS,
+    basePoints: 105,
+    availableSpecialisms: ThousandSonsSpecialismsList,
+    availableAbilities: ThousandSonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: ThousandSonsRangedWeaponsList,
+      availableMeleeWeapons: ThousandSonsMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Brayherd Chieftan",
+    faction: Faction.CHAOS,
+    army: Army.THOUSAND_SONS,
+    basePoints: 60,
+    availableSpecialisms: ThousandSonsSpecialismsList,
+    availableAbilities: ThousandSonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: ThousandSonsRangedWeaponsList,
+      availableMeleeWeapons: ThousandSonsMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Brayherd Shaman",
+    faction: Faction.CHAOS,
+    army: Army.THOUSAND_SONS,
+    basePoints: 60,
+    availableSpecialisms: ThousandSonsSpecialismsList,
+    availableAbilities: ThousandSonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: ThousandSonsRangedWeaponsList,
+      availableMeleeWeapons: ThousandSonsMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const DeathGuardSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Glutted With Infection",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Terminator Armour",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DeathGuardAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Foul Infusion",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Malicious Calculations",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Putrefying Stink",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Shroud of Disease",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Sickening Vitality",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Tainted Narthecium",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Tocsin of Misery",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Unclean Icon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Vector of Disease",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DeathGuardRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Blight Launcher",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Boltgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Hyper Blight Grenades",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Meltagun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plague Belcher",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plague Spewer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plague Sprayer",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Plague Wind",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Plasma Gun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Reaper Autocannon",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Twin Plague Spewer",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Injector Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plaguespurt Guantlet",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Plasma Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DeathGuardMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Balesword",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Bubotic Weapons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Corrupted Staff",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Cursed Plague Bell",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flail of Corruption",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Great Plague Blade",
+    cost: 0,
+    restrictions: "Plague Lord Only"
+  }, 
+  {
+    name: "Heavy Plague Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Manreaper",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Plague Knife",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Fist",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DeathGuardCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Plague Sorcerer",
+    faction: Faction.CHAOS,
+    army: Army.DEATH_GUARD,
+    basePoints: 70,
+    availableSpecialisms: DeathGuardSpecialismsList,
+    availableAbilities: DeathGuardAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: DeathGuardRangedWeaponsList,
+      availableMeleeWeapons: DeathGuardMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Plague Lord",
+    faction: Faction.CHAOS,
+    army: Army.DEATH_GUARD,
+    basePoints: 80,
+    availableSpecialisms: DeathGuardSpecialismsList,
+    availableAbilities: DeathGuardAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: DeathGuardRangedWeaponsList,
+      availableMeleeWeapons: DeathGuardMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Tri-Lobe Vectors",
+    faction: Faction.CHAOS,
+    army: Army.DEATH_GUARD,
+    basePoints: 120,
+    availableSpecialisms: DeathGuardSpecialismsList,
+    availableAbilities: DeathGuardAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: DeathGuardRangedWeaponsList,
+      availableMeleeWeapons: DeathGuardMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const EmperorsChildrenSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Perfect Poise",
+    cost: 20,
+    restrictions: ""
+  }, 
+  {
+    name: "Terminator Armour",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const EmperorsChildrenAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Doom Siren",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Feverish Butchery",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Obsessive Annunciation",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Perfectionists",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Sickening Simulation",
+    cost: 10,
+    restrictions: ""
+  }, 
+];
+
+const EmperorsChildrenRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Agonising Energies",
+    cost: 0, 
+    restrictions: "Psyker Only", 
+  }, 
+  {
+    name: "Blastmaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Boltgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Combi-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Heavy Flamer",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Meltagun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "PLasma Gun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Reaper Autocannon",
+    cost: 0,
+    restrictions: "Terminator Armour"
+  }, 
+  {
+    name: "Sonic Blaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plasma Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Screamer Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const EmperorsChildrenMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Blissblade",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Chainfist",
+    cost: 0,
+    restrictions: "Terminator Only"
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Duelling Sabre",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Force Weapon",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Master-Crafted Power Sword",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Paired Accursed Weapons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Phoenix Power Spear",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Fist",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rapture Lash",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const EmperorsChildrenCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Excruciator",
+    faction: Faction.CHAOS,
+    army: Army.EMPERORS_CHILDREN,
+    basePoints: 60,
+    availableSpecialisms: EmperorsChildrenSpecialismsList,
+    availableAbilities: EmperorsChildrenAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: EmperorsChildrenRangedWeaponsList,
+      availableMeleeWeapons: EmperorsChildrenMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Champion of Excess",
+    faction: Faction.CHAOS,
+    army: Army.EMPERORS_CHILDREN,
+    basePoints: 80,
+    availableSpecialisms: EmperorsChildrenSpecialismsList,
+    availableAbilities: EmperorsChildrenAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: EmperorsChildrenRangedWeaponsList,
+      availableMeleeWeapons: EmperorsChildrenMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Flawless Champion",
+    faction: Faction.CHAOS,
+    army: Army.EMPERORS_CHILDREN,
+    basePoints: 100,
+    availableSpecialisms: EmperorsChildrenSpecialismsList,
+    availableAbilities: EmperorsChildrenAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: EmperorsChildrenRangedWeaponsList,
+      availableMeleeWeapons: EmperorsChildrenMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const ChaosDaemonsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Daemon of Blood (Mark of Khorne)",
+    cost: 15,
+    restrictions: ""
+  }, 
+  {
+    name: "Daemon of Plague",
+    cost: 10,
+    restrictions: ""
+  }, 
+  {
+    name: "Damon of Excess",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Daemon of Change",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Collar of Khorne (w/ Mark)",
+    cost: 15,
+    restrictions: "Khorne Only"
+  }, 
+  {
+    name: "Juggernaut of Khorne (w/ Mark)",
+    cost: 15,
+    restrictions: "KKhorne Infantry Only"
+  }, 
+  {
+    name: "Giggling Balemite (w/ Mark)",
+    cost: 10,
+    restrictions: "Nurgle Infantry Only"
+  }, 
+  {
+    name: "Rot Fly (w/ Mark)",
+    cost: 20,
+    restrictions: "Nurgle Infantry Only"
+  }, 
+  {
+    name: "Perfumed Fog (w/ Mark)",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Steed of Slaanesh (w/ Mark)",
+    cost: 0,
+    restrictions: "Slaanesh Infantry Only"
+  }, 
+  {
+    name: "Disc of Tzeentch (w/ Mark)",
+    cost: 0,
+    restrictions: "Tzeentch Infantry Only"
+  }, 
+  {
+    name: "Eldritch Flames (w/ Mark)",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+  {
+    name: "Daemonic Wings (Undivided)",
+    cost: 0,
+    restrictions: "Undivided Monster Only"
+  }, 
+  {
+    name: "Daemonic Wings w/ Mark of Khorne",
+    cost: 15,
+    restrictions: "Khorne Monster Only"
+  }, 
+  {
+    name: "Daemonic Wings w/ Mark of Nurgle",
+    cost: 10,
+    restrictions: "Nurgle Monster Only"
+  }, 
+  {
+    name: "Daemonic Wings w/ Mark of Slaanesh",
+    cost: 0,
+    restrictions: "Slaanesh Monster Only"
+  }, 
+  {
+    name: "Daemonic Wings w/ Mark of Tzeentch",
+    cost: 0,
+    restrictions: "Tzeentch Monster Only"
+  }, 
+];
+
+const ChaosDaemonsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Bloodmarked",
+    cost: 20,
+    restrictions: "Khorne Only"
+  }, 
+  {
+    name: "Rage-Fuelled Strength",
+    cost: 10,
+    restrictions: "Khorne Infantry Only"
+  }, 
+  {
+    name: "Restless Prey-Seeker",
+    cost: 0,
+    restrictions: "Khorne Only"
+  }, 
+  {
+    name: "Jolly Gutpipes",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Keep Counting!",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Meet Your Quota!",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Discordant Disruption",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Sadistic Savagery",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Swallow Energy",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Blazing Warpfire",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+  {
+    name: "Malefic Deceit",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+  {
+    name: "Rider of the Immaterial Winds",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+];
+
+const ChaosDaemonsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Infernal Cannon of Khorne",
+    cost: 0, 
+    restrictions: "Khorne Monster Only", 
+  }, 
+  {
+    name: "Death's Heads",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Disgusting Sneezes",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Infernal Cannon of Nurgle",
+    cost: 0,
+    restrictions: "Nurgle Monster Only"
+  }, 
+  {
+    name: "Infernal Cannon of Slaanesh",
+    cost: 0,
+    restrictions: "Slaanesh Monster Only"
+  }, 
+  {
+    name: "Lashes of Torment",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Arcane Fireball",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+  {
+    name: "Infernal Cannon of Tzeentch",
+    cost: 0,
+    restrictions: "Tzeentch Monster Only"
+  }, 
+];
+
+const ChaosDaemonsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Attendant's Hellblades",
+    cost: 0, 
+    restrictions: "Khorne Daemonic Charioteer Only, Limit one per model", 
+  }, 
+  {
+    name: "Blade of Blood",
+    cost: 0,
+    restrictions: "Khorne Only"
+  }, 
+  {
+    name: "Hellforged Weapons of Khorne",
+    cost: 0,
+    restrictions: "Khorne Monster Only"
+  }, 
+  {
+    name: "Juggernaut's Bladed Horn",
+    cost: 0,
+    restrictions: "Khorne Daemonic Charioteer Only, Limit one per model"
+  }, 
+  {
+    name: "Acidic Maw",
+    cost: 0,
+    restrictions: "Nurgle Daemonic Charioteer Only, Limit one per model"
+  }, 
+  {
+    name: "Diseased Claws and Teeth",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Foul Balesword",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Foul Mouthparts",
+    cost: 0,
+    restrictions: "Mounted Nurgle Only, Limit one per model"
+  }, 
+  {
+    name: "Hellforged Weapons of Nurgle",
+    cost: 0,
+    restrictions: "Nurgle Monster Only"
+  }, 
+  {
+    name: "Tiny Balesword",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Tiny Corrupted Staff",
+    cost: 0,
+    restrictions: "Nurgle Only"
+  }, 
+  {
+    name: "Bladed Axle",
+    cost: 0,
+    restrictions: "Slaanesh Daemonic Charioteer Only, Limit one per model"
+  }, 
+  {
+    name: "Hellforged Weapons of Slaanesh",
+    cost: 0,
+    restrictions: "Slaanesh Monster Only"
+  }, 
+  {
+    name: "Lashing Tongue",
+    cost: 0,
+    restrictions: "Mounted Slaanesh Only, Limit one per model"
+  }, 
+  {
+    name: "Ravaging Claws",
+    cost: 0,
+    restrictions: "Slaanesh Only"
+  }, 
+  {
+    name: "Seeker Tongues",
+    cost: 0,
+    restrictions: "Slaanesh Daemonic Charioteer Only, Limit one per model"
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: "Tzeentch Only"
+  }, 
+  {
+    name: "Hellforged Weapons of Tzeentch",
+    cost: 0,
+    restrictions: "Tzeentch Monster Only"
+  }, 
+  {
+    name: "Screamer Bites",
+    cost: 0,
+    restrictions: "Tzeentch Daemonic Charioteer Only"
+  }, 
+];
+
+const ChaosDaemonsCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Daemonic Herald",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_DAEMONS,
+    basePoints: 60,
+    availableSpecialisms: ChaosDaemonsSpecialismsList,
+    availableAbilities: ChaosDaemonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: ChaosDaemonsRangedWeaponsList,
+      availableMeleeWeapons: ChaosDaemonsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Daemonic Charioteer",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_DAEMONS,
+    basePoints: 120,
+    availableSpecialisms: ChaosDaemonsSpecialismsList,
+    availableAbilities: ChaosDaemonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: ChaosDaemonsRangedWeaponsList,
+      availableMeleeWeapons: ChaosDaemonsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Immortal Champion",
+    faction: Faction.CHAOS,
+    army: Army.CHAOS_DAEMONS,
+    basePoints: 180,
+    availableSpecialisms: ChaosDaemonsSpecialismsList,
+    availableAbilities: ChaosDaemonsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: ChaosDaemonsRangedWeaponsList,
+      availableMeleeWeapons: ChaosDaemonsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+];
+
 export const CustomCharacterList: ICustomCharacter[] = [
   ...AdeptusAstartesCustomCharacterList, 
   ...DarkAngelsCustomCharacterList, 
@@ -2244,4 +3754,10 @@ export const CustomCharacterList: ICustomCharacter[] = [
   ...ImperialAgentsCustomCharacterList, 
   ...AstraMilitarumCustomCharacterList, 
   ...GreyKnightsCustomCharacterList, 
+  ...ChaosSpaceMarinesCustomCharacterList, 
+  ...WorldEatersCustomCharacterList, 
+  ...ThousandSonsCustomCharacterList, 
+  ...DeathGuardCustomCharacterList, 
+  ...EmperorsChildrenCustomCharacterList, 
+  ...ChaosDaemonsCustomCharacterList, 
 ]
