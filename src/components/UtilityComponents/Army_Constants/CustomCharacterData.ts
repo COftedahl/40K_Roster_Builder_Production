@@ -3742,6 +3742,2106 @@ const ChaosDaemonsCustomCharacterList: ICustomCharacter[] = [
   }, 
 ];
 
+const AeldariSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Cameleoline Cloak",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Corsair Raider",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Heavy Aspect Armour",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Path of the Witch",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Skyrunner's Heavy Aspect Armour",
+    cost: 0,
+    restrictions: "Mounted Only"
+  }, 
+  {
+    name: "Wayleaper's Heavy Aspect Armour",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+];
+
+const AeldariAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Doomseer",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Outcast",
+    cost: 10,
+    restrictions: "Infantry or Mounted Only"
+  }, 
+  {
+    name: "Superlative Strategist",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Warden of Fate",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const AeldariRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Destructor",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Death Spinner",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Dragon Fusion Gun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Eldritch Storm",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Long Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Missile Launcher",
+    cost: 0,
+    restrictions: "You cannot select more than two of these weapon options per model"
+  }, 
+  {
+    name: "Reaper Launcher",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Scatter Laser",
+    cost: 0,
+    restrictions: "You cannot select more than two of these weapon options per model"
+  }, 
+  {
+    name: "Shuriken Cannon",
+    cost: 0,
+    restrictions: "You cannot select more than two of these weapon options per model"
+  }, 
+  {
+    name: "Singing Spear",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Star Lance",
+    cost: 0,
+    restrictions: "Mounted Only"
+  }, 
+  {
+    name: "Twin Shuriken Catapult",
+    cost: 0,
+    restrictions: "Mounted Only"
+  }, 
+  {
+    name: "Dragon Fusion Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Shuriken Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const AeldariMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Banshee Blades",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ghostglaive",
+    cost: 0,
+    restrictions: "Ghost Warrior Only"
+  }, 
+  {
+    name: "Paragon Sabre",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Scorpion Chainsword",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Singing Spear",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Star Glaive",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Star Lance",
+    cost: 0,
+    restrictions: "Mounted Only"
+  }, 
+  {
+    name: "Witch Staff",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Witchblade",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Wraithbone Fists",
+    cost: 0,
+    restrictions: "Ghost Warrior Only"
+  }, 
+];
+
+const AeldariGhostWarriorRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Bright Lance",
+    cost: 0, 
+    restrictions: "Ghost Warrior Only, You cannot select more than two of these weapon options per model", 
+  }, 
+  {
+    name: "Flamer",
+    cost: 0,
+    restrictions: "Ghost Warrior Only"
+  }, 
+  {
+    name: "Shuriken Catapult",
+    cost: 0,
+    restrictions: "Ghost Warrior Only"
+  }, 
+  {
+    name: "Starcannon",
+    cost: 0,
+    restrictions: "Ghost Warrior Only, You cannot select more than two of these weapon options per model"
+  }, 
+];
+
+const AeldariCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Craftworld Warleader",
+    faction: Faction.XENOS,
+    army: Army.AELDARI,
+    basePoints: 75,
+    availableSpecialisms: AeldariSpecialismsList,
+    availableAbilities: AeldariAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: AeldariRangedWeaponsList,
+      availableMeleeWeapons: AeldariMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Skyrunner",
+    faction: Faction.XENOS,
+    army: Army.AELDARI,
+    basePoints: 80,
+    availableSpecialisms: AeldariSpecialismsList,
+    availableAbilities: AeldariAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: AeldariRangedWeaponsList,
+      availableMeleeWeapons: AeldariMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Ghost Warrior",
+    faction: Faction.XENOS,
+    army: Army.AELDARI,
+    basePoints: 160,
+    availableSpecialisms: AeldariSpecialismsList,
+    availableAbilities: AeldariAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-4 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: AeldariGhostWarriorRangedWeaponsList,
+      availableMeleeWeapons: AeldariMeleeWeaponsList,
+      rangedSlots: 4,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const DrukhariSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Jetbike",
+    cost: 0,
+    restrictions: "Archtormentor Only"
+  }, 
+  {
+    name: "Kabal Overlord",
+    cost: 0,
+    restrictions: "Archtormentor Only"
+  }, 
+  {
+    name: "Pseudovian Form",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Skyboard",
+    cost: 0,
+    restrictions: "Archtormentor"
+  }, 
+];
+
+const DrukhariAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Conduit of Cruelty",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Darkglass Prism",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Fear Incarnate",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Overwhelming Avarice",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Sadistic Epicurean",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Storm of Blades",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Twisting the Knife",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DrukhariRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Blaster",
+    cost: 0, 
+    restrictions: "Model with Jetbike Only", 
+  }, 
+  {
+    name: "Heat Lance",
+    cost: 0,
+    restrictions: "Model with Jetbike Only"
+  }, 
+  {
+    name: "Shardcarbine",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Splinter Pods",
+    cost: 0,
+    restrictions: "Model with Skyboard Only"
+  }, 
+  {
+    name: "Splinter Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Blast Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Splinter Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Stinger Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const DrukhariMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Agoniser",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Archite Glaive and Agoniser",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bladevanes",
+    cost: 0,
+    restrictions: "Model with Jetbike Only"
+  }, 
+  {
+    name: "Demiklaves",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Haemonculus Tools and Scissorhands",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Hellglaive",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Huskblade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Stunclaw",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+
+const DrukhariCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Archtormentor",
+    faction: Faction.XENOS,
+    army: Army.DRUKHARI,
+    basePoints: 60,
+    availableSpecialisms: DrukhariSpecialismsList,
+    availableAbilities: DrukhariAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: DrukhariRangedWeaponsList,
+      availableMeleeWeapons: DrukhariMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Fleshcrafter",
+    faction: Faction.XENOS,
+    army: Army.DRUKHARI,
+    basePoints: 60,
+    availableSpecialisms: DrukhariSpecialismsList,
+    availableAbilities: DrukhariAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: DrukhariRangedWeaponsList,
+      availableMeleeWeapons: DrukhariMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const VotannSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Cthonian Augmentations",
+    cost: 20,
+    restrictions: "Kinhost Commander Only"
+  }, 
+  {
+    name: "Exoarmoour",
+    cost: 0,
+    restrictions: "Kinhost Commander Only"
+  }, 
+  {
+    name: "Exoframe",
+    cost: 0,
+    restrictions: "Kinhost Commander Only"
+  }, 
+  {
+    name: "Magna-Coil Bike",
+    cost: 15,
+    restrictions: "Kinhost Commander or Living Ancestor Only"
+  }, 
+  {
+    name: "Yaegir",
+    cost: 10,
+    restrictions: "Kinhost Commander or Living Ancestor Only"
+  }, 
+];
+
+const VotannAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Barrier Tech Repuslion",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Exemplar of the Einhyr",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Forgewrought Expertise",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kindred Hero",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rampart Crest",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Teleport Crest",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+];
+
+const VotannRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Ancestral Wrath",
+    cost: 0, 
+    restrictions: "Psyker", 
+  }, 
+  {
+    name: "Autoch-Pattern Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Autoch-Pattern Combi-Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bolt Cannon",
+    cost: 0,
+    restrictions: "Exoframe Only"
+  }, 
+  {
+    name: "Bolt Shotgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "EtaCam Plasma Gun",
+    cost: 0,
+    restrictions: "Exoarmour Only"
+  }, 
+  {
+    name: "Exoarmour Grenade Launcher",
+    cost: 0,
+    restrictions: "Exoarmour Only"
+  }, 
+  {
+    name: "Graviton Blast Cannon",
+    cost: 0,
+    restrictions: "Exoframe Only"
+  }, 
+  {
+    name: "Graviton Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Heavy Volkanite Disintegrator",
+    cost: 0,
+    restrictions: "Steeljack Elder Only"
+  }, 
+  {
+    name: "Ion Blaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Magna-Coil Autocannon",
+    cost: 0,
+    restrictions: "Mounted Only, Limit one per model"
+  }, 
+  {
+    name: "SP Conversion Beamer",
+    cost: 0,
+    restrictions: "Exoframe Only"
+  }, 
+  {
+    name: "Volkanite Disintegrator",
+    cost: 0,
+    restrictions: "Exoarmour or Steeljack Only"
+  }, 
+  {
+    name: "Autoch-Pattern Bolt Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Autoch-Pattern Bolter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bolt Revolver",
+    cost: 0,
+    restrictions: "Steeljack Elder Only"
+  }, 
+  {
+    name: "Theyn's Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const VotannMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Ancestral Ward Stave",
+    cost: 0, 
+    restrictions: "Psyker Only", 
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Concussion Gauntlet",
+    cost: 0,
+    restrictions: "Exoarmour or Steeljack Elder Only"
+  }, 
+  {
+    name: "Concussion Maul",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Darkstar Axe",
+    cost: 0,
+    restrictions: "Exoarmour Only"
+  }, 
+  {
+    name: "Forgewrought Plasma Axe",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Graviton Hammer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Heavy Plasma Axe",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Mass Gauntlet",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Mass Hamme",
+    cost: 0,
+    restrictions: "Exoarmour Only"
+  }, 
+  {
+    name: "Plasma Blade Guantlet",
+    cost: 0,
+    restrictions: "Exoarmor Only"
+  }, 
+  {
+    name: "Plasma Knife",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Plasma Sword",
+    cost: 0,
+    restrictions: "Exoarmour Only"
+  }, 
+  {
+    name: "Theyn's Melee Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const VotannCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Kinhost Commander",
+    faction: Faction.XENOS,
+    army: Army.LEAGUES_OF_VOTANN,
+    basePoints: 65,
+    availableSpecialisms: VotannSpecialismsList,
+    availableAbilities: VotannAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: VotannRangedWeaponsList,
+      availableMeleeWeapons: VotannMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Living Ancestor",
+    faction: Faction.XENOS,
+    army: Army.LEAGUES_OF_VOTANN,
+    basePoints: 70,
+    availableSpecialisms: VotannSpecialismsList,
+    availableAbilities: VotannAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: VotannRangedWeaponsList,
+      availableMeleeWeapons: VotannMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Steeljack Elder",
+    faction: Faction.XENOS,
+    army: Army.LEAGUES_OF_VOTANN,
+    basePoints: 80,
+    availableSpecialisms: VotannSpecialismsList,
+    availableAbilities: VotannAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: VotannRangedWeaponsList,
+      availableMeleeWeapons: VotannMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const NecronsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Dimensional Oubliette",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Flayer Curse",
+    cost: 10,
+    restrictions: "Noble Only"
+  }, 
+  {
+    name: "Gravity Displacement Pack",
+    cost: 0,
+    restrictions: "Infantry Only"
+  }, 
+  {
+    name: "Ophydian Lord",
+    cost: 10,
+    restrictions: "Noble Only"
+  }, 
+  {
+    name: "Superior Living Metal",
+    cost: 0,
+    restrictions: "Noble Only"
+  }, 
+];
+
+const NecronsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Adaptive Strategy",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Engrammatic Logic",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Harbinger of Despair",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Harbinger of Destruction",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Living Lightning",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "My Will Be Done",
+    cost: 0,
+    restrictions: "Dynastic Conqueror or Triarchal Overseer Only"
+  }, 
+  {
+    name: "Timesplinter Mantle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "United in Destruction",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const NecronsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Abyssal Lance",
+    cost: 0, 
+    restrictions: "Cryptek Only", 
+  }, 
+  {
+    name: "Chronomancer's Stave",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Enmitic Annihilator",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Enmitic Exterminator",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Gauss Cannon",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Gayss Destructor",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Heat Ray",
+    cost: 0,
+    restrictions: "Vehicle Only"
+  }, 
+  {
+    name: "Heavy Gauss Cannon Array",
+    cost: 0,
+    restrictions: "Vehicle Only"
+  }, 
+  {
+    name: "Particle Caster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Particle Shredder",
+    cost: 0,
+    restrictions: "Vehicle Only"
+  }, 
+  {
+    name: "Plasmic Lance",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Relic Gauss Blaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rod of Covenant",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Staff of Light",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Tachyon Arrow",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const NecronsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Abyssal Lance",
+    cost: 0, 
+    restrictions: "Cryptek Only", 
+  }, 
+  {
+    name: "Chronomancer's Stave",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flayer Claws",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flensing Claw",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Hyperphase Harvester",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Hyperphase Sword",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Lord's Blade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ophydian Hyperphase Weapons",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Plasmic Lance",
+    cost: 0,
+    restrictions: "Cryptek Only"
+  }, 
+  {
+    name: "Rod of Covenant",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Skorpekh Hyperphase Weapons",
+    cost: 0,
+    restrictions: "Destroyer Cult Only"
+  }, 
+  {
+    name: "Staff of Light",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Stalker's Forelimbs",
+    cost: 0,
+    restrictions: "Vehicle Only"
+  }, 
+  {
+    name: "Voidblade",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Voidscythe",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Warscythe",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const NecronsCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Dynastic Conqueror",
+    faction: Faction.XENOS,
+    army: Army.NECRONS,
+    basePoints: 85,
+    availableSpecialisms: NecronsSpecialismsList,
+    availableAbilities: NecronsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: NecronsRangedWeaponsList,
+      availableMeleeWeapons: NecronsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Hyperscientist",
+    faction: Faction.XENOS,
+    army: Army.NECRONS,
+    basePoints: 85,
+    availableSpecialisms: NecronsSpecialismsList,
+    availableAbilities: NecronsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: NecronsRangedWeaponsList,
+      availableMeleeWeapons: NecronsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Triarchal Overseer",
+    faction: Faction.XENOS,
+    army: Army.NECRONS,
+    basePoints: 120,
+    availableSpecialisms: NecronsSpecialismsList,
+    availableAbilities: NecronsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: NecronsRangedWeaponsList,
+      availableMeleeWeapons: NecronsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const OrksSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Rokkit Pack",
+    cost: 0,
+    restrictions: "Hordeboss Only"
+  }, 
+  {
+    name: "Smasha Squig",
+    cost: 15,
+    restrictions: "Hordeboss or Warphead Only"
+  }, 
+  {
+    name: "Top-Tier Gubbinz",
+    cost: 0,
+    restrictions: "Hordeboss Only"
+  }, 
+  {
+    name: "Warbike",
+    cost: 10,
+    restrictions: "Hordeboss or Warphead Only"
+  }, 
+];
+
+const OrksAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Dok't Toolz",
+    cost: 0,
+    restrictions: "Hordeboss or Upstart Gretchin Only"
+  }, 
+  {
+    name: "Kustom Force Field",
+    cost: 0,
+    restrictions: "Hordeboss Only"
+  }, 
+  {
+    name: "Malicious Opportunist",
+    cost: 0,
+    restrictions: "Upstart Gretchin Only"
+  }, 
+  {
+    name: "Might is Right",
+    cost: 0,
+    restrictions: "Hordeboss Only"
+  }, 
+  {
+    name: "Roar or Mork",
+    cost: 0,
+    restrictions: "Warphead Only"
+  }, 
+  {
+    name: "Thunderous Dakkastorm",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const OrksRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Big Shoota",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Burna",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "'Eadbanger'",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Eyez of Mork",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Kombi-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kustom Mega-Blasta",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kustom Mega-Slugga",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kustom Shoota",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rokkit Launcha",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Saddlegit Weapons",
+    cost: 0,
+    restrictions: "Model with Smasha Squig Only, Limit one per model"
+  }, 
+  {
+    name: "Shokk Attack Gun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Shoota",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Snazzgun",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Traktor Blasta",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Twin Dakkagun",
+    cost: 0,
+    restrictions: "Model with Warike Only, Limit one per model"
+  }, 
+  {
+    name: "Rokkit Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Slugga",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const OrksMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Attack Squig",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Beast Snagga Klaw",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Beastchoppa",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Big Choppa",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Choppa",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Cuttin' Flames",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Drilla",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Killsaw",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Knucklebustas",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Klaw",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Snappa",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Smash Hammer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Squig Jaws",
+    cost: 0,
+    restrictions: "Model with Smasha Squig Only, Limit one per Model"
+  }, 
+  {
+    name: "Takhammer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "'Uge Choppa'",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "'Urty Syringe",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Weirdboy Staff",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const OrksUpstartGretchinRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Grot Blasta",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const OrksUpstartGretchinMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Attack Squig",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const OrksCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Hordeboss",
+    faction: Faction.XENOS,
+    army: Army.ORKS,
+    basePoints: 75,
+    availableSpecialisms: OrksSpecialismsList,
+    availableAbilities: OrksAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: OrksRangedWeaponsList,
+      availableMeleeWeapons: OrksMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Warphead",
+    faction: Faction.XENOS,
+    army: Army.ORKS,
+    basePoints: 65,
+    availableSpecialisms: OrksSpecialismsList,
+    availableAbilities: OrksAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: OrksRangedWeaponsList,
+      availableMeleeWeapons: OrksMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Upstart Gretchin",
+    faction: Faction.XENOS,
+    army: Army.ORKS,
+    basePoints: 40,
+    availableSpecialisms: OrksSpecialismsList,
+    availableAbilities: OrksAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-2 Grot Blastas, 1 Close Combat Weapon, 0-1 Attack Squig"],
+      availableRangedWeapons: OrksUpstartGretchinRangedWeaponsList,
+      availableMeleeWeapons: OrksUpstartGretchinMeleeWeaponsList,
+      rangedSlots: 2,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const TauSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Broadside Battlesuit",
+    cost: 70,
+    restrictions: "Battlesuit Veteran Only"
+  }, 
+  {
+    name: "Kalamandra",
+    cost: 25,
+    restrictions: "Kinband Champion Only"
+  }, 
+  {
+    name: "Krootox",
+    cost: 10,
+    restrictions: "Kinband Champion Only"
+  }, 
+  {
+    name: "Veteran Scout",
+    cost: 0,
+    restrictions: "Shas'nel only"
+  }, 
+];
+
+const TauAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Cunning Ambush",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Fire and Fade",
+    cost: 0,
+    restrictions: "Kinband Champion Only"
+  }, 
+  {
+    name: "Fire Discipline",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ritual Butchery",
+    cost: 0,
+    restrictions: "Kinband Champion Only"
+  }, 
+  {
+    name: "Warrior Bond",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TauRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Blast Javelin",
+    cost: 0, 
+    restrictions: "Kroot Only", 
+  }, 
+  {
+    name: "Burst Cannon",
+    cost: 0,
+    restrictions: "Battlesuit Only"
+  }, 
+  {
+    name: "Dart-Bow and Tri-Blade",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Dvorgite Skinner",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Fireblade Pulse Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Fusion Blaster",
+    cost: 0,
+    restrictions: "Battlesuit Only"
+  }, 
+  {
+    name: "Heavy Rail Rifle",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "High-Yield Missile Pods",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "Ion Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kroot Carbine",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Kroot Long Gun",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Kroot Rifle",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Kroot Scattergun",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Londaxi Tribalest",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Pulse Blaster",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Pulse Carbine",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Rail Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Seeker Missile",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "Semiautomatic Grenade Launcher",
+    cost: 0,
+    restrictions: "This model must also be equipped with one pulse carbine"
+  }, 
+  {
+    name: "Tanglebomb Launcher",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Twin Plasma Rifle",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "Twin Smart Missile System",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "Kroot Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Kroot Pistol and Hunting Javelins",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Pulse Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TauMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Bladestave and Prey Hook",
+    cost: 0, 
+    restrictions: "Kroot Only", 
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Crushing Bulk",
+    cost: 0,
+    restrictions: "Broadside Battlesuit Only"
+  }, 
+  {
+    name: "Hunting Blades",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Kalamandra's Bite",
+    cost: 0,
+    restrictions: "Model with kalamandra Only, Limit one per model"
+  }, 
+  {
+    name: "Rampager Fists",
+    cost: 0,
+    restrictions: "Model with Krootox Only, Limit one per model"
+  }, 
+  {
+    name: "Shaper's Blade",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+  {
+    name: "Twin Ritualistic Blades",
+    cost: 0,
+    restrictions: "Kroot Only"
+  }, 
+];
+
+const TauCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Shas'nel",
+    faction: Faction.XENOS,
+    army: Army.TAU_EMPIRE,
+    basePoints: 50,
+    availableSpecialisms: TauSpecialismsList,
+    availableAbilities: TauAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: TauRangedWeaponsList,
+      availableMeleeWeapons: TauMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Battlesuit Veteran",
+    faction: Faction.XENOS,
+    army: Army.TAU_EMPIRE,
+    basePoints: 60,
+    availableSpecialisms: TauSpecialismsList,
+    availableAbilities: TauAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: TauRangedWeaponsList,
+      availableMeleeWeapons: TauMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Kinband Champion",
+    faction: Faction.XENOS,
+    army: Army.TAU_EMPIRE,
+    basePoints: 55,
+    availableSpecialisms: TauSpecialismsList,
+    availableAbilities: TauAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-2 Pistols, 1-2 Melee Weapons"],
+      availableRangedWeapons: TauRangedWeaponsList,
+      availableMeleeWeapons: TauMeleeWeaponsList,
+      rangedSlots: 3,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const TyranidsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Armoured Shell",
+    cost: 20,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Burrowing Claws",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Floating Horror",
+    cost: 0,
+    restrictions: "Node Organism Only"
+  }, 
+  {
+    name: "Leader-Beast",
+    cost: 15,
+    restrictions: ""
+  }, 
+  {
+    name: "Vanguard Beast",
+    cost: 0,
+    restrictions: "NOde Organism Only"
+  }, 
+  {
+    name: "Winged Biomorph",
+    cost: 0,
+    restrictions: "Node Organism or Prime Organism Only"
+  }, 
+];
+
+const TyranidsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Fear of the Unseen",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Feeder Tendrils",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Hyperstimulation",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Psychic Terror",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Synaptic Senses",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+];
+
+const TyranidsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Acid Spray",
+    cost: 0, 
+    restrictions: "Macro Organism Only", 
+  }, 
+  {
+    name: "Barbed Strangler",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bio-Electric Pulse",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Bio-Plasma",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Bio-Plasmic Cannon",
+    cost: 0,
+    restrictions: "Macor Organism Only"
+  }, 
+  {
+    name: "Deathspitter",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Deathspitters with Slimer Maggots",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Devourer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "TestDevourers with Brainleech Worms",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Fleshborer Hive",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Heavy Venom Cannon",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Psychich Overload",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Psychic Scream",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Psychoclastic Torrent",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Rupture Cannon",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Spine Banks",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Spinefists",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Stinger Salvoes",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Stranglethorn Cannon",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Thoracic Bio-Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Venom Cannon",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TyranidsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Crushing Claws",
+    cost: 0, 
+    restrictions: "Monster Only", 
+  }, 
+  {
+    name: "Massive Scything Talons",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Monster-Beast Weapons",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Monstrous Bonesword and Lash Whip",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Monstrous Scything Talons",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Piercing Claws and Talons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ravener Claws and Talons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ravenous Maw",
+    cost: 0,
+    restrictions: "Macro Organism Only"
+  }, 
+  {
+    name: "Scything Talons",
+    cost: 0,
+    restrictions: "Monster Only"
+  }, 
+  {
+    name: "Tyrant-Beast Weapons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Warrior-Beast Weapons",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const TyranidsCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Node Organism",
+    faction: Faction.XENOS,
+    army: Army.TYRANIDS,
+    basePoints: 80,
+    availableSpecialisms: TyranidsSpecialismsList,
+    availableAbilities: TyranidsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: TyranidsRangedWeaponsList,
+      availableMeleeWeapons: TyranidsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Prime Organism",
+    faction: Faction.XENOS,
+    army: Army.TYRANIDS,
+    basePoints: 135,
+    availableSpecialisms: TyranidsSpecialismsList,
+    availableAbilities: TyranidsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-2 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: TyranidsRangedWeaponsList,
+      availableMeleeWeapons: TyranidsMeleeWeaponsList,
+      rangedSlots: 2,
+      meleeSlots: 2
+    }
+  }, 
+  {
+    archetype: "Macro Organism",
+    faction: Faction.XENOS,
+    army: Army.TYRANIDS,
+    basePoints: 150,
+    availableSpecialisms: TyranidsSpecialismsList,
+    availableAbilities: TyranidsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 1-2 Melee Weapons"],
+      availableRangedWeapons: TyranidsRangedWeaponsList,
+      availableMeleeWeapons: TyranidsMeleeWeaponsList,
+      rangedSlots: 1,
+      meleeSlots: 2
+    }
+  }, 
+];
+
+const GenestealerCultsSpecialismsList: ICustomCharacterSpecialism[] = [
+  {
+    name: "Dirtcycle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Shepherd of the Blessed",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const GenestealerCultsAbilitiesList: ICustomCharacterAbility[] = [
+  {
+    name: "Blessed Venom",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Elusive",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Ensidious Evasion",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Psychic Spoor",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Shadow Killer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Spirituak Keader",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Twisted Science",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Voice of New Truths",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const GenestealerCultsRangedWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Chemical Vials",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Cult Sniper Rifle",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Demolition Charges",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Flamer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Grenade Launcher",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Heavy Stubber",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Hybrid Firearm",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Mining Laser",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Psionic Cascade",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Remote Explosives",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Seismic Cannon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Webber",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Annointed Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Autopistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Hand Flamer",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Liberator Autostub",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Scoped Needle Pistol",
+    cost: 0,
+    restrictions: ""
+  }, 
+];
+
+const GenestealerCultsMeleeWeaponsList: ICustomCharacterWeapon[] = [
+  {
+    name: "Bio-Dagger",
+    cost: 0, 
+    restrictions: "", 
+  }, 
+  {
+    name: "Close Combat Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Cult Bonesword",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Cult Claws and Talons",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Force Stave",
+    cost: 0,
+    restrictions: "Psyker Only"
+  }, 
+  {
+    name: "Heavy Mining Tool",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Injector Goad",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Metamorph Mutations",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Power Weapon",
+    cost: 0,
+    restrictions: ""
+  }, 
+  {
+    name: "Toxin Injector Claw",
+    cost: 0,
+    restrictions: "Limit One per Model"
+  }, 
+];
+
+const GenestealerCultsCustomCharacterList: ICustomCharacter[] = [
+  {
+    archetype: "Cult Insurrectionist",
+    faction: Faction.XENOS,
+    army: Army.GENESTEALER_CULTS,
+    basePoints: 80,
+    availableSpecialisms: GenestealerCultsSpecialismsList,
+    availableAbilities: GenestealerCultsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-3 Pistols, 1-3 Melee Weapons"],
+      availableRangedWeapons: GenestealerCultsRangedWeaponsList,
+      availableMeleeWeapons: GenestealerCultsMeleeWeaponsList,
+      rangedSlots: 4,
+      meleeSlots: 3
+    }
+  }, 
+  {
+    archetype: "Cult Guerrilla",
+    faction: Faction.XENOS,
+    army: Army.GENESTEALER_CULTS,
+    basePoints: 60,
+    availableSpecialisms: GenestealerCultsSpecialismsList,
+    availableAbilities: GenestealerCultsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-3 Pistols, 1-3 Melee Weapons"],
+      availableRangedWeapons: GenestealerCultsRangedWeaponsList,
+      availableMeleeWeapons: GenestealerCultsMeleeWeaponsList,
+      rangedSlots: 4,
+      meleeSlots: 3
+    }
+  }, 
+  {
+    archetype: "Voice of the Patriarch",
+    faction: Faction.XENOS,
+    army: Army.GENESTEALER_CULTS,
+    basePoints: 70,
+    availableSpecialisms: GenestealerCultsSpecialismsList,
+    availableAbilities: GenestealerCultsAbilitiesList,
+    availableWeapons: {
+      availableLoadouts: ["0-1 Ranged Weapon, 0-3 Pistols, 1-3 Melee Weapons"],
+      availableRangedWeapons: GenestealerCultsRangedWeaponsList,
+      availableMeleeWeapons: GenestealerCultsMeleeWeaponsList,
+      rangedSlots: 4,
+      meleeSlots: 3
+    }
+  }, 
+];
+
 export const CustomCharacterList: ICustomCharacter[] = [
   ...AdeptusAstartesCustomCharacterList, 
   ...DarkAngelsCustomCharacterList, 
@@ -3760,4 +5860,12 @@ export const CustomCharacterList: ICustomCharacter[] = [
   ...DeathGuardCustomCharacterList, 
   ...EmperorsChildrenCustomCharacterList, 
   ...ChaosDaemonsCustomCharacterList, 
+  ...AeldariCustomCharacterList, 
+  ...DrukhariCustomCharacterList, 
+  ...VotannCustomCharacterList, 
+  ...NecronsCustomCharacterList, 
+  ...OrksCustomCharacterList, 
+  ...TauCustomCharacterList, 
+  ...TyranidsCustomCharacterList, 
+  ...GenestealerCultsCustomCharacterList, 
 ]
