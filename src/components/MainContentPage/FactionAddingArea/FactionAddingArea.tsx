@@ -8,6 +8,7 @@ import AddUnitPopupScreen from "../AddUnitPopupScreen/AddUnitPopupScreen";
 import CustomCharacterAddingArea from "../CustomCharacterAddingArea/CustomCharacterAddingArea";
 import AddCustomCharacterPopup from "../CustomCharacterAddingArea/AddCustomCharacterPopup";
 import { ICustomCharacter, ICustomCharacterSelection } from "../../UtilityComponents/Army_Constants/CustomCharacterData";
+import CustomCharactersHelpPopup from "../CustomCharacterAddingArea/CustomCharactersHelpPopup";
 
 export const enum FactionAddingAreaType {
   ARMY = "ARMY", 
@@ -54,6 +55,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
   const [availableCharacterUnits, setAvailableCharacterUnits] = useState<Unit[]>([]);
   const [availableBattlelineUnits, setAvailableBattlelineUnits] = useState<Unit[]>([]);
   const [availableOtherUnits, setAvailableOtherUnits] = useState<Unit[]>([]);
+  const [customCharactersHelpOpen, setCustomCharactersHelpOpen] = useState<boolean>(false);
   
   const handleClick = () => {
     setUnitTypeForPopup(undefined);
@@ -120,6 +122,14 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
     setCustomCharacterList(() => [...customCharacterList]);
   }
 
+  const handleCustomCharactersHelpClicked = () => {
+    setCustomCharactersHelpOpen(true);
+  }
+
+  const handleCloseCustomCharactersHelp = () => {
+    setCustomCharactersHelpOpen(false);
+  }
+
   return (
     <>
       {army !== undefined && army !== "" && 
@@ -127,7 +137,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <Typography className="FactionAddingArea_TypeText">{type}</Typography>
         <Divider className="FactionAddingArea_TypeDivider"/>
         {type === FactionAddingAreaType.ARMY ? 
-          <CustomCharacterAddingArea availableCustomCharacters={availableCustomCharacters} setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} characterList={customCharacterList} setCharacterList={setCustomCharacterList}/>
+          <CustomCharacterAddingArea availableCustomCharacters={availableCustomCharacters} setShowAddUnitPopup={setAddCustomCharacterPopupOpen} allowRosterModifications={allowRosterModifications} characterList={customCharacterList} setCharacterList={setCustomCharacterList} onClickHelp={handleCustomCharactersHelpClicked}/>
         :
           ""
         }
@@ -138,6 +148,7 @@ const FactionAddingArea: React.FC<FactionAddingAreaProps> = ({
         <AddUnitPopupScreen availableUnits={popupAvailableUnits} addUnit={addUnit} unitType={unitTypeForPopup} open={addUnitPopupOpen} closeBackdropFunction={handleCloseAddUnitPopup} army={type === FactionAddingAreaType.ALLIES ? army + " Allies" : army}/>
         <AddCustomCharacterPopup display={addCustomCharacterPopupOpen} onAddUnit={handleAddNewCharacter} closePopup={() => setAddCustomCharacterPopupOpen(false)} army={army} availableCharacters={availableCustomCharacters}/>
         </>: ""}
+        <CustomCharactersHelpPopup open={customCharactersHelpOpen} closePopup={handleCloseCustomCharactersHelp} faction={army}/>
       </Box>
       }
     </>

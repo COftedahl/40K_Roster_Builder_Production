@@ -1,4 +1,5 @@
 import { Box, Typography, Divider, IconButton } from "@mui/material";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddIcon from '@mui/icons-material/Add';
 import UnitDisplay from "../UnitDisplay/UnitDisplay";
 import { useState } from "react";
@@ -13,6 +14,7 @@ interface CustomCharacterAddingAreaProps {
   setCharacterList: (newList: ICustomCharacterSelection[]) => void, 
   allowRosterModifications: boolean, 
   availableCustomCharacters: ICustomCharacter[], 
+  onClickHelp: () => void, 
 }
 
 const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (props: CustomCharacterAddingAreaProps) => {
@@ -56,6 +58,10 @@ const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (pro
     props.setCharacterList([...props.characterList]);
   }
 
+  const handleHelpButtonClick = () => {
+    props.onClickHelp();
+  }
+
   return (
     <>
       <Box className="CustomCharacterAddingAreaBox">
@@ -75,6 +81,7 @@ const CustomCharacterAddingArea: React.FC<CustomCharacterAddingAreaProps> = (pro
         :
         ""
         }
+        <IconButton className="CustomCharacterAddingArea_HelpButton positionAbsolute top left" onClick={handleHelpButtonClick}><HelpOutlineIcon/></IconButton>
       </Box>
       {(props.allowRosterModifications === undefined || props.allowRosterModifications === true) && selectedUnit !== undefined ? 
         //edit unit screen here
