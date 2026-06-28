@@ -21,7 +21,7 @@ const CustomCharactersHelpPopup: React.FC<CustomCharactersHelpPopupProps> = (pro
   };
 
   const getFileName = async (faction: string) => {
-    const fileName: string = "public/Custom Characters_" + faction + ".pdf";
+    const fileName: string = "/Custom Characters_" + faction + ".pdf";
     const validFileNames: string[] = [
       "Custom Characters_Adepta Sororitas.pdf",
       "Custom Characters_Adeptus Astartes.pdf",
@@ -50,7 +50,7 @@ const CustomCharactersHelpPopup: React.FC<CustomCharactersHelpPopupProps> = (pro
       "Custom Characters_World Eaters.pdf",
     ];
     const result = validFileNames.map((validFileName: string) => validFileName.replace(".pdf", "").replace("Custom Characters_", "")).includes(props.faction);
-    setPdfSrc(result ? fileName : "public/Invalid.txt");
+    setPdfSrc(result ? fileName : "/Invalid.txt");
   }
 
   const handleError: ReactEventHandler = (e: any) => {
@@ -58,7 +58,7 @@ const CustomCharactersHelpPopup: React.FC<CustomCharactersHelpPopupProps> = (pro
     e.preventDefault();
     e.stopPropagation();
     e.target.onerror = null;
-    e.target.src = "public/Invalid.txt";
+    e.target.src = "/Invalid.txt";
   }
 
   useEffect(() => {
